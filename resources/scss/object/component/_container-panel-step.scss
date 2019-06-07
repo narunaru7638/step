@@ -1,0 +1,14 @@
+.c-container-panel-step{
+    display: flex;
+    flex-wrap: wrap;
+//    justify-content: space-between;
+    justify-content: flex-start;
+    
+    padding: $space_l $space_l 0;
+    @include mq(sm) {
+        display: block;
+
+
+    }
+
+}

@@ -1,0 +1,236 @@
+.c-form{
+
+    text-align: center;
+    margin-bottom: $space_3l;
+
+    &__row-input-area{
+        display: flex;
+        justify-content: space-around;
+        @include mq(sm) {
+            display: block;
+
+        }
+
+    }
+
+    &--childstep-clear{
+        margin-top: $space_xl;
+        margin-bottom: $space_l;
+    }
+
+
+
+    &__input-area{
+        margin-bottom: $space_xxl;
+
+
+    }
+
+    &__childstep-area{
+        //display: flex;
+    }
+
+    &__childstep-form{
+        width: 80%;
+        padding: $space_3l;
+        border: solid 2px $color_black3;
+
+
+        @include mq(sm) {
+            width: 100%;
+            padding: 0;
+            padding-top: $space_xxl;
+            border: none;
+            border-top: dotted 5px $color_black4;
+
+        }
+
+
+        //margin: 0 auto;
+        //background: $color_black4;
+
+
+        margin: $space_3l auto $space_3l;
+
+        border-radius: 5px;
+
+        border: solid 2px $color_black3;
+
+    }
+
+    &__label{
+        font-size: $font-size_m;
+        margin-bottom: $space_m;
+        display: block;
+        text-align: left;
+    }
+    &__input{
+        display: block;
+        width: 100%;
+        height:50px;
+        border-radius: 5px;
+        font-size: $font-size_s;
+        box-sizing: border-box;
+        outline: none;
+        padding: $space_m $space_m $space_s;
+        border: 1px solid $color_black3;
+
+        margin-top: $space_s;
+
+        &:focus {
+            border: 2px solid $color_main;
+        }
+        &::placeholder {
+        }
+    }
+    &__textarea{
+        height: 150px;
+
+        &--childstep {
+            height: 100px;
+            @include mq(sm) {
+                height: 150px;
+
+
+            }
+        }
+
+    }
+    &__err-msg{
+        margin-top: $space_l;
+        color: $color_danger;
+        font-size: $font-size_s;
+        text-align: left;
+    }
+    &__sub-msg{
+        font-size: $font-size_s;
+        margin-bottom: $space_m;
+        margin-top: $space_l;
+
+        &--position-left{
+            text-align: left;
+        }
+
+    }
+
+    &__submit{
+        margin: $space_m 0 $space_m;
+        //font-size: $font-size_l;
+        width: 40%;
+        @include mq(sm){
+            width: 80%;
+
+
+        }
+
+        &--retire{
+            color: $color_danger;
+            @include mq(sm){
+                width: 80%;
+
+
+            }
+        }
+    }
+    &__link{
+        color: $color_sub;
+        font-weight: bold;
+        &:hover{
+            color: $color_sub;
+            text-decoration: underline;
+
+        }
+        &--page-back{
+        }
+    }
+
+    &__area-drop{
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        min-height: 370px;
+        line-height: 370px;
+        @include mq(sm) {
+            min-height: 150px;
+            line-height: 150px;
+        }
+
+        &--childstep{
+            min-height: 310px;
+            line-height: 310px;
+            @include mq(sm) {
+                min-height: 150px;
+                line-height: 150px;
+            }
+        }
+
+    }
+
+    &__prev-img{
+        width: 100%;
+        //height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        box-sizing: border-box;
+        height: 370px;
+        @include mq(sm) {
+            height: 150px;
+        }
+
+        &--childstep{
+            height: 310px;
+            @include mq(sm) {
+                height: 150px;
+            }
+        }
+
+    }
+
+    &__file-input{
+        background-color: $color_main;
+        position: absolute;
+        width: 100%;
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        display: block;
+        box-sizing: border-box;
+        //z-index: 2;
+
+        min-height: 370px;
+        @include mq(sm) {
+            min-height: 150px;
+        }
+
+
+
+
+        &--childstep{
+            min-height: 310px;
+            @include mq(sm) {
+                min-height: 150px;
+
+            }
+
+        }
+
+    }
+
+    &__sub-title{
+        font-size: $font-size_xl;
+        //border-left: 10px solid $color_main;
+        padding-left: $space_m;
+        margin-bottom: $space_m;
+        color: $color_main;//非対応のブラウザでの文字色を設定
+        background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+        -webkit-background-clip: text;//テキストでくり抜く
+        -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+
+    }
+    
+}

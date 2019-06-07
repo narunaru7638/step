@@ -1,0 +1,81 @@
+.l-sidebar{
+    width: 30%;
+    @include mq(sm) {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+
+    &__container{
+        margin-bottom: $space_6l;
+        border-top: dotted $color_black3 5px;
+
+    }
+
+    &__title{
+        font-size: $font-size_m;
+        text-align: center;
+        padding-top: $space_xxl;
+        margin-bottom: $space_s;
+        color: $color_main;//非対応のブラウザでの文字色を設定
+        background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+        -webkit-background-clip: text;//テキストでくり抜く
+        -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+
+
+    }
+    &__sub-title{
+        font-size: $font-size_ss;
+        text-align: center;
+        margin-bottom: $space_xxl;
+
+    }
+
+    &__content{
+
+    }
+
+
+//    @include mq(sm) {
+//        display: none;
+//
+//
+//    }
+//
+//
+//    background-color: $color_grey_heavy;
+//    height: 500px;
+//    font-family: $font-family_sub;
+//    font-size: $font-size_l;
+//    text-align: center;
+//
+//    border-radius: 5px;
+//
+//    margin-top: 150px;
+//    margin-left: $space_l;
+//
+//    &--left{
+//        margin-left: 0;
+//        margin-right: $space_l;
+////        padding: $space_xl;
+//    }
+//
+//
+//    &__list{
+//
+//    }
+//    &__item{
+//        margin: $space_xl 0;
+//    }
+//
+//    &__link{
+//        text-decoration: underline;
+//        color: $color_main;
+//
+//        &:hover{
+//            text-decoration: underline;
+//            color: $color_main_light;
+//
+//        }
+//    }
+}

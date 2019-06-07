@@ -1,0 +1,90 @@
+.c-article-list{
+
+  display: flex;
+  padding-bottom: $space_xl;
+  margin-bottom: $space_xl;
+  border-bottom: $color_black4 1px solid;
+
+  @include mq(sm){
+    margin: $space_xl auto;
+    width: 90%;
+  }
+
+  &--small{
+    padding-bottom: $space_l;
+    margin-bottom: $space_l;
+
+  }
+
+  position: relative;
+
+  &__icon{
+    font-size: $font-size_sss;
+    padding: 1px;
+    //box-sizing: border-box;
+    //font-size: px;
+    line-height: 1.0;
+    letter-spacing: 0em;
+
+    //border: solid $color_black1 1px;
+    border-radius: 20px;
+    text-align: center;
+    vertical-align: center;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background-color: yellow;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+
+    color: #fff;
+    background: $color_main;
+    background: -webkit-linear-gradient(to right, $color_main, $color_sub);
+    background: linear-gradient(to right, $color_main, $color_sub);
+  }
+
+  &__img{
+
+    width: 22%;
+    height: 22%;
+  }
+
+  &__content{
+    margin-left: $space_l;
+  }
+
+  &__info{
+    display: flex;
+    font-size: $font-size_ss;
+    margin-bottom: $space_m;
+  }
+
+  &__category{
+    margin-right: $space_m;
+    font-weight: bold;
+    color: $color_main;//非対応のブラウザでの文字色を設定
+    background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+    -webkit-background-clip: text;//テキストでくり抜く
+    -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+
+  }
+  &__username{
+    margin-right: $space_m;
+  }
+  &__date{
+
+  }
+
+
+  &__title{
+    &--small{
+      font-size: $font-size_s;
+
+    }
+  }
+
+
+
+
+}

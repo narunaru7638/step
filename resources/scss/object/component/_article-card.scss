@@ -1,0 +1,53 @@
+.c-article-card{
+
+  width: 50%;
+  padding-bottom: $space_3l;
+
+  @include mq(sm){
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: $space_xl;
+
+    border-bottom: $color_black4 1px solid;
+    margin: $space_xl auto;
+
+  }
+
+
+  &:first-child{
+    padding-right: $space_l;
+    @include mq(sm){
+      padding-right: 0;
+    }
+
+
+  }
+
+  margin-bottom: $space_xl;
+  border-bottom: $color_black4 1px solid;
+
+  &__info{
+    display: flex;
+    font-size: $font-size_ss;
+    margin: $space_m 0;
+  }
+
+  &__category{
+    margin-right: $space_m;
+    font-weight: bold;
+    color: $color_main;//非対応のブラウザでの文字色を設定
+    background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+    -webkit-background-clip: text;//テキストでくり抜く
+    -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+
+
+  }
+  &__username{
+    margin-right: $space_m;
+  }
+  &__date{
+
+  }
+
+
+}

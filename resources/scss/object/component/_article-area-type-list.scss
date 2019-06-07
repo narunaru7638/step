@@ -1,0 +1,20 @@
+.c-article-area-type-list{
+    margin-bottom: $space_6l;
+    //margin: 0 auto;
+
+    &__title{
+      font-size: $font-size_xl;
+      border-left: 10px solid $color_main;
+      padding-left: $space_m;
+      margin-bottom: $space_xl;
+      color: $color_main;//非対応のブラウザでの文字色を設定
+      background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+      -webkit-background-clip: text;//テキストでくり抜く
+      -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+      @include mq(sm){
+        width: 90%;
+        margin: auto auto;
+
+      }
+    }
+}

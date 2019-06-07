@@ -1,0 +1,90 @@
+.l-header{
+    
+    width: 100%;
+    background-color: $color_white2;
+    @include mq(sm) {
+        background-color: $color_white1;
+
+    }
+    position: fixed;
+    z-index: 2;
+
+
+    border-bottom: $color_black4 solid 1px;
+
+    height: $space_5l;
+    line-height: $space_5l;
+
+
+    &__container{
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    &__title-area{
+        display: flex;
+        justify-content: center;
+        margin-left: $space_s;
+    }
+
+    &__site-logo{
+        font-family: $font-family_accent;
+        font-size: $font-size_xxl;
+        padding: $space_m;
+        height: $space_5l;
+        vertical-align: center;
+        box-sizing: border-box;
+        color: $color_main;//非対応のブラウザでの文字色を設定
+        background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+        -webkit-background-clip: text;//テキストでくり抜く
+        -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+    }
+
+    &__sub-title{
+        margin-left: $space_m;
+
+        font-size: $font-size_ss;
+        letter-spacing: 0em;
+
+        @include mq(xl) {
+            display: none;
+        }
+
+    }
+
+
+    &__category-list{
+        display: flex;
+        align-items: center;
+        color: $color_black1;
+        font-weight: bold;
+        &-item{
+            margin: 0 $space_m;
+            font-size: $font-size_m;
+        }
+        @include mq(sm) {
+            display: none;
+        }
+
+    }
+
+    &__global-nav{
+        width: 350px;
+        @include mq(xl) {
+            //display: none;
+            width: 180px;
+
+        }
+        @include mq(sm) {
+            display: none;
+        }
+
+
+        height: $space_5l;
+        vertical-align: center;
+        margin-right: $space_l;
+
+    }
+    
+}

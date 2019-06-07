@@ -1,0 +1,22 @@
+.c-one-child-step{
+        margin-left: $space_l;
+
+        //width: 500px;
+
+
+
+
+
+        &:last-child{
+            margin-right: $space_l;
+    
+        }   
+        @include mq(sm) {
+//            display: none;
+            
+            margin-right: $space_l;
+            margin-top: $space_3l;
+        }
+
+}
+

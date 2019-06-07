@@ -1,0 +1,75 @@
+.c-btn{
+    border-radius: 30px;
+//    width: 30%;
+//    padding: $space_m;
+//    background: $color_black1;
+    color:$color_white1;
+    transition: .3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    font-size: $font-size_s;
+
+    padding: $space_m $space_l;
+    box-sizing: border-box;
+
+    background: $color_sub;
+    //background: -webkit-linear-gradient(to left, $color_main, $color_sub);
+    //background: linear-gradient(to left, $color_main, $color_sub);
+    &:hover{
+        transform: translateY(-3px);
+        transition: .3s;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+    }
+//
+//    &--complete{
+//        width: 80%;
+//        width: 100%;
+//
+//        margin: $space_xl auto 0;
+////        margin-left: auto;
+////        margin-right: auto;
+//        display: block;
+////        height: 200px;
+//    }
+//
+//    &--small{
+//        width: 30%;
+//        position: relative;
+//        top:-10px;
+//        left: 270px;
+//
+//        color: $color_danger;
+////        background: $color_main;/* fallback for old browsers */
+////        background: -webkit-linear-gradient(to left, $color_main, $color_main_light); /* Chrome 10-25, Safari 5.1-6 */
+////        background: linear-gradient(to left, $color_main, $color_main_light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+//
+////        margin-left: 100px;
+////        float: right;
+//    }
+//
+//    &--small{
+//        width: 150px;
+//        position: relative;
+//        top:-10px;
+//        left: 270px;
+//        @include mq(sm) {
+//            top: 30px;
+//            left: 80px;
+//        }
+//
+//
+//        color: $color_danger;
+//        //        background: $color_main;/* fallback for old browsers */
+//        //        background: -webkit-linear-gradient(to left, $color_main, $color_main_light); /* Chrome 10-25, Safari 5.1-6 */
+//        //        background: linear-gradient(to left, $color_main, $color_main_light); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+//
+//        //        margin-left: 100px;
+//        //        float: right;
+//    }
+//
+//    &--sidebar{
+//        width: 90%;
+//    }
+    
+}

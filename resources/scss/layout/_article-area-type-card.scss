@@ -1,0 +1,8 @@
+.l-article-area-type-card{
+    display: flex;
+    @include mq(sm) {
+        display: block;
+    }
+
+
+}

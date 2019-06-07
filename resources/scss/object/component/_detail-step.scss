@@ -1,0 +1,98 @@
+.c-detail-step{
+
+  @include mq(sm) {
+    width: 90%;
+    margin: auto auto;
+  }
+
+  &__title{
+    font-size: $font-size_xl;
+    color: $color_black1;
+    margin-bottom: $space_xl;
+  }
+
+
+  &__info{
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size_ss;
+    margin: $space_m 0;
+
+    @include mq(sm) {
+      //text-align: center;
+      display: block;
+
+      margin: $space_s auto;
+    }
+
+
+    &--left{
+      display: flex;
+      @include mq(sm) {
+        justify-content: center;
+      }
+
+    }
+    &--right{
+      display: flex;
+      @include mq(sm) {
+        justify-content: center;
+        margin-top: $space_m;
+      }
+
+      //align-items: baseline;
+    }
+
+  }
+
+  &__category{
+    margin-right: $space_m;
+    font-weight: bold;
+    color: $color_main;//非対応のブラウザでの文字色を設定
+    background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+    -webkit-background-clip: text;//テキストでくり抜く
+    -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+
+
+  }
+
+  &__date{
+    margin-right: $space_m;
+
+  }
+
+  &__username{
+    margin-right: $space_m;
+
+  }
+  &__required-time{
+    margin-right: $space_m;
+
+  }
+
+  &__number-of-challenger{
+    margin-right: $space_m;
+
+  }
+  &__challenge-flg{
+    //margin-right: $space_m;
+    color: $color_danger;
+    font-size: $font-size_m;
+    vertical-align: bottom;
+    position: relative;
+    top: -7px;
+  }
+
+  &__img{
+      width: 80%;
+      display: block;
+      margin:  0 auto;
+  }
+
+  &__text{
+    margin: $space_3l 0 $space_4l;
+
+  }
+
+
+}

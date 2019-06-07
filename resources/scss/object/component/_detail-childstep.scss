@@ -1,0 +1,59 @@
+.c-detail-childstep{
+      margin: $space_xl 0;
+      padding-bottom: $space_xl;
+      border-bottom: $color_black4 1px solid;
+
+  &__step-number{
+
+      }
+
+      &__title{
+        font-size: $font-size_l;
+        border-left: 10px solid $color_main;
+        padding-left: $space_m;
+        margin-bottom: $space_m;
+        color: $color_main;//非対応のブラウザでの文字色を設定
+        background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+        -webkit-background-clip: text;//テキストでくり抜く
+        -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+
+      }
+
+      &__body{
+        display: flex;
+      }
+
+      &__content{
+        margin-left: $space_l;
+
+      }
+
+      &__info{
+          display: flex;
+          font-size: $font-size_ss;
+          margin-bottom: $space_m;
+
+          &--left{
+
+          }
+          &--right{
+
+          }
+
+      }
+
+      &__required-time{
+        margin-right: $space_m;
+
+      }
+      &__challenge-flg{
+        margin-right: $space_m;
+
+      }
+
+      &__img{
+        width: 22%;
+        height: 22%;
+      }
+
+}
