@@ -73,8 +73,7 @@
         width: 350px;
         @include mq(xl) {
             //display: none;
-            width: 180px;
-
+            width: 280px;
         }
         @include mq(sm) {
             display: none;
@@ -82,6 +81,8 @@
 
 
         height: $space_5l;
+        //height: $space_8l;
+
         vertical-align: center;
         margin-right: $space_l;
 

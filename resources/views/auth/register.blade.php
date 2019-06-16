@@ -47,7 +47,7 @@
                     <div class="c-form__input-area">
 
                         <label for="password" class="c-form__label">パスワード</label>
-                        <input type="password" class="c-form__input" name="password">
+                        <input type="password" class="c-form__input" name="password" value="{{ old('password') }}">
                         @if($errors->any())
                             @foreach($errors->get('password') as $message)
                                 <p class="c-form__err-msg">{{$message}}</p>
@@ -58,9 +58,9 @@
                     <div class="c-form__input-area">
 
                         <label for="password_confirmation" class="c-form__label">パスワード(再入力)</label>
-                        <input type="password" class="c-form__input" id="password-confirm" name="password_confirmation">
+                        <input type="password" class="c-form__input" id="password-confirm" name="password_confirmation" value="{{ old('password_confirmation') }}">
                         @if($errors->any())
-                            @foreach($errors->get('password_re') as $message)
+                            @foreach($errors->get('password_confirmation') as $message)
                                 <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif

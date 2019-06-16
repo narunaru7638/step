@@ -4,140 +4,290 @@ namespace App\Http\Controllers;
 
 use App\Step;
 use App\Childstep;
+use App\Challenge;
+use App\Clear;
+
 use Illuminate\Http\Request;
-//use App\Http\Requests\Step;
-
 use App\Http\Requests\CreateStep;
-
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-
-
-use App\Http\Controllers\Log;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class StepController extends Controller
 {
-    //
-    //
-//    public function index()
-//    {
-//        $id = 1;
 
-    public function index()
+    public function index(int $id)
     {
-
-        //すべてのstepを取得する
 //        $steps = Step::all();
 
+        $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
+
+//        dd($steps_new);
+
+        if($id === 0){
+//            $steps = Step::orderBy('created_at', 'desc')->get();
+            $steps = Step::orderBy('created_at', 'desc')->paginate(10);
+
+        }else{
+            $steps = Step::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        }
+
+//        $steps = Step::orderBy('created_at', 'desc')->get();
+        $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
 
 
-        //すべてのSTEPのデータを登録が新しい順に取得する
-        $steps = DB::table('steps')
-                    ->join('users','steps.user_id', '=', 'users.id')
-                    ->orderByRaw('steps.created_at DESC')
-                    ->get();
-//        dump($steps);
-//        $steps = Step::where('id', 1)->get();
-//        $steps = Step->orderBy('created_at', 'desc')->get();
-//        $steps = DB::table('step')->orderBy('id')->chunk(2, function ($users) {
-//            // レコードの処理…
-//
-//            return false;
-//        });
+//        $steps = DB::table('steps')->simplePaginate(5);
+
+//        dd($steps);
+
+
+        $steps_json = json_encode($steps);
+//        dd($steps_json);
 
         return view('steps/index', [
             'steps' => $steps,
+            'steps_new' => $steps_new,
+            'steps_rank' => $steps_rank,
+            'steps_json' => $steps_json,
+//            'steps2' => $steps2,
         ]);
     }
 
     public function detail(int $id)
-//    public function detail()
-
     {
-        //すべてのstepを取得する
-//        $id = 1;
+        //sidebar用のstepsデータを取得
+//        $steps = Step::orderBy('created_at', 'desc')->get();
+        $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
+
+        $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
+
+//        $steps = Step::all()->orderBy('created_at', 'asc');
+
+//        return view('steps/index', [
+//            'steps' => $steps,
+//        ]);
+
+
+
+        //すでにチャレンジ済みかデータを取得して確認
         $step = Step::find($id);
 
-        $childstep1 = Childstep::where('step_id', $id)->where('number_of_step', '1')->first();
-        $childstep2 = Childstep::where('step_id', $id)->where('number_of_step', '2')->first();
-        $childstep3 = Childstep::where('step_id', $id)->where('number_of_step', '3')->first();
+        $challenge_exists_flg = DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $id)->exists();
+//        if( DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $id)->exists() ) {
+        if( $challenge_exists_flg ) {
 
+            $challenge = Challenge :: where('user_id', Auth::user()->id)
+                ->where('step_id', $id)
+                ->first();
 
+            if( DB::table('clears')->where('challenge_id', $challenge->id)->exists() ) {
+                $clear = Clear :: where('challenge_id', $challenge->id)
+                    ->orderBy('childstep_id', 'asc')
+                    ->get();
+            }else{
+                $clear = [new Clear, new Clear, new Clear];
+            }
+        }else{
+            $challenge = new Challenge;
+            $clear = [new Clear, new Clear, new Clear];
 
-
+        }
 
         return view('steps/detail', [
+            'steps_new' => $steps_new,
+            'steps_rank' => $steps_rank,
             'step' => $step,
-            'childstep1' => $childstep1,
-            'childstep2' => $childstep2,
-            'childstep3' => $childstep3,
-
-
+            'challenge' => $challenge,
+            'clear' => $clear,
+            'challenge_exists_flg' => $challenge_exists_flg,
         ]);
 
-//        return "Hello world";
     }
+
+    public function challenge(int $id)
+    {
+         //すでにチャレンジ情報がDBにあるか確認
+        $challenge_check = Challenge :: where('user_id', Auth::user()->id)
+                                        ->where('step_id', $id)
+                                        ->first();
+
+        //チャレンジ情報がDBにあって、まだリタイアしていない場合、リタイアボタンが押されたとして、delete_flg=1にする
+        if($challenge_check && $challenge_check->delete_flg == 0){
+            $challenge = Challenge :: where('step_id', $id)->first();
+            $challenge->delete_flg = 1;
+            $challenge->save();
+        //チャレンジ情報がDBにあって、すでにリタイアしている場合、再度チャレンジボタンが押されたとして、delete_flg=0にする
+        }elseif($challenge_check && $challenge_check->delete_flg == 1) {
+            $challenge = Challenge :: where('step_id', $id)->first();
+            $challenge->delete_flg = 0;
+            $challenge->save();
+        //チャレンジ情報がDBにない場合、新規にチャレンジ情報を登録
+        }else{
+            $challenge = new Challenge();
+            $challenge->user_id = Auth::user()->id;
+            $challenge->step_id = $id;
+            $challenge->save();
+
+
+            //チャレンジ情報と共にクリア情報も作成する
+            $childsteps = Childstep::where('step_id', $id)->get();
+            foreach($childsteps as $childstep) {
+                $clear = new Clear();
+                $clear->challenge_id = $challenge->id;
+                $clear->childstep_id = $childstep->id;
+                $clear->save();
+            }
+
+            $step = Step::where('id',$id)->first();
+            $step->number_of_challenger ++;
+            $step->save();
+
+        }
+
+
+
+
+        return redirect()->route('steps.index', ['id' => 0 ]);
+    }
+
+    public function clear(int $challenge_id, int $childstep_id)
+    {
+        //すでにクリア情報がDBにあるか確認
+        $clear_check = Clear :: where('childstep_id', $childstep_id)->first();
+//        dd($clear_check);
+
+
+        //クリア情報がDBにあって、まだクリアしていない場合、STEPクリアボタンが押されたとして、complete_flg=1にする
+        if($clear_check && $clear_check->complete_flg == 0){
+            $clear = Clear :: where('childstep_id', $childstep_id)->first();
+            $clear->complete_flg = 1;
+            $clear->save();
+            //クリア情報がDBにあって、すでにクリアしている場合、クリア解除ボタンが押されたとして、complete_flg=0にする
+        }elseif($clear_check && $clear_check->complete_flg == 1) {
+            $clear = Clear :: where('childstep_id', $childstep_id)->first();
+            $clear->complete_flg = 0;
+            $clear->save();
+            //クリア情報がDBにない場合、新規にクリア情報を登録
+        }else{
+            $clear = new Clear();
+            $clear->challenge_id = $challenge_id;
+            $clear->childstep_id = $childstep_id;
+            $clear->save();
+        }
+        return redirect()->route('steps.index', ['id' => 0 ]);
+        //
+//        //チャレンジ情報がDBにあって、まだリタイアしていない場合、リタイアボタンが押されたとして、delete_flg=1にする
+//        if($challenge_check && $challenge_check->delete_flg == 0){
+//            $challenge = Challenge :: where('step_id', $id)->first();
+//            $challenge->delete_flg = 1;
+//            $challenge->save();
+//            //チャレンジ情報がDBにあって、すでにリタイアしている場合、再度チャレンジボタンが押されたとして、delete_flg=0にする
+//        }elseif($challenge_check && $challenge_check->delete_flg == 1) {
+//            $challenge = Challenge :: where('step_id', $id)->first();
+//            $challenge->delete_flg = 0;
+//            $challenge->save();
+//            //チャレンジ情報がDBにない場合、新規にチャレンジ情報を登録
+//        }else{
+//            $challenge = new Challenge();
+//            $challenge->user_id = Auth::user()->id;
+//            $challenge->step_id = $id;
+//            $challenge->save();
+//        }
+//        return redirect()->route('steps.index');
+    }
+
 
     public function showCreateForm()
     {
         return view('steps/create');
     }
 
+
+    /**
+     * プロフィールの保存
+     *
+     * @param ProfileRequest $request
+     * @return Response
+     */
     public function create(CreateStep $request)
     {
-
             //stepモデルのインスタンスを作成する
             $step = new Step();
-
-//            dump($request);
 
             //入力値を代入する
             $step->title = $request->step_title;
             $step->content = $request->step_content;
             $step->category_id = $request->step_category;
-            $step->user_id = 1;
-            $step->pic_img = $request->step_img;
+            $step->user_id = Auth::user()->id;
 
+            //ファイルの名前をハッシュ化して変数に入れる
+            $file_hash_name = sha1_file($request->file('step_img'));
+            //ファイルの拡張子を取得して変数に入れる
+            $file_extension = $request->file('step_img')->getClientOriginalExtension();
 
-        //インスタンスの状態をデータベースに書き込む
+            //DBに保存するファイル名を作成して変数に入れる
+            $file_save_name = $file_hash_name . '.' . $file_extension;
+
+            //DBにファイル名を保存する
+            $step->pic_img = $file_save_name;
+
+            //storageに画像ファイルを保存する
+            $request->step_img->storeAs('public', $file_save_name);
+
+            //インスタンスの状態をデータベースに書き込む
             $step->save();
 
-
+            //childstepに関する入力値をDBに書き込む
             for ($i = 1; $i <= 3; $i++) {
                 $childstep = new Childstep();
-
-//                $request_title = 'childstep_title_'.$i;
-//                $request_content = 'childstep_content_'.$i;
                 $request_title = 'childstep'.$i.'_title';
                 $request_content = 'childstep'.$i.'_content';
-
-
                 $childstep->title = $request->$request_title;
                 $childstep->content = $request->$request_content;
                 $childstep->step_id = $step->id;
                 $childstep->number_of_step = $i;
                 $childstep->save();
-
             }
 
+            return redirect()->route('steps.index', ['id' => 0 ]);
 
-
-//        $now = Carbon::now();
-//
-//        $childstep_datum = [
-//            ['title' => $request->childstep_title_1, 'content' => $request->childstep_content_1, 'step_id' => 2, 'number_of_step' => 1, 'created_at' => $now, 'updated_at' => $now],
-//            ['title' => $request->childstep_title_2, 'content' => $request->childstep_content_2, 'step_id' => 2, 'number_of_step' => 2, 'created_at' => $now, 'updated_at' => $now],
-//            ['title' => $request->childstep_title_3, 'content' => $request->childstep_content_3, 'step_id' => 2, 'number_of_step' => 3, 'created_at' => $now, 'updated_at' => $now],
-//        ];
-//
-//        $cli = DB::table('childsteps')
-//            -> insert($childstep_datum);
-
-        return redirect()->route('steps.index', [
-                'id' => $step->id,
-            ]);
     }
+
+    public function mypageShow()
+    {
+
+        //sidebar用のstepsデータを取得
+//        $steps = Step::orderBy('created_at', 'desc')->get();
+        $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
+
+        $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
+
+
+        $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->get();
+        $steps_my_regist = Step::where('user_id', Auth::user()->id )->orderBy('created_at', 'desc')->get();
+
+
+//        $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->paginate(10);
+//        $steps_my_regist = Step::where('user_id', Auth::user()->id )->orderBy('created_at', 'desc')->paginate(10);
+
+
+//        dd($steps_my_challenge);
+
+        return view('steps/mypage', [
+            'steps_new' => $steps_new,
+            'steps_rank' => $steps_rank,
+            'steps_my_challenge' => $steps_my_challenge,
+            'steps_my_regist' => $steps_my_regist,
+
+//            'step' => $step,
+//            'challenge' => $challenge,
+//            'clear' => $clear,
+//            'challenge_exists_flg' => $challenge_exists_flg,
+        ]);
+
+
+    }
+
 
 }

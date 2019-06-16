@@ -6,7 +6,7 @@ module.exports = {
       path.join(__dirname, 'resources/js/fixfooter.js'),
       path.join(__dirname, 'resources/js/toggleMsg.js'),
       path.join(__dirname, 'resources/js/toggleMenuHamburger.js'),
-
+      path.join(__dirname, 'resources/js/imagePreview.js'),
   ],
   output: {
     path: path.join(__dirname, 'public/js'),

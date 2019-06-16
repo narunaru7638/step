@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserIdToSteps extends Migration
+class CreateItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddUserIdToSteps extends Migration
      */
     public function up()
     {
-        Schema::table('steps', function (Blueprint $table) {
-            //
+        Schema::create('items', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddUserIdToSteps extends Migration
      */
     public function down()
     {
-        Schema::table('steps', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('items');
     }
 }

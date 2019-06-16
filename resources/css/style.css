@@ -171,7 +171,7 @@ img {
     margin-right: 15px; }
     @media screen and (max-width: 1300px) {
       .l-header__global-nav {
-        width: 180px; } }
+        width: 280px; } }
     @media screen and (max-width: 414px) {
       .l-header__global-nav {
         display: none; } }
@@ -395,59 +395,64 @@ img {
       color: #48c4ae;
       text-decoration: underline; }
   .c-form__area-drop {
+    background-color: rgba(0, 0, 0, 0.12);
     position: relative;
     box-sizing: border-box;
     width: 100%;
     text-align: center;
     margin: 0 auto;
     display: block;
-    min-height: 370px;
-    line-height: 370px; }
+    height: 370px;
+    line-height: 370px;
+    font-size: 14px; }
     @media screen and (max-width: 414px) {
       .c-form__area-drop {
-        min-height: 150px;
+        height: 150px;
         line-height: 150px; } }
     .c-form__area-drop--childstep {
-      min-height: 310px;
+      height: 310px;
       line-height: 310px; }
       @media screen and (max-width: 414px) {
         .c-form__area-drop--childstep {
-          min-height: 150px;
+          height: 150px;
           line-height: 150px; } }
   .c-form__prev-img {
     width: 100%;
+    width: auto;
+    height: auto;
     position: absolute;
     top: 0;
     left: 0;
     display: block;
     box-sizing: border-box;
-    height: 370px; }
+    z-index: 1; }
     @media screen and (max-width: 414px) {
       .c-form__prev-img {
-        height: 150px; } }
+        height: auto; } }
     .c-form__prev-img--childstep {
-      height: 310px; }
+      height: auto; }
       @media screen and (max-width: 414px) {
         .c-form__prev-img--childstep {
-          height: 150px; } }
+          height: auto; } }
   .c-form__file-input {
     background-color: #ACB6E5;
     position: absolute;
     width: 100%;
-    opacity: 0.5;
+    opacity: 0;
     top: 0;
     left: 0;
+    z-index: 2;
     display: block;
     box-sizing: border-box;
-    min-height: 370px; }
+    height: 370px; }
     @media screen and (max-width: 414px) {
       .c-form__file-input {
-        min-height: 150px; } }
+        height: 150px; } }
     .c-form__file-input--childstep {
-      min-height: 310px; }
+      height: 310px; }
       @media screen and (max-width: 414px) {
         .c-form__file-input--childstep {
-          min-height: 150px; } }
+          height: 150px; } }
   .c-form__sub-title {
     font-size: 28px;
     padding-left: 10px;

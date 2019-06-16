@@ -14,20 +14,25 @@ class StepsTableSeeder extends Seeder
     public function run()
     {
         $user = DB::table('users')->first();
+        $categories = DB::table('categories')->get();
 
-        $titles = ['プライベート', '仕事', '旅行'];
 
-        foreach($titles as $title){
-            DB::table('steps')->insert([
-                'title' => $title,
-                'content' => 'testcontent',
-                'user_id' => $user->id,
-                'category_id' => 1,
-                'pic_img' => '1234',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+        $titles = ['サンプルStep1', 'サンプルStep2', 'サンプルStep3', 'サンプルStep4', 'サンプルStep5', 'サンプルStep6'];
+//        $titles = ['最短で英語ができる方法'];
 
-            ]);
+        foreach ($categories as $category){
+            foreach($titles as $title){
+                DB::table('steps')->insert([
+                    'title' => $title,
+                    'content' => 'testcontent',
+                    'user_id' => $user->id,
+                    'category_id' => $category->id,
+//                'pic_img' => null,
+//                'required_time' => null,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
         }
     }
 }

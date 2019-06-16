@@ -33,8 +33,8 @@ class CreateStep extends FormRequest
             'childstep2_content' => 'required|max:255',
             'childstep3_title' => 'required|max:255',
             'childstep3_content' => 'required|max:255',
-
-
+            'step_img' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048'
+//            'step_img' => 'file|image|mimes:jpeg,png,jpg,gif|max:2048'
 
         ];
     }

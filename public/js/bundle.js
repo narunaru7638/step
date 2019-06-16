@@ -287,7 +287,8 @@ process.umask = function() { return 0; };
 __webpack_require__(3);
 __webpack_require__(7);
 __webpack_require__(8);
-module.exports = __webpack_require__(9);
+__webpack_require__(9);
+module.exports = __webpack_require__(10);
 
 
 /***/ }),
@@ -303,13 +304,192 @@ var _vue2 = _interopRequireDefault(_vue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Vueの基本の書き方
-new _vue2.default({ // Vueインスタンス生成
-    el: '#app1', // elでスコープを指定
-    data: { // dataの中にプロパティを定義しておけば、vueの中で保持して使いまわせる。今回はテンプレートに表示している。
-        message: 'vueのテンプレートの構文。{{}}で囲って処理が書ける。'
+_vue2.default.component('steps-card', {
+    props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+
+    template: '\n        <div class="c-article-card">\n            <a v-bind:href="\'/detail-steps/\'+id">\n<!--                <img src="" alt="" class="c-article-card__img">-->\n                <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="\'/storage/\'+pic_img" alt="" >\n                <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="\'/storage/sample-img.png\'" alt="" >\n            </a>\n            <div class="c-article-card__info">\n                <p class="c-article-card__category">{{category_name}}</p>\n                <p class="c-article-card__username">{{user_name}}</p>\n                <p class="c-article-card__date">{{created_at}}</p>\n            </div>\n            <a v-bind:href="\'/detail-steps/\'+id"><p class="c-article-card__title">{{title}}</p></a>\n        </div>\n'
+});
+
+_vue2.default.component('steps-list', {
+    props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+
+    template: '\n        <div class="c-article-list">\n            <a class="c-article-list__img" v-bind:href="\'/detail-steps/\'+id">\n                <img v-if="pic_img !== null" v-bind:src="\'/storage/\'+pic_img" alt="" >\n                <img v-if="pic_img === null" v-bind:src="\'/storage/sample-img.png\'" alt="" >\n            </a>\n            <div class="c-article-list__content">\n                <div class="c-article-list__info">\n                    <p class="c-article-list__category" >{{category_name}}</p>\n                    <p class="c-article-list__username" >{{user_name}}</p>\n                    <p class="c-article-list__date" >{{created_at}}</p>\n                </div>\n                <a v-bind:href="\'/detail-steps/\'+id"><p class="c-article-list__title" >{{title}}</p></a>\n            </div>\n        </div>\n'
+});
+
+new _vue2.default({
+    el: '#steps-card-index1',
+    data: {
+        steps: {}
+    },
+    mounted: function mounted() {
+        var self = this;
+        var url = '/ajax/step';
+        axios.get(url).then(function (response) {
+            self.steps = response.data;
+        });
     }
 });
+
+new _vue2.default({
+    el: '#steps-list-index',
+    data: {
+        steps: {}
+    },
+    mounted: function mounted() {
+        var self = this;
+        var url = '/ajax/step';
+        axios.get(url).then(function (response) {
+            self.steps = response.data;
+        });
+    }
+});
+
+// Vue.component('steps-list', {
+//     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+//
+//     template: `
+//         <div class="c-article-list">
+//             <a class="c-article-list__img" v-bind:href="'/detail-steps/'+id">
+//                 <img v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
+//                 <img v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
+//             </a>
+//             <div class="c-article-list__content">
+//                 <div class="c-article-list__info">
+//                     <p class="c-article-list__category" >{{category_name}}</p>
+//                     <p class="c-article-list__username" >{{user_name}}</p>
+//                     <p class="c-article-list__date" >{{created_at}}</p>
+//                 </div>
+//                 <a v-bind:href="'/detail-steps/'+id"><p class="c-article-list__title" >{{title}}</p></a>
+//             </div>
+//         </div>
+// `
+// })
+
+// Vue.component('v-pagination', {
+//     props: {
+//         data: {}  // paginate()で取得したデータ
+//     },
+//     methods: {
+//         move(page) {
+//
+//             if(!this.isCurrentPage(page)) {
+//
+//                 this.$emit('move-page', page);
+//
+//             }
+//
+//         },
+//         isCurrentPage(page) {
+//
+//             return (this.data.current_page == page); // 独自イベントを送出
+//
+//         },
+//         getPageClass(page) {
+//
+//             let classes = ['page-item'];
+//
+//             if(this.isCurrentPage(page)) {
+//
+//                 classes.push('active');
+//
+//             }
+//
+//             return classes;
+//
+//         }
+//     },
+//     computed: {
+//         hasPrev() {
+//
+//             return (this.data.prev_page_url != null);
+//
+//         },
+//         hasNext() {
+//
+//             return (this.data.next_page_url != null);
+//
+//         },
+//         pages() {
+//
+//             let pages = [];
+//
+//             for(let i = 1 ; i <= this.data.last_page ; i++) {
+//
+//                 pages.push(i);
+//
+//             }
+//
+//             return pages;
+//
+//         }
+//     },
+//     template:`
+//         <ul class="pagination">
+//             <li class="page-item" v-if="hasPrev">
+//             <a class="page-link" href="#" @click.prevent="move(data.current_page-1)">前へ</a>
+//             </li>
+//             <li :class="getPageClass(page)" v-for="page in pages">
+//             <a class="page-link" href="#" v-text="page" @click.prevent="move(page)"></a>
+//             </li>
+//             <li class="page-item" v-if="hasNext">
+//             <a class="page-link" href="#" @click.prevent="move(data.current_page+1)">次へ</a>
+//             </li>
+//         </ul>
+// `
+// });
+//
+//
+// new Vue({
+//     el: '#steps-list-index2',
+//     data: {
+//         page: 1,
+//         steps: {}
+//     },
+//     methods: {
+//         getSteps() {
+//             const url = '/ajax/step?page='+ this.page;
+//             axios.get(url)
+//                 .then(response => {
+//                     this.items = response.data;
+//                 });
+//         },
+//         movePage(page) {
+//             this.page = page;
+//             this.getSteps();
+//         }
+//     },
+//     mounted() {
+//         this.getSteps();
+//     }
+// });
+//
+
+// // Vueの基本の書き方
+// new Vue({ // Vueインスタンス生成
+//     el: '#app1', // elでスコープを指定
+//     data: { // dataの中にプロパティを定義しておけば、vueの中で保持して使いまわせる。今回はテンプレートに表示している。
+//         test: 'vueのテンプレートの構文。{{}}で囲って処理が書ける。'
+//     }
+// })
+
+// Vueの基本の書き方
+// new Vue({ // Vueインスタンス生成
+//     el: '#app1', // elでスコープを指定
+//     data: { // dataの中にプロパティを定義しておけば、vueの中で保持して使いまわせる。今回はテンプレートに表示している。
+//         // test: 'vueのテンプレートの構文。{{}}で囲って処理が書ける。',
+//         teststep:{}
+//     },
+//     // created:{
+//     //     const self = this
+//     //     var url = '/ajax/teststep'
+//     //     axios.get(url).then(function(response){
+//     //         self.teststep = response.data;
+//     //     })
+//     //
+//     // }
+//
+//
+// });
 
 /***/ }),
 /* 4 */
@@ -12602,6 +12782,70 @@ $('.js-toggle-sp-menu').on('click', function () {
     //    $('.js-toggle-sp-menu-target').toggleClass('c-menu-hamburger__line--active');
     $('.js-toggle-sp-menu-target').toggleClass('active');
     // $('.js-toggle-sp-menu-target').toggleSlide();
+});
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//画像登録
+var $dropArea = $('.js-area-drop');
+var $fileInput = $('.js-input-file');
+var $imgPrev = $('.prev-img');
+$dropArea.on('dragover', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $(this).css('border', '3px #ccc dashed');
+});
+$dropArea.on('dragleave', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $(this).css('border', 'none');
+});
+$fileInput.on('change', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $dropArea.css('border', 'none');
+    // $dropArea.css('border', 'dotted');
+
+
+    //$(this).attr('src', )
+    var file = this.files[0],
+        $img = $(this).siblings('.prev-img'),
+        fileReader = new FileReader();
+    // var fileHeight = file.height();
+
+    // $dropArea.css('height', $fileHeight);
+
+
+    fileReader.onload = function (event) {
+        $img.attr('src', event.target.result).show();
+    };
+    fileReader.readAsDataURL(file);
+
+    // var $imgPrev = $('.prev-img');
+    // var fileHeight = $imgPrev.height();
+    // console.log(fileHeight);
+    // $dropArea.css('height', fileHeight);
+    // $dropArea.css('z-index', '2');
+    //
+    // $dropArea.css('height', 'auto');
+    // $fileInput.css('height', 'auto');
+    $imgPrev.css('max-height', '100%');
+    $imgPrev.css('max-width', '100%');
+
+    // $imgPrev.css('max-width', 'auto');
+
+
+    // $dropArea.css('min-height', 'auto');
+    // $dropArea.css('height', '');
+
+
+    // $imgPrev.css('max-height', '100%');
+
 });
 
 /***/ })

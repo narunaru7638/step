@@ -19,8 +19,9 @@ class CreateChildstepsTable extends Migration
             $table->string('content', 255);
             $table->integer('step_id')->unsigned();
             $table->integer('number_of_step');
-            $table->integer('time_required');
-            $table->string('pic_img', 255);
+            $table->integer('time_required')->nullable();;
+            $table->string('pic_img', 255)->nullable();;
+            $table->boolean('delete_flg')->default(0);
             $table->timestamps();
 
             //外部キーを設定する

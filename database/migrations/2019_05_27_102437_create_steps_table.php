@@ -17,11 +17,18 @@ class CreateStepsTable extends Migration
             $table->increments('id');
             $table->string('title', 255);
             $table->string('content', 255);
-            $table->integer('user_id');
-            $table->integer('category_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->integer('number_of_challenger')->default(0);
-            $table->string('pic_img', 255);
+            $table->string('pic_img', 255)->nullable();
+            $table->integer('required_time')->nullable();
+            $table->boolean('delete_flg')->default(0);
             $table->timestamps();
+
+            //外部キーを設定する
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
+
         });
     }
 

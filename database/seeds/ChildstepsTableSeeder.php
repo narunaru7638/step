@@ -15,21 +15,25 @@ class ChildstepsTableSeeder extends Seeder
     {
         //
 
-        $step = DB::table('steps')->first(); // ★
+        $steps = DB::table('steps')->get(); // ★
 
-        foreach( range(1,3) as $num) {
-            DB::table('childsteps')->insert([
-                'step_id' => $step->id,
-                'title' => "サンプル子ステップ {$num}",
-                'content' => "sample content",
-                'number_of_step' => $num,
-                'time_required'=> 100,
-                'pic_img' => '1234',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+        foreach( $steps as $step ){
+
+            foreach( range(1,3) as $num) {
+                DB::table('childsteps')->insert([
+                    'step_id' => $step->id,
+                    'title' => "サンプル子ステップ {$num}",
+                    'content' => "sample content",
+                    'number_of_step' => $num,
+    //                'time_required'=> 100,
+    //                'pic_img' => '1234',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
 
 
-            ]);
+                ]);
+            }
         }
+
     }
 }

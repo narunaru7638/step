@@ -15,15 +15,14 @@ class UsersTableSeeder extends Seeder
     {
         //
         DB::table('users')->insert([
-           'name' => 'test',
-           'email' => 'dummy@email.com',
-           'password' => bcrypt('test1234'),
-           'pic_icon' => 'test_pic_icon',
-           'profile' => 'test_profile',
-           'created_at' => Carbon::now(),
-           'updated_at' => Carbon::now(),
-
-
+            'name' => 'test1',
+            'email' => 'testmailnaru8@gmail.com',
+            'password' => bcrypt('12341234'),
+//            'pic_icon' => null,
+//            'profile' => null,
+//            'delete_flg' => 0,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
     }
 }
