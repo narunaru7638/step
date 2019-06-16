@@ -18,16 +18,18 @@ class StepController extends Controller
 
 
 
-        if($id === 0){
+        if($id == 0){
             $steps_ajax = \App\Step::with('user', 'category')->orderBy('created_at', 'desc')->paginate(10);
 
 
         }else{
             $steps_ajax = \App\Step::with('user', 'category')->where('category_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+//            $steps_ajax = \App\Step::with('user', 'category')->orderBy('created_at', 'desc')->paginate(10);
 
 
 
         }
+//        dd($steps_ajax);
 
 
         return \Response::json($steps_ajax);

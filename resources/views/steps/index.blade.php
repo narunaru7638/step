@@ -133,7 +133,7 @@
                 <div id="app">
                     <ul class="list-group">
 {{--                        <li class="list-group-item" v-for="item in items.data" v-text="item.name"></li>--}}
-                        <li class="list-group-item" v-for="item in items.data" v-text="item.title"></li>
+                        <li class="list-group-item" v-for="(step, index) in items.data" v-if="index >= 2 && index <= 9" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name"></li>
                     </ul>
                     <br>
                     <v-pagination :data="items" @move-page="movePage($event)"></v-pagination>

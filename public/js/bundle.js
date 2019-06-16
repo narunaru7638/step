@@ -304,6 +304,18 @@ var _vue2 = _interopRequireDefault(_vue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import Router from 'vue-router'
+//
+// Vue.use(Router);
+//
+//
+// const router = new VueRouter({
+//    mode: 'history',
+//    routes:[
+//        { path: '/show-steps:id', }
+//    ]
+// });
+
 //       ページネーションなしバージョン
 
 // Vue.component('steps-card', {
@@ -583,17 +595,22 @@ new _vue2.default({
     data: {
         page: 1,
         items: [],
+        // category: 'show-steps/:id',
         category: 0
+
     },
     methods: {
         getSteps: function getSteps() {
             var _this = this;
 
-            var url = '/ajax/step/4?page=' + this.page;
-            // const url = '/ajax/step/1;
-            console.log(url);
+            // const url = '/ajax/step/0?page='+ this.page;
 
-            axios.get(url).then(function (response) {
+            var ajax_url = '/ajax/step/' + this.category + '?page=' + this.page;
+
+            // const url = '/ajax/step/1;
+            // console.log(url);
+
+            axios.get(ajax_url).then(function (response) {
                 // console.log(this.items);
                 // console.log(response.data);
 
@@ -602,15 +619,42 @@ new _vue2.default({
             });
         },
         movePage: function movePage(page) {
-
+            console.log(this.page);
             this.page = page;
             this.getSteps();
+            console.log(this.page);
+        },
+        getCategoryId: function getCategoryId() {
+            var url_param_category = location.href;
+            var index = url_param_category.indexOf('show-steps');
+            var category_id = url_param_category.slice(index + 11);
+
+            // console.log(url_param_category);
+            // console.log(index);
+            // console.log(category_id);
+            //
+            //
+            // console.log('test');
+            //
+            // console.log(url_param_category);
+            console.log(this.category);
+
+            this.category = parseInt(category_id);
+            // this.category = 4;
+
+            console.log(this.category);
         }
     },
     mounted: function mounted() {
+        // console.log('test');
+        this.getCategoryId();
 
         this.getSteps();
-    }
+    },
+
+    routes: [
+    // コロンで始まる動的セグメント
+    { path: '/show-steps/:id', component: _vue2.default }]
 });
 
 /***/ }),
