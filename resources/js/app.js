@@ -2,73 +2,73 @@ import Vue from 'vue'
 
 //       ページネーションなしバージョン
 
-Vue.component('steps-card', {
-    props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
-
-    template: `
-        <div class="c-article-card">
-            <a v-bind:href="'/detail-steps/'+id">
-                <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
-                <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
-            </a>
-            <div class="c-article-card__info">
-                <p class="c-article-card__category">{{category_name}}</p>
-                <p class="c-article-card__username">{{user_name}}</p>
-                <p class="c-article-card__date">{{created_at}}</p>
-            </div>
-            <a v-bind:href="'/detail-steps/'+id"><p class="c-article-card__title">{{title}}</p></a>
-        </div>
-`
-})
-
-Vue.component('steps-list', {
-    props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
-
-    template: `
-        <div class="c-article-list">
-            <a class="c-article-list__img" v-bind:href="'/detail-steps/'+id">
-                <img v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
-                <img v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
-            </a>
-            <div class="c-article-list__content">
-                <div class="c-article-list__info">
-                    <p class="c-article-list__category" >{{category_name}}</p>
-                    <p class="c-article-list__username" >{{user_name}}</p>
-                    <p class="c-article-list__date" >{{created_at}}</p>
-                </div>
-                <a v-bind:href="'/detail-steps/'+id"><p class="c-article-list__title" >{{title}}</p></a>
-            </div>
-        </div>
-`
-})
-
-new Vue({
-    el: '#steps-card-index1',
-    data: {
-        steps: {}
-    },
-    mounted() {
-        var self = this;
-        var url = '/ajax/step';
-        axios.get(url).then(function(response){
-            self.steps = response.data;
-        });
-    }
-});
-
-new Vue({
-    el: '#steps-list-index',
-    data: {
-        steps: {}
-    },
-    mounted() {
-        var self = this;
-        var url = '/ajax/step';
-        axios.get(url).then(function(response){
-            self.steps = response.data;
-        });
-    }
-});
+// Vue.component('steps-card', {
+//     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+//
+//     template: `
+//         <div class="c-article-card">
+//             <a v-bind:href="'/detail-steps/'+id">
+//                 <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
+//                 <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
+//             </a>
+//             <div class="c-article-card__info">
+//                 <p class="c-article-card__category">{{category_name}}</p>
+//                 <p class="c-article-card__username">{{user_name}}</p>
+//                 <p class="c-article-card__date">{{created_at}}</p>
+//             </div>
+//             <a v-bind:href="'/detail-steps/'+id"><p class="c-article-card__title">{{title}}</p></a>
+//         </div>
+// `
+// })
+//
+// Vue.component('steps-list', {
+//     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+//
+//     template: `
+//         <div class="c-article-list">
+//             <a class="c-article-list__img" v-bind:href="'/detail-steps/'+id">
+//                 <img v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
+//                 <img v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
+//             </a>
+//             <div class="c-article-list__content">
+//                 <div class="c-article-list__info">
+//                     <p class="c-article-list__category" >{{category_name}}</p>
+//                     <p class="c-article-list__username" >{{user_name}}</p>
+//                     <p class="c-article-list__date" >{{created_at}}</p>
+//                 </div>
+//                 <a v-bind:href="'/detail-steps/'+id"><p class="c-article-list__title" >{{title}}</p></a>
+//             </div>
+//         </div>
+// `
+// })
+//
+// new Vue({
+//     el: '#steps-card-index1',
+//     data: {
+//         steps: {}
+//     },
+//     mounted() {
+//         var self = this;
+//         var url = '/ajax/step';
+//         axios.get(url).then(function(response){
+//             self.steps = response.data;
+//         });
+//     }
+// });
+//
+// new Vue({
+//     el: '#steps-list-index',
+//     data: {
+//         steps: {}
+//     },
+//     mounted() {
+//         var self = this;
+//         var url = '/ajax/step';
+//         axios.get(url).then(function(response){
+//             self.steps = response.data;
+//         });
+//     }
+// });
 
 //       ページネーションなしバージョンここまで
 
@@ -220,8 +220,8 @@ new Vue({
 //
 // });
 
-
-
+//サンプル用
+//
 Vue.component('v-pagination', {
     props: {
         data: {}  // paginate()で取得したデータ
@@ -281,7 +281,7 @@ Vue.component('v-pagination', {
         }
     },
     template:`
-    
+
         <ul class="pagination">
             <li class="page-item" v-if="hasPrev">
                 <a class="page-link" href="#" @click.prevent="move(data.current_page-1)">前へ</a>
@@ -302,23 +302,23 @@ new Vue({
     data: {
         page: 1,
         items: [],
-        category_id: 0
+        category: 0
     },
     methods: {
         getSteps() {
 
-            // const url = '/ajax/pagination?page='+ this.page;
-            // const url = '/ajax/step?page='+ this.page;
-            const url = '/ajax/step/?page='+ this.page + '&category_id=' + this.category_id;
-
+            const url = '/ajax/step/4?page='+ this.page;
+            // const url = '/ajax/step/1;
+            console.log(url);
 
             axios.get(url)
                 .then(response => {
+                    // console.log(this.items);
+                    // console.log(response.data);
 
                     this.items = response.data;
-
+                    // console.log(this.items);
                 });
-
         },
         movePage(page) {
 

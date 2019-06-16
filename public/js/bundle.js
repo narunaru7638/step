@@ -306,45 +306,73 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //       ページネーションなしバージョン
 
-_vue2.default.component('steps-card', {
-    props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
-
-    template: '\n        <div class="c-article-card">\n            <a v-bind:href="\'/detail-steps/\'+id">\n                <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="\'/storage/\'+pic_img" alt="" >\n                <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="\'/storage/sample-img.png\'" alt="" >\n            </a>\n            <div class="c-article-card__info">\n                <p class="c-article-card__category">{{category_name}}</p>\n                <p class="c-article-card__username">{{user_name}}</p>\n                <p class="c-article-card__date">{{created_at}}</p>\n            </div>\n            <a v-bind:href="\'/detail-steps/\'+id"><p class="c-article-card__title">{{title}}</p></a>\n        </div>\n'
-});
-
-_vue2.default.component('steps-list', {
-    props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
-
-    template: '\n        <div class="c-article-list">\n            <a class="c-article-list__img" v-bind:href="\'/detail-steps/\'+id">\n                <img v-if="pic_img !== null" v-bind:src="\'/storage/\'+pic_img" alt="" >\n                <img v-if="pic_img === null" v-bind:src="\'/storage/sample-img.png\'" alt="" >\n            </a>\n            <div class="c-article-list__content">\n                <div class="c-article-list__info">\n                    <p class="c-article-list__category" >{{category_name}}</p>\n                    <p class="c-article-list__username" >{{user_name}}</p>\n                    <p class="c-article-list__date" >{{created_at}}</p>\n                </div>\n                <a v-bind:href="\'/detail-steps/\'+id"><p class="c-article-list__title" >{{title}}</p></a>\n            </div>\n        </div>\n'
-});
-
-new _vue2.default({
-    el: '#steps-card-index1',
-    data: {
-        steps: {}
-    },
-    mounted: function mounted() {
-        var self = this;
-        var url = '/ajax/step';
-        axios.get(url).then(function (response) {
-            self.steps = response.data;
-        });
-    }
-});
-
-new _vue2.default({
-    el: '#steps-list-index',
-    data: {
-        steps: {}
-    },
-    mounted: function mounted() {
-        var self = this;
-        var url = '/ajax/step';
-        axios.get(url).then(function (response) {
-            self.steps = response.data;
-        });
-    }
-});
+// Vue.component('steps-card', {
+//     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+//
+//     template: `
+//         <div class="c-article-card">
+//             <a v-bind:href="'/detail-steps/'+id">
+//                 <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
+//                 <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
+//             </a>
+//             <div class="c-article-card__info">
+//                 <p class="c-article-card__category">{{category_name}}</p>
+//                 <p class="c-article-card__username">{{user_name}}</p>
+//                 <p class="c-article-card__date">{{created_at}}</p>
+//             </div>
+//             <a v-bind:href="'/detail-steps/'+id"><p class="c-article-card__title">{{title}}</p></a>
+//         </div>
+// `
+// })
+//
+// Vue.component('steps-list', {
+//     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+//
+//     template: `
+//         <div class="c-article-list">
+//             <a class="c-article-list__img" v-bind:href="'/detail-steps/'+id">
+//                 <img v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
+//                 <img v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
+//             </a>
+//             <div class="c-article-list__content">
+//                 <div class="c-article-list__info">
+//                     <p class="c-article-list__category" >{{category_name}}</p>
+//                     <p class="c-article-list__username" >{{user_name}}</p>
+//                     <p class="c-article-list__date" >{{created_at}}</p>
+//                 </div>
+//                 <a v-bind:href="'/detail-steps/'+id"><p class="c-article-list__title" >{{title}}</p></a>
+//             </div>
+//         </div>
+// `
+// })
+//
+// new Vue({
+//     el: '#steps-card-index1',
+//     data: {
+//         steps: {}
+//     },
+//     mounted() {
+//         var self = this;
+//         var url = '/ajax/step';
+//         axios.get(url).then(function(response){
+//             self.steps = response.data;
+//         });
+//     }
+// });
+//
+// new Vue({
+//     el: '#steps-list-index',
+//     data: {
+//         steps: {}
+//     },
+//     mounted() {
+//         var self = this;
+//         var url = '/ajax/step';
+//         axios.get(url).then(function(response){
+//             self.steps = response.data;
+//         });
+//     }
+// });
 
 //       ページネーションなしバージョンここまで
 
@@ -496,7 +524,8 @@ new _vue2.default({
 //
 // });
 
-
+//サンプル用
+//
 _vue2.default.component('v-pagination', {
     props: {
         data: {} // paginate()で取得したデータ
@@ -546,7 +575,7 @@ _vue2.default.component('v-pagination', {
             return pages;
         }
     },
-    template: '\n    \n        <ul class="pagination">\n            <li class="page-item" v-if="hasPrev">\n                <a class="page-link" href="#" @click.prevent="move(data.current_page-1)">\u524D\u3078</a>\n            </li>\n            <li :class="getPageClass(page)" v-for="page in pages">\n                <a class="page-link" href="#" v-text="page" @click.prevent="move(page)"></a>\n            </li>\n            <li class="page-item" v-if="hasNext">\n                <a class="page-link" href="#" @click.prevent="move(data.current_page+1)">\u6B21\u3078</a>\n            </li>\n        </ul>\n'
+    template: '\n\n        <ul class="pagination">\n            <li class="page-item" v-if="hasPrev">\n                <a class="page-link" href="#" @click.prevent="move(data.current_page-1)">\u524D\u3078</a>\n            </li>\n            <li :class="getPageClass(page)" v-for="page in pages">\n                <a class="page-link" href="#" v-text="page" @click.prevent="move(page)"></a>\n            </li>\n            <li class="page-item" v-if="hasNext">\n                <a class="page-link" href="#" @click.prevent="move(data.current_page+1)">\u6B21\u3078</a>\n            </li>\n        </ul>\n'
 });
 
 new _vue2.default({
@@ -554,19 +583,22 @@ new _vue2.default({
     data: {
         page: 1,
         items: [],
-        category_id: 0
+        category: 0
     },
     methods: {
         getSteps: function getSteps() {
             var _this = this;
 
-            // const url = '/ajax/pagination?page='+ this.page;
-            // const url = '/ajax/step?page='+ this.page;
-            var url = '/ajax/step/?page=' + this.page + '&category_id=' + this.category_id;
+            var url = '/ajax/step/4?page=' + this.page;
+            // const url = '/ajax/step/1;
+            console.log(url);
 
             axios.get(url).then(function (response) {
+                // console.log(this.items);
+                // console.log(response.data);
 
                 _this.items = response.data;
+                // console.log(this.items);
             });
         },
         movePage: function movePage(page) {

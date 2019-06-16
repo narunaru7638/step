@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function(){
 Route::get('/show-steps/{id}', 'StepController@index')->name('steps.index');
 //Route::get('ajax/step', 'Ajax\StepController@index');
 
-Route::get('ajax/step', 'Ajax\StepController@index');
+Route::get('ajax/step/{id}', 'Ajax\StepController@index');
 
 
 //Route::get('/show-steps', 'StepController@index')->name('steps.index');
