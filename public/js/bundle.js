@@ -304,10 +304,12 @@ var _vue2 = _interopRequireDefault(_vue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//       ページネーションなしバージョン
+
 _vue2.default.component('steps-card', {
     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
 
-    template: '\n        <div class="c-article-card">\n            <a v-bind:href="\'/detail-steps/\'+id">\n<!--                <img src="" alt="" class="c-article-card__img">-->\n                <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="\'/storage/\'+pic_img" alt="" >\n                <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="\'/storage/sample-img.png\'" alt="" >\n            </a>\n            <div class="c-article-card__info">\n                <p class="c-article-card__category">{{category_name}}</p>\n                <p class="c-article-card__username">{{user_name}}</p>\n                <p class="c-article-card__date">{{created_at}}</p>\n            </div>\n            <a v-bind:href="\'/detail-steps/\'+id"><p class="c-article-card__title">{{title}}</p></a>\n        </div>\n'
+    template: '\n        <div class="c-article-card">\n            <a v-bind:href="\'/detail-steps/\'+id">\n                <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="\'/storage/\'+pic_img" alt="" >\n                <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="\'/storage/sample-img.png\'" alt="" >\n            </a>\n            <div class="c-article-card__info">\n                <p class="c-article-card__category">{{category_name}}</p>\n                <p class="c-article-card__username">{{user_name}}</p>\n                <p class="c-article-card__date">{{created_at}}</p>\n            </div>\n            <a v-bind:href="\'/detail-steps/\'+id"><p class="c-article-card__title">{{title}}</p></a>\n        </div>\n'
 });
 
 _vue2.default.component('steps-list', {
@@ -343,6 +345,9 @@ new _vue2.default({
         });
     }
 });
+
+//       ページネーションなしバージョンここまで
+
 
 // Vue.component('steps-list', {
 //     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
@@ -490,6 +495,91 @@ new _vue2.default({
 //
 //
 // });
+
+
+_vue2.default.component('v-pagination', {
+    props: {
+        data: {} // paginate()で取得したデータ
+    },
+    methods: {
+        move: function move(page) {
+
+            if (!this.isCurrentPage(page)) {
+
+                this.$emit('move-page', page);
+            }
+        },
+        isCurrentPage: function isCurrentPage(page) {
+
+            return this.data.current_page == page; // 独自イベントを送出
+        },
+        getPageClass: function getPageClass(page) {
+
+            var classes = ['page-item'];
+
+            if (this.isCurrentPage(page)) {
+
+                classes.push('active');
+            }
+
+            return classes;
+        }
+    },
+    computed: {
+        hasPrev: function hasPrev() {
+
+            return this.data.prev_page_url != null;
+        },
+        hasNext: function hasNext() {
+
+            return this.data.next_page_url != null;
+        },
+        pages: function pages() {
+
+            var pages = [];
+
+            for (var i = 1; i <= this.data.last_page; i++) {
+
+                pages.push(i);
+            }
+
+            return pages;
+        }
+    },
+    template: '\n    \n        <ul class="pagination">\n            <li class="page-item" v-if="hasPrev">\n                <a class="page-link" href="#" @click.prevent="move(data.current_page-1)">\u524D\u3078</a>\n            </li>\n            <li :class="getPageClass(page)" v-for="page in pages">\n                <a class="page-link" href="#" v-text="page" @click.prevent="move(page)"></a>\n            </li>\n            <li class="page-item" v-if="hasNext">\n                <a class="page-link" href="#" @click.prevent="move(data.current_page+1)">\u6B21\u3078</a>\n            </li>\n        </ul>\n'
+});
+
+new _vue2.default({
+    el: '#app',
+    data: {
+        page: 1,
+        items: [],
+        category_id: 0
+    },
+    methods: {
+        getSteps: function getSteps() {
+            var _this = this;
+
+            // const url = '/ajax/pagination?page='+ this.page;
+            // const url = '/ajax/step?page='+ this.page;
+            var url = '/ajax/step/?page=' + this.page + '&category_id=' + this.category_id;
+
+            axios.get(url).then(function (response) {
+
+                _this.items = response.data;
+            });
+        },
+        movePage: function movePage(page) {
+
+            this.page = page;
+            this.getSteps();
+        }
+    },
+    mounted: function mounted() {
+
+        this.getSteps();
+    }
+});
 
 /***/ }),
 /* 4 */

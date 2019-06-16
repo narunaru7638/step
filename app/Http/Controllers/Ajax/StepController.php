@@ -10,36 +10,30 @@ class StepController extends Controller
 {
     //
     public function index() {
+//       ページネーションなしバージョン
+//        $steps_ajax = \App\Step::with('user', 'category')->orderBy('created_at', 'desc')->get();
+//        return \Response::json($steps_ajax);
+        //       ページネーションなしバージョンここまで
 
-
-        $steps_ajax = \App\Step::with('user', 'category')->orderBy('created_at', 'desc')->get();
-
-//        $steps_ajax = \App\Step::all();
-
-//        $steps_ajax = \App\Step::all()
-
-
-//        dump($steps_ajax);
-//        dump('testadfadfa');
-
-//        dd($steps_ajax);
 
 //        $steps_ajax = \App\Step::with('user', 'category')->orderBy('created_at', 'desc')->paginate(10);
 
-//        dd($steps_ajax);
+        $id = 0;
 
-//        $steps_ajax = json_encode($steps_ajax);
+        if($id === 0){
+            $steps_ajax = \App\Step::with('user', 'category')->orderBy('created_at', 'desc')->paginate(10);
 
-//        $steps_ajax = \App\Step::all();  // ←自動でjsonにしてくれます
+//            dd($steps_ajax);
 
-//        return new Response($steps_ajax);  // ←自動でjsonにしてくれます
+        }else{
+            $steps_ajax = \App\Step::with('user', 'category')->where('category_id', $id)->orderBy('created_at', 'desc')->paginate(10);
 
-//        return $steps_ajax;  // ←自動でjsonにしてくれます
+        }
 
-
-//        return \App\Step::all();  // ←自動でjsonにしてくれます
 
         return \Response::json($steps_ajax);
+
+
     }
 
 }

@@ -98,32 +98,28 @@
 
 
 {{--               API用 --}}
-                    <div id="steps-card-index1">
-                        <div class="l-article-area-type-card">
-                            <steps-card v-for="(step, index) in steps" v-if="index <= 1"  :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">
-                            </steps-card>
-                        </div>
-                        <div class="l-article-area-type-card">
-                            <steps-card v-for="(step, index) in steps" v-if="index >= 2 && index<=3"  :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">
-                            </steps-card>
-                        </div>
-                    </div>
-
-                    <div id="steps-list-index">
-                        <div class="l-article-area-type-list">
-                                <steps-list  v-for="(step, index) in steps" v-if="index >= 2 && index <= 9" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">
-                                </steps-list>
-                        </div>
-                    </div>
-
-
-
-{{--                <div id="steps-list-index2">--}}
-{{--                    <div class="l-article-area-type-list">--}}
-{{--                        <steps-list  v-for="(step, index) in steps" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">--}}
-{{--                        </steps-list>--}}
+{{--                //       ページネーションなしバージョン--}}
+{{--                    <div id="steps-card-index1">--}}
+{{--                        <div class="l-article-area-type-card">--}}
+{{--                            <steps-card v-for="(step, index) in steps" v-if="index <= 1"  :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">--}}
+{{--                            </steps-card>--}}
+{{--                        </div>--}}
+{{--                        <div class="l-article-area-type-card">--}}
+{{--                            <steps-card v-for="(step, index) in steps" v-if="index >= 2 && index<=3"  :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">--}}
+{{--                            </steps-card>--}}
+{{--                        </div>--}}
 {{--                    </div>--}}
-{{--                </div>--}}
+
+{{--                    <div id="steps-list-index">--}}
+{{--                        <div class="l-article-area-type-list">--}}
+{{--                                <steps-list  v-for="(step, index) in steps" v-if="index >= 2 && index <= 9" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">--}}
+{{--                                </steps-list>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                //       ページネーションなしバージョンここまで--}}
+
+
+
 
 {{--                <div style="padding:15px;" id="steps-list-index2">--}}
 {{--                    <ul class="list-group">--}}
@@ -133,6 +129,15 @@
 {{--                    <v-pagination :data="items" @move-page="movePage($event)"></v-pagination>--}}
 {{--                </div>--}}
 
+
+                <div id="app">
+                    <ul class="list-group">
+{{--                        <li class="list-group-item" v-for="item in items.data" v-text="item.name"></li>--}}
+                        <li class="list-group-item" v-for="item in items.data" v-text="item.title"></li>
+                    </ul>
+                    <br>
+                    <v-pagination :data="items" @move-page="movePage($event)"></v-pagination>
+                </div>
 
 
                 {{--                                    {{ $steps->links() }}--}}

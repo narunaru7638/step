@@ -19,20 +19,14 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/show-mypage', 'StepController@mypageShow')->name('mypage.show');
 
-//    Route::get('teststep', 'TestStepController@index');
-
-//    Route::post('/')
-
-//    Route::get('/detail-steps', 'StepController@detail')->name('steps.detail');
-
-//    Route::get('/', 'HomeController@index')->name('home');
-
-
 
 });
 
 Route::get('/show-steps/{id}', 'StepController@index')->name('steps.index');
+//Route::get('ajax/step', 'Ajax\StepController@index');
+
 Route::get('ajax/step', 'Ajax\StepController@index');
+
 
 //Route::get('/show-steps', 'StepController@index')->name('steps.index');
 
@@ -43,7 +37,8 @@ Auth::routes();
 //Route::get('comedian', 'ComedianController@index');
 //Route::get('ajax/comedian', 'Ajax\ComedianController@index');
 //
-//Route::get('pagination', 'PaginationController@index'); // メイン
+
+Route::get('pagination', 'PaginationController@index'); // メイン
 Route::get('ajax/pagination', 'Ajax\PaginationController@index'); // Ajax
 
 
