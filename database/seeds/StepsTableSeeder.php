@@ -17,14 +17,14 @@ class StepsTableSeeder extends Seeder
         $categories = DB::table('categories')->get();
 
 
-        $titles = ['サンプルStep1', 'サンプルStep2', 'サンプルStep3', 'サンプルStep4', 'サンプルStep5', 'サンプルStep6'];
+        $titles = ['サンプルStep1', 'サンプルStep2', 'サンプルStep3', 'サンプルStep4', 'サンプルStep5', 'サンプルStep6', 'サンプルStep7', 'サンプルStep8', 'サンプルStep9', 'サンプルStep10', 'サンプルStep11'];
 //        $titles = ['最短で英語ができる方法'];
 
         foreach ($categories as $category){
             foreach($titles as $title){
                 DB::table('steps')->insert([
-                    'title' => $title,
-                    'content' => 'testcontent',
+                    'title' => $category->name.$title,
+                    'content' => $category->name.'testcontent',
                     'user_id' => $user->id,
                     'category_id' => $category->id,
 //                'pic_img' => null,

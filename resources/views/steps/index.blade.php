@@ -130,17 +130,45 @@
 {{--                </div>--}}
 
 
+{{--                <div id="steps-card-index1">--}}
+{{--                    <div class="l-article-area-type-card">--}}
+{{--                        <steps-card v-for="(step, index) in items" v-if="index <= 1"  :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">--}}
+{{--                        </steps-card>--}}
+{{--                    </div>--}}
+{{--                    <div class="l-article-area-type-card">--}}
+{{--                        <steps-card v-for="(step, index) in items" v-if="index >= 2 && index<=3"  :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">--}}
+{{--                        </steps-card>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+{{--                <div id="steps-list-index">--}}
+{{--                    <div class="l-article-area-type-list">--}}
+{{--                            <steps-list  v-for="(step, index) in steps" v-if="index >= 2 && index <= 9" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">--}}
+{{--                            </steps-list>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+
                 <div id="app">
-                    <ul class="list-group">
-{{--                        <li class="list-group-item" v-for="item in items.data" v-text="item.name"></li>--}}
-                        <li class="list-group-item" v-for="(step, index) in items.data" v-if="index >= 2 && index <= 9" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name"></li>
-                    </ul>
-                    <br>
+                    <div>
+                        <div class="l-article-area-type-card">
+                            <v-card   v-for="(step, index) in items.data" v-if="index <= 1" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">
+                            </v-card>
+                        </div>
+                        <div class="l-article-area-type-card">
+                            <v-card   v-for="(step, index) in items.data" v-if="index >= 2 && index <= 3" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">
+                            </v-card>
+                        </div>
+                        <div class="l-article-area-type-list">
+                            <v-list   v-for="(step, index) in items.data" v-if="index >= 4 && index <= 9" :index="index" :id="step.id" v-bind:title="step.title" v-bind:created_at="step.created_at" v-bind:pic_img="step.pic_img" v-bind:category_name="step.category.name" v-bind:user_name="step.user.name">
+                            </v-list>
+                        </div>
+                    </div>
                     <v-pagination :data="items" @move-page="movePage($event)"></v-pagination>
+
+
                 </div>
 
-
-                {{--                                    {{ $steps->links() }}--}}
             </main>
 
             @include('partials.sidebar')

@@ -234,6 +234,62 @@ import Vue from 'vue'
 
 //サンプル用
 //
+
+
+Vue.component('v-card', {
+    // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
+    // data: function () {
+    //     return {
+    //         step: 0
+    //     }
+    // },
+    // template: '<div>testestes {{ count }} times.</div>'
+
+    props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+
+    template: `
+        <div class="c-article-card">
+            <a v-bind:href="'/detail-steps/'+id">
+                <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
+                <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
+            </a>
+            <div class="c-article-card__info">
+                <p class="c-article-card__category">{{category_name}}</p>
+                <p class="c-article-card__username">{{user_name}}</p>
+                <p class="c-article-card__date">{{created_at}}</p>
+            </div>
+            <a v-bind:href="'/detail-steps/'+id"><p class="c-article-card__title">{{title}}</p></a>
+        </div>
+`
+
+
+})
+
+Vue.component('v-list', {
+
+    props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'user_name'],
+
+    template: `
+        <div class="c-article-list">
+            <a class="c-article-list__img" v-bind:href="'/detail-steps/'+id">
+                <img v-if="pic_img !== null" v-bind:src="'/storage/'+pic_img" alt="" >
+                <img v-if="pic_img === null" v-bind:src="'/storage/sample-img.png'" alt="" >
+            </a>
+            <div class="c-article-list__content">
+                <div class="c-article-list__info">
+                    <p class="c-article-list__category" >{{category_name}}</p>
+                    <p class="c-article-list__username" >{{user_name}}</p>
+                    <p class="c-article-list__date" >{{created_at}}</p>
+                </div>
+                <a v-bind:href="'/detail-steps/'+id"><p class="c-article-list__title" >{{title}}</p></a>
+            </div>
+        </div>
+`
+
+
+})
+
+
 Vue.component('v-pagination', {
     props: {
         data: {}  // paginate()で取得したデータ
@@ -292,19 +348,37 @@ Vue.component('v-pagination', {
 
         }
     },
+    // template:`
+    //     <div class="c-pagination">
+    //
+    //         <ul class="pagination">
+    //             <li class="page-item" v-if="hasPrev">
+    //                 <a class="page-link" href="#" @click.prevent="move(data.current_page-1)">前へ</a>
+    //             </li>
+    //             <li :class="getPageClass(page)" v-for="page in pages">
+    //                 <a class="page-link" href="#" v-text="page" @click.prevent="move(page)"></a>
+    //             </li>
+    //             <li class="page-item" v-if="hasNext">
+    //                 <a class="page-link" href="#" @click.prevent="move(data.current_page+1)">次へ</a>
+    //             </li>
+    //         </ul>
+    //     </div>
     template:`
+        <div class="c-pagination">
 
-        <ul class="pagination">
-            <li class="page-item" v-if="hasPrev">
-                <a class="page-link" href="#" @click.prevent="move(data.current_page-1)">前へ</a>
-            </li>
-            <li :class="getPageClass(page)" v-for="page in pages">
-                <a class="page-link" href="#" v-text="page" @click.prevent="move(page)"></a>
-            </li>
-            <li class="page-item" v-if="hasNext">
-                <a class="page-link" href="#" @click.prevent="move(data.current_page+1)">次へ</a>
-            </li>
-        </ul>
+            <ul class="c-pagination__list">
+                <li class="c-pagination__list-item" v-if="hasPrev">
+                    <a class="c-pagination__link" href="#" @click.prevent="move(data.current_page-1)">&lt;</a>
+                </li>
+                <li class="c-pagination__list-item" :class="getPageClass(page)" v-for="page in pages">
+                    <a class="c-pagination__link" href="#" v-text="page" @click.prevent="move(page)"></a>
+                </li>
+                <li class="c-pagination__list-item" v-if="hasNext">
+                    <a class="c-pagination__link" href="#" @click.prevent="move(data.current_page+1)">&gt;</a>
+                </li>
+            </ul>
+        </div>
+
 `
 });
 
@@ -379,3 +453,17 @@ new Vue({
         { path: '/show-steps/:id', component: Vue }
     ]
 });
+
+
+// Vue.component('button-counter', {
+//     // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
+//     data: function () {
+//         return {
+//             count: 0
+//         }
+//     },
+//     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+// })
+// //インスタンス化する
+//
+// new Vue({el: '#app7'})

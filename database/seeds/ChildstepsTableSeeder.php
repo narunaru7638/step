@@ -22,7 +22,7 @@ class ChildstepsTableSeeder extends Seeder
             foreach( range(1,3) as $num) {
                 DB::table('childsteps')->insert([
                     'step_id' => $step->id,
-                    'title' => "サンプル子ステップ {$num}",
+                    'title' => $step->title."サンプル子ステップ {$num}",
                     'content' => "sample content",
                     'number_of_step' => $num,
     //                'time_required'=> 100,
