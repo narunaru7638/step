@@ -357,6 +357,8 @@ img {
     padding: 10px 10px 5px;
     border: 1px solid rgba(0, 0, 0, 0.26);
     margin-top: 5px; }
+    .c-form__input--select:hover {
+      cursor: pointer; }
     .c-form__input:focus {
       border: 2px solid #ACB6E5; }
   .c-form__textarea {
@@ -417,9 +419,10 @@ img {
           height: 150px;
           line-height: 150px; } }
   .c-form__prev-img {
-    width: 100%;
     width: auto;
     height: auto;
+    max-width: 100%;
+    max-height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -445,6 +448,8 @@ img {
     display: block;
     box-sizing: border-box;
     height: 370px; }
+    .c-form__file-input:hover {
+      cursor: pointer; }
     @media screen and (max-width: 414px) {
       .c-form__file-input {
         height: 150px; } }
@@ -553,6 +558,10 @@ img {
     -webkit-text-fill-color: transparent; }
   .c-article-list__username {
     margin-right: 10px; }
+  .c-article-list__date {
+    margin-right: 10px; }
+  .c-article-list__challenge_flg {
+    color: #e05550; }
   .c-article-list__title--small {
     font-size: 14px; }
 
@@ -628,7 +637,22 @@ img {
   font-size: 16px;
   vertical-align: bottom;
   position: relative;
-  top: -7px; }
+  top: -7px;
+  margin-right: 10px; }
+
+.c-detail-step__icon-link {
+  display: block;
+  vertical-align: bottom;
+  position: relative;
+  top: -13px; }
+  @media screen and (max-width: 414px) {
+    .c-detail-step__icon-link {
+      top: -7px; } }
+
+.c-detail-step__twitter-icon {
+  color: #2aa3ef;
+  font-size: 28px;
+  vertical-align: bottom; }
 
 .c-detail-step__img {
   width: 80%;
@@ -723,3 +747,23 @@ img {
       color: rgba(0, 0, 0, 0.87); }
     .c-pagination__link:hover {
       color: rgba(0, 0, 0, 0.87); }
+
+.p-profile-show-area {
+  text-align: center;
+  margin-bottom: 40px; }
+  .p-profile-show-area__one-info {
+    margin-bottom: 30px; }
+  .p-profile-show-area__label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: left; }
+  .p-profile-show-area__content {
+    text-align: left;
+    display: block;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 10px 10px 5px;
+    margin-top: 5px; }

@@ -54,7 +54,7 @@
 {{--                    <div class="c-form__input-area">--}}
                         <label for="user-name" class="c-form__label">プロフィール画像</label>
                         <label for="file-input" class="c-form__area-drop js-area-drop" >画像をドラッグ＆ドロップ
-                            <img src="" alt="" class="c-form__prev-img prev-img">
+                            <img src="/storage/{{old('pic_icon', Auth::user()->pic_icon)}}" alt="" class="c-form__prev-img prev-img">
                             <input type="file" name="pic_icon" id="pic_icon" class="c-form__file-input js-input-file">
                         </label>
 

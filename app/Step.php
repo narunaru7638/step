@@ -98,9 +98,19 @@ class Step extends Model
     }
 
     //belongTo結合のgetter
+    public function getUserId()
+    {
+        return $this->user->id;
+    }
+
     public function getUserName()
     {
         return $this->user->name;
+    }
+
+    public function getCategoryId()
+    {
+        return $this->category->id;
     }
 
     public function getCategoryName()

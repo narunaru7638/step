@@ -53,7 +53,7 @@
                     <div class="c-form__row-input-area">
                         <div class="c-form__input-area">
                             <label for="step_category" class="c-form__label">カテゴリー</label>
-                            <select class="c-form__input" name="step_category" id="step_category">
+                            <select class="c-form__input c-form__input--select" name="step_category" id="step_category">
                                 <option value="1">未登録</option>
                                 <option value="4">ビジネス</option>
                                 <option value="2">プログラミング</option>
@@ -79,138 +79,186 @@
                         </div>
                     </div>
 
-                    {{--子STEP--}}
+                    @foreach(range(1,3) as $step_num)
                     <div class="c-form__childstep-area">
                         <div class="c-form__childstep-form">
                             {{--子STEP1--}}
-                            <h4 class="c-form__sub-title">STEP1</h4>
+                            <h4 class="c-form__sub-title">STEP{{$step_num}}</h4>
                             <div class="c-form__input-area">
-                                <label for="childstep1_title" class="c-form__label">STEP名</label>
-                                <input type="text" class="c-form__input" name="childstep1_title" id="childstep1_title" value="{{ old('childstep1_title') }}">
+                                <label for="childstep{{$step_num}}_title" class="c-form__label">STEP名</label>
+                                <input type="text" class="c-form__input" name="childstep{{$step_num}}_title" id="childstep{{$step_num}}_title" value="{{ old('childstep'.$step_num.'_title') }}">
                                 @if($errors->any())
-                                    @foreach($errors->get('childstep1_title') as $message)
+                                    @foreach($errors->get('childstep'.$step_num.'_title') as $message)
                                         <p class="c-form__err-msg">{{$message}}</p>
                                     @endforeach
                                 @endif
                             </div>
                             <div class="c-form__input-area">
-                                <label for="childstep1_content" class="c-form__label">STEP説明</label>
-                                <textarea name="childstep1_content" id="childstep1_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep1_content') }}</textarea>
+                                <label for="childstep{{$step_num}}_content" class="c-form__label">STEP説明</label>
+                                <textarea name="childstep{{$step_num}}_content" id="childstep{{$step_num}}_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep'.$step_num.'_content') }}</textarea>
                                 @if($errors->any())
-                                    @foreach($errors->get('childstep1_content') as $message)
+                                    @foreach($errors->get('childstep'.$step_num.'_content') as $message)
                                         <p class="c-form__err-msg">{{$message}}</p>
                                     @endforeach
                                 @endif
                             </div>
                             <div class="c-form__input-area" style="overflow:hidden;">
-                                <label for="childstep1_img" class="c-form__label">プロフィール画像</label>
-                                <label for="childstep1_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop" >子STEPイメージ画像
+                                <label for="childstep{{$step_num}}_img" class="c-form__label">プロフィール画像</label>
+                                <label for="childstep{{$step_num}}_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop" >子STEPイメージ画像
                                     <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">
-                                    <input type="file" name="prof-pic" class="c-form__file-input c-form__file-input--childstep js-input-file" id="childstep1_img" name="childstep1_img" >
+                                    <input type="file" name="childstep{{$step_num}}_img" id="childstep{{$step_num}}_img" class="c-form__file-input c-form__file-input--childstep js-input-file" id="childstep{{$step_num}}_img" name="childstep{{$step_num}}_img" >
                                 </label>
                                 @if($errors->any())
-                                    @foreach($errors->get('childstep1_img') as $message)
+                                    @foreach($errors->get('childstep'.$step_num.'_img') as $message)
                                         <p class="c-form__err-msg">{{$message}}</p>
                                     @endforeach
                                 @endif
                             </div>
                             <div class="c-form__input-area">
-                                <label for="childstep1_required-time" class="c-form__label">所要時間</label>
-                                <input type="number" step="1" class="c-form__input" name="childstep1_required-time" id="childstep1_required-time">
+                                <label for="childstep{{$step_num}}_required-time" class="c-form__label">所要時間</label>
+                                <input type="number" step="{{$step_num}}" class="c-form__input" name="childstep{{$step_num}}_required-time" id="childstep{{$step_num}}_required-time">
                                 @if($errors->any())
-                                    @foreach($errors->get('childstep1_required-time') as $message)
-                                        <p class="c-form__err-msg">{{$message}}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                        {{--子STEP2--}}
-                        <div class="c-form__childstep-form">
-                            <h4 class="c-form__sub-title">STEP2</h4>
-                            <div class="c-form__input-area">
-                                <label for="childstep2_title" class="c-form__label">STEP名</label>
-                                <input type="text" class="c-form__input" name="childstep2_title" id="childstep2_title" value="{{ old('childstep2_title') }}">
-                                @if($errors->any())
-                                    @foreach($errors->get('childstep2_title') as $message)
-                                        <p class="c-form__err-msg">{{$message}}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                            <div class="c-form__input-area">
-                                <label for="childstep2_content" class="c-form__label">STEP説明</label>
-                                <textarea name="childstep2_content" id="childstep2_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep2_content') }}</textarea>
-                                @if($errors->any())
-                                    @foreach($errors->get('childstep2_content') as $message)
-                                        <p class="c-form__err-msg">{{$message}}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                            <div class="c-form__input-area" style="overflow:hidden;">
-                                <label for="childstep2_img" class="c-form__label">プロフィール画像</label>
-                                <label for="childstep2_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop" >画像をドラッグ＆ドロップ
-                                    <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">
-                                    <input type="file" name="prof-pic" class="c-form__file-input c-form__file-input--childstep js-input-file" id="childstep2_img" name="childstep2_img" >
-                                </label>
-                                @if($errors->any())
-                                    @foreach($errors->get('childstep2_img') as $message)
-                                        <p class="c-form__err-msg">{{$message}}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                            <div class="c-form__input-area">
-                                <label for="childstep2_required-time" class="c-form__label">所要時間</label>
-                                <input type="number" step="1" class="c-form__input" name="childstep2_required-time" id="childstep2_required-time">
-                                @if($errors->any())
-                                    @foreach($errors->get('childstep2_required-time') as $message)
-                                        <p class="c-form__err-msg">{{$message}}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                        {{--子STEP3--}}
-                        <div class="c-form__childstep-form">
-                            <h4 class="c-form__sub-title">STEP3</h4>
-                            <div class="c-form__input-area">
-                                <label for="childstep3_title" class="c-form__label">STEP名</label>
-                                <input type="text" class="c-form__input" name="childstep3_title" id="childstep3_title" value="{{ old('childstep3_title') }}">
-                                @if($errors->any())
-                                    @foreach($errors->get('childstep3_title') as $message)
-                                        <p class="c-form__err-msg">{{$message}}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                            <div class="c-form__input-area">
-                                <label for="childstep3_content" class="c-form__label">STEP説明</label>
-                                <textarea name="childstep3_content" id="childstep3_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep3_content') }}</textarea>
-                                @if($errors->any())
-                                    @foreach($errors->get('childstep3_content') as $message)
-                                        <p class="c-form__err-msg">{{$message}}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                            <div class="c-form__input-area" style="overflow:hidden;">
-                                <label for="childstep3_img" class="c-form__label">プロフィール画像</label>
-                                <label for="childstep3_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop" >画像をドラッグ＆ドロップ
-                                    <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">
-                                    <input type="file" name="prof-pic" class="c-form__file-input c-form__file-input--childstep js-input-file" id="childstep3_img" name="childstep3_img" >
-                                </label>
-                                @if($errors->any())
-                                    @foreach($errors->get('childstep3_img') as $message)
-                                        <p class="c-form__err-msg">{{$message}}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                            <div class="c-form__input-area">
-                                <label for="childstep3_required-time" class="c-form__label">所要時間</label>
-                                <input type="number" step="1" class="c-form__input" name="childstep3_required-time" id="childstep3_required-time">
-                                @if($errors->any())
-                                    @foreach($errors->get('childstep3_required-time') as $message)
+                                    @foreach($errors->get('childstep'.$step_num.'_required-time') as $message)
                                         <p class="c-form__err-msg">{{$message}}</p>
                                     @endforeach
                                 @endif
                             </div>
                         </div>
                     </div>
+                    @endforeach
+
+                    {{--子STEP--}}
+{{--                    <div class="c-form__childstep-area">--}}
+{{--                        <div class="c-form__childstep-form">--}}
+{{--                            --}}{{--子STEP1--}}
+{{--                            <h4 class="c-form__sub-title">STEP1</h4>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep1_title" class="c-form__label">STEP名</label>--}}
+{{--                                <input type="text" class="c-form__input" name="childstep1_title" id="childstep1_title" value="{{ old('childstep1_title') }}">--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep1_title') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep1_content" class="c-form__label">STEP説明</label>--}}
+{{--                                <textarea name="childstep1_content" id="childstep1_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep1_content') }}</textarea>--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep1_content') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area" style="overflow:hidden;">--}}
+{{--                                <label for="childstep1_img" class="c-form__label">プロフィール画像</label>--}}
+{{--                                <label for="childstep1_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop" >子STEPイメージ画像--}}
+{{--                                    <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">--}}
+{{--                                    <input type="file" name="childstep1_img" id="childstep1_img" class="c-form__file-input c-form__file-input--childstep js-input-file" id="childstep1_img" name="childstep1_img" >--}}
+{{--                                </label>--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep1_img') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep1_required-time" class="c-form__label">所要時間</label>--}}
+{{--                                <input type="number" step="1" class="c-form__input" name="childstep1_required-time" id="childstep1_required-time">--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep1_required-time') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        --}}{{--子STEP2--}}
+{{--                        <div class="c-form__childstep-form">--}}
+{{--                            <h4 class="c-form__sub-title">STEP2</h4>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep2_title" class="c-form__label">STEP名</label>--}}
+{{--                                <input type="text" class="c-form__input" name="childstep2_title" id="childstep2_title" value="{{ old('childstep2_title') }}">--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep2_title') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep2_content" class="c-form__label">STEP説明</label>--}}
+{{--                                <textarea name="childstep2_content" id="childstep2_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep2_content') }}</textarea>--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep2_content') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area" style="overflow:hidden;">--}}
+{{--                                <label for="childstep2_img" class="c-form__label">プロフィール画像</label>--}}
+{{--                                <label for="childstep2_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop" >画像をドラッグ＆ドロップ--}}
+{{--                                    <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">--}}
+{{--                                    <input type="file" name="childstep2_img" id="childstep2_img" class="c-form__file-input c-form__file-input--childstep js-input-file" id="childstep2_img" name="childstep2_img" >--}}
+{{--                                </label>--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep2_img') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep2_required-time" class="c-form__label">所要時間</label>--}}
+{{--                                <input type="number" step="1" class="c-form__input" name="childstep2_required-time" id="childstep2_required-time">--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep2_required-time') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        --}}{{--子STEP3--}}
+{{--                        <div class="c-form__childstep-form">--}}
+{{--                            <h4 class="c-form__sub-title">STEP3</h4>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep3_title" class="c-form__label">STEP名</label>--}}
+{{--                                <input type="text" class="c-form__input" name="childstep3_title" id="childstep3_title" value="{{ old('childstep3_title') }}">--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep3_title') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep3_content" class="c-form__label">STEP説明</label>--}}
+{{--                                <textarea name="childstep3_content" id="childstep3_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep3_content') }}</textarea>--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep3_content') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area" style="overflow:hidden;">--}}
+{{--                                <label for="childstep3_img" class="c-form__label">プロフィール画像</label>--}}
+{{--                                <label for="childstep3_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop" >画像をドラッグ＆ドロップ--}}
+{{--                                    <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">--}}
+{{--                                    <input type="file" name="childstep3_img" id="childstep3_img" class="c-form__file-input c-form__file-input--childstep js-input-file" id="childstep3_img" name="childstep3_img" >--}}
+{{--                                </label>--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep3_img') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                            <div class="c-form__input-area">--}}
+{{--                                <label for="childstep3_required-time" class="c-form__label">所要時間</label>--}}
+{{--                                <input type="number" step="1" class="c-form__input" name="childstep3_required-time" id="childstep3_required-time">--}}
+{{--                                @if($errors->any())--}}
+{{--                                    @foreach($errors->get('childstep3_required-time') as $message)--}}
+{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
 

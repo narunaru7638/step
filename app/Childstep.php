@@ -39,8 +39,14 @@ class Childstep extends Model
 
     public function getPicImg()
     {
-        return $this->pic_img;
+        if(!empty($this->pic_img)){
+            return $this->pic_img;
+        }else{
+            return 'sample-img.png';
+
+        }
     }
+
 
     public function getCreatedAt()
     {

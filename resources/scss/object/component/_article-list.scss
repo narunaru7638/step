@@ -73,8 +73,13 @@
     margin-right: $space_m;
   }
   &__date{
-
+    margin-right: $space_m;
   }
+
+  &__challenge_flg{
+    color: $color_danger;
+  }
+
 
 
   &__title{

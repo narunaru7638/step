@@ -81,6 +81,28 @@
     vertical-align: bottom;
     position: relative;
     top: -7px;
+    margin-right: $space_m;
+
+  }
+
+  &__icon-link{
+    display: block;
+    vertical-align: bottom;
+    position: relative;
+    top: -13px;
+    @include mq(sm) {
+      top: -7px;
+    }
+
+
+
+  }
+
+  &__twitter-icon{
+    color: $color_twitter;
+    font-size: $font-size_xl;
+    vertical-align: bottom;
+
   }
 
   &__img{

@@ -47,4 +47,14 @@ class User extends Authenticatable
     }
 
 
+    public function getPicIcon()
+    {
+        if(!empty($this->pic_icon)){
+            return $this->pic_icon;
+        }else{
+            return 'sample-img.png';
+
+        }
+    }
+
 }

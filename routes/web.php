@@ -8,7 +8,6 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/clear-childsteps/{challenge_id}/{childstep_id}', 'StepController@clear')->name('childsteps.clear');
 
-    Route::get('/detail-steps/{id}', 'StepController@detail')->name('steps.detail');
     Route::post('/detail-steps/{id}', 'StepController@challenge');
 
     Route::get('/edit-profile', 'UserController@showEditForm')->name('profile.edit');
@@ -19,16 +18,18 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/show-mypage', 'StepController@mypageShow')->name('mypage.show');
 
+    Route::get('/detail-steps/{id}', 'StepController@detail')->name('steps.detail');
 
 });
 
 Route::get('/show-steps/{id}', 'StepController@index')->name('steps.index');
-//Route::get('ajax/step', 'Ajax\StepController@index');
-
 Route::get('ajax/step/{id}', 'Ajax\StepController@index');
 
+//Route::get('pagination', 'PaginationController@index'); // メイン
+//Route::get('ajax/pagination', 'Ajax\PaginationController@index'); // Ajax
 
-//Route::get('/show-steps', 'StepController@index')->name('steps.index');
+Route::get('/show-profile/{id}', 'UserController@showProfile')->name('profile.show');
+
 
 
 Auth::routes();
@@ -38,8 +39,6 @@ Auth::routes();
 //Route::get('ajax/comedian', 'Ajax\ComedianController@index');
 //
 
-Route::get('pagination', 'PaginationController@index'); // メイン
-Route::get('ajax/pagination', 'Ajax\PaginationController@index'); // Ajax
 
 
 

@@ -158,11 +158,16 @@ class StepController extends Controller
 //        dd($clear_check);
 
 
+
+
         //クリア情報がDBにあって、まだクリアしていない場合、STEPクリアボタンが押されたとして、complete_flg=1にする
         if($clear_check && $clear_check->complete_flg == 0){
             $clear = Clear :: where('childstep_id', $childstep_id)->first();
             $clear->complete_flg = 1;
             $clear->save();
+
+
+
             //クリア情報がDBにあって、すでにクリアしている場合、クリア解除ボタンが押されたとして、complete_flg=0にする
         }elseif($clear_check && $clear_check->complete_flg == 1) {
             $clear = Clear :: where('childstep_id', $childstep_id)->first();
@@ -175,6 +180,30 @@ class StepController extends Controller
             $clear->childstep_id = $childstep_id;
             $clear->save();
         }
+
+        $number_of_clears = Clear :: where('challenge_id', $challenge_id)->where('complete_flg', 1)->count();
+
+//        dd($number_of_clears);
+
+        if($number_of_clears === 3){
+            $challenge_of_clear = Challenge :: where('id', $challenge_id)->first();
+            $challenge_of_clear->complete_flg = 1;
+            $challenge_of_clear->save();
+
+
+        }else{
+            $challenge_of_clear = Challenge :: where('id', $challenge_id)->first();
+            $challenge_of_clear->complete_flg = 0;
+            $challenge_of_clear->save();
+        }
+
+//        foreach( $clears as $clear){
+//            $clear_check = $clear->complete_flg;
+////            dd($clear_check);
+//
+//
+//        }
+
         return redirect()->route('steps.index', ['id' => 0 ]);
         //
 //        //チャレンジ情報がDBにあって、まだリタイアしていない場合、リタイアボタンが押されたとして、delete_flg=1にする
@@ -206,6 +235,8 @@ class StepController extends Controller
 
     /**
      * プロフィールの保存
+     *
+     *
      *
      * @param ProfileRequest $request
      * @return Response
@@ -247,6 +278,28 @@ class StepController extends Controller
                 $childstep->content = $request->$request_content;
                 $childstep->step_id = $step->id;
                 $childstep->number_of_step = $i;
+
+                if(!empty($request->file('childstep'.$i.'_img'))){
+
+                    $file_input_name = 'childstep'.$i.'_img';
+
+                    //ファイルの名前をハッシュ化して変数に入れる
+                    $file_hash_name = sha1_file($request->file($file_input_name));
+                    //ファイルの拡張子を取得して変数に入れる
+                    $file_extension = $request->file($file_input_name)->getClientOriginalExtension();
+
+                    //DBに保存するファイル名を作成して変数に入れる
+                    $file_save_name = $file_hash_name . '.' . $file_extension;
+
+                    //DBにファイル名を保存する
+                    $childstep->pic_img = $file_save_name;
+
+                    //storageに画像ファイルを保存する
+                    $request->$file_input_name->storeAs('public', $file_save_name);
+                }
+
+
+
                 $childstep->save();
             }
 
@@ -265,8 +318,14 @@ class StepController extends Controller
 
 
         $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->get();
+//        $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->get();
+
+//        $steps_my_challenge->cha
+
         $steps_my_regist = Step::where('user_id', Auth::user()->id )->orderBy('created_at', 'desc')->get();
 
+
+//        dd($steps_my_challenge);
 
 //        $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->paginate(10);
 //        $steps_my_regist = Step::where('user_id', Auth::user()->id )->orderBy('created_at', 'desc')->paginate(10);

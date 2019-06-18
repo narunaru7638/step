@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Step;
 
 
 use Illuminate\Http\Request;
@@ -28,6 +29,23 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->profile = $request->profile;
         $user->pic_icon = $request->pic_icon;
+
+        //ファイルの名前をハッシュ化して変数に入れる
+        $file_hash_name = sha1_file($request->file('pic_icon'));
+        //ファイルの拡張子を取得して変数に入れる
+        $file_extension = $request->file('pic_icon')->getClientOriginalExtension();
+
+        //DBに保存するファイル名を作成して変数に入れる
+        $file_save_name = $file_hash_name . '.' . $file_extension;
+
+        //DBにファイル名を保存する
+        $user->pic_icon = $file_save_name;
+
+        //storageに画像ファイルを保存する
+        $request->pic_icon->storeAs('public', $file_save_name);
+
+
+
         $user->save();
 
         return redirect()->route('steps.index', ['id' => 0 ]);
@@ -73,4 +91,24 @@ class UserController extends Controller
 
 
 
+    public function showProfile(int $id)
+    {
+        $user_info = User :: where('id', $id)->first();
+//        return view('show-profile');
+
+        $registed_steps = Step::where('user_id', $id )->orderBy('created_at', 'desc')->get();
+
+
+        return view('show-profile', [
+            'user_info' => $user_info,
+            'registed_steps' => $registed_steps,
+        ]);
+
+
+    }
+
+
+
 }
+
+
