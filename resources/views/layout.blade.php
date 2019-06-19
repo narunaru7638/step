@@ -74,21 +74,16 @@
                             @if(Auth::check())
                                 <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="">プロフィール</a></li>
                                 <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="">パスワード変更</a></li>
-{{--                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="">退会</a></li>--}}
                             @endif
-
                         </ul>
-
                     </nav>
                 </div>
             </div>
-
             <div class="c-menu-hamburger js-toggle-sp-menu">
                 <span class="c-menu-hamburger__line js-toggle-sp-menu-target"></span>
                 <span class="c-menu-hamburger__line js-toggle-sp-menu-target"></span>
                 <span class="c-menu-hamburger__line js-toggle-sp-menu-target"></span>
             </div>
-
         </div>
     </header>
 
@@ -98,30 +93,12 @@
         <h1 class="l-footer__title">STEP</h1>
         <h2 class="l-footer__sub-title">あなたの人生の「STEP」を共有しよう</h2>
         <nav class="l-footer__page-list">
-{{--            <ul class="l-footer__nav">--}}
-{{--                @if(Auth::check())--}}
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="">STEP登録</a></li>--}}
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="">マイページ</a></li>--}}
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="#">ログアウト</a></li>--}}
-{{--                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-{{--                        @csrf--}}
-{{--                    </form>--}}
-{{--                @else--}}
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('login') }}">ログイン</a></li>--}}
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('register') }}">ユーザ登録</a></li>--}}
-{{--                @endif--}}
-{{--            </ul>--}}
             <ul class="l-footer__nav">
                 @if(Auth::check())
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('profile.edit',['id' => Auth::user()->id ]) }}">プロフィール</a></li>--}}
                     <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('profile.edit') }}">プロフィール</a></li>
-
                     <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('password.edit') }}">パスワード変更</a></li>
-
-{{--                    <li class="l-footer__list-item"><a href="{{ route('password.request') }}" class="l-footer__link">パスワード変更</a></li>--}}
-{{--                    <a href="{{ route('password.request') }}" class="c-form__link">こちら</a>--}}
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="">退会</a></li>--}}
                 @endif
+
             </ul>
 
         </nav>
@@ -137,19 +114,11 @@
                 event.preventDefault();
                 document.getElementById('logout-form-sp-menu').submit();
             });
-            // document.getElementsByName('logout-button').addEventListener('click', function(event){
-            //     event.preventDefault();
-            //     document.getElementsByName('logout-form').submit();
-            // });
-
-
         </script>
     @endif
     <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-
-
     <script src="/js/bundle.js"></script>
 </body>
 </html>

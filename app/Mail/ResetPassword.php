@@ -8,22 +8,11 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 
-//use App\Http\Controllers\Log;
-
-
 class ResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
-
-//    $token = null;
     public $token;
-//    dd($token);
-//    $token;
-
-//    dd('test');
-
-//    $token = 'adfafadfasfdasdfa';
 
     /**
      * Create a new message instance.

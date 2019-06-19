@@ -24,7 +24,7 @@
                         <label for="email" class="c-form__label">emailアドレス</label>
                         <input type="text" class="c-form__input" id="email" name="email" value="{{ old('email') }}">
                         @if($errors->any())
-                            @foreach($errodrs->get('email') as $message)
+                            @foreach($errors->get('email') as $message)
                                 <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif

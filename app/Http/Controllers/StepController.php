@@ -42,32 +42,16 @@ class StepController extends Controller
 
     public function detail(Step $step)
     {
-
-//        dd('test');
-
-
         //sidebar用のstepsデータを取得
-//        $steps = Step::orderBy('created_at', 'desc')->get();
         $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
-
         $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
-
-//        $steps = Step::all()->orderBy('created_at', 'asc');
-
-//        return view('steps/index', [
-//            'steps' => $steps,
-//        ]);
-
-
 
         //すでにチャレンジ済みかデータを取得して確認
         $step_detail = Step::find($step->id);
 
-//        dd($step_detail);
 
         if(Auth::check()){
             $challenge_exists_flg = DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $step->id)->exists();
-//        if( DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $id)->exists() ) {
             if( $challenge_exists_flg ) {
 
                 $challenge = Challenge :: where('user_id', Auth::user()->id)
@@ -101,9 +85,6 @@ class StepController extends Controller
                 'steps_new' => $steps_new,
                 'steps_rank' => $steps_rank,
                 'step_detail' => $step_detail,
-//                'challenge' => $challenge,
-//                'clear' => $clear,
-//                'challenge_exists_flg' => $challenge_exists_flg,
             ]);
         }
 
@@ -259,19 +240,22 @@ class StepController extends Controller
             $step->category_id = $request->step_category;
             $step->user_id = Auth::user()->id;
 
-            //ファイルの名前をハッシュ化して変数に入れる
-            $file_hash_name = sha1_file($request->file('step_img'));
-            //ファイルの拡張子を取得して変数に入れる
-            $file_extension = $request->file('step_img')->getClientOriginalExtension();
 
-            //DBに保存するファイル名を作成して変数に入れる
-            $file_save_name = $file_hash_name . '.' . $file_extension;
+            if(!empty($request->file('step_img'))) {
+                //ファイルの名前をハッシュ化して変数に入れる
+                $file_hash_name = sha1_file($request->file('step_img'));
+                //ファイルの拡張子を取得して変数に入れる
+                $file_extension = $request->file('step_img')->getClientOriginalExtension();
 
-            //DBにファイル名を保存する
-            $step->pic_img = $file_save_name;
+                //DBに保存するファイル名を作成して変数に入れる
+                $file_save_name = $file_hash_name . '.' . $file_extension;
 
-            //storageに画像ファイルを保存する
-            $request->step_img->storeAs('public', $file_save_name);
+                //DBにファイル名を保存する
+                $step->pic_img = $file_save_name;
+
+                //storageに画像ファイルを保存する
+                $request->step_img->storeAs('public', $file_save_name);
+            }
 
             //インスタンスの状態をデータベースに書き込む
             $step->save();

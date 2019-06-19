@@ -25,15 +25,8 @@ class EditPassword extends FormRequest
     public function rules()
     {
         return [
-//            'password_old' => 'required|string|min:8|same:'.Auth::user()->password.'',
-            'password_old' => 'required|string|min:8',
-
-            'password' => 'required|string|min:8|confirmed',
-//            'password_confirmation' => 'required'
-
-//            'password' => ['required', 'string', 'min:8', 'confirmed'],
-
-
+            'password_old' => 'required|string|min:8|max:255',
+            'password' => 'required|string|min:8|max:255|confirmed',
         ];
     }
 

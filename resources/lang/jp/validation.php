@@ -24,7 +24,8 @@ return [
     'before'               => ':attributeには:date以前の日付を指定してください。',
     'before_or_equal'      => ':attributeには:dateかそれ以前の日付を指定してください。',
     'between'              => [
-        'numeric' => ':attributeには:min〜:maxまでの数値を指定してください。',
+//        'numeric' => ':attributeには:min〜:maxまでの数値を指定してください。',
+        'numeric' => ':attributeには有効な値を指定してください。',
         'file'    => ':attributeには:min〜:max KBのファイルを指定してください。',
         'string'  => ':attributeには:min〜:max文字の文字列を指定してください。',
         'array'   => ':attributeには:min〜:max個の要素を持つ配列を指定してください。',
@@ -116,6 +117,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email'=>'emailアドレス',
+        'password'=>'パスワード',
+    ],
 
 ];
