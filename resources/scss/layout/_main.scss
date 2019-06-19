@@ -38,6 +38,11 @@
         width: 55%;
         padding-right: 0;
 
+        @include mq(sm) {
+            width: 90%;
+        }
+
+
     }
 
     &__text{

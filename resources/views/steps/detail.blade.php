@@ -27,10 +27,12 @@
                         </div>
                         <div class="c-detail-step__info--right">
                             <div class="c-detail-step__number-of-challenger">チャレンジした人：{{ $step->getNumberOfChallenger() }}人</div>
-                            @if( $challenge_exists_flg && $challenge->delete_flg === 0 && $challenge->complete_flg === 1)
-                                <div class="c-detail-step__challenge-flg">達成済</div>
-                            @elseif( $challenge_exists_flg && $challenge->delete_flg === 0)
-                                <div class="c-detail-step__challenge-flg">挑戦中</div>
+                            @if( Auth::check())
+                                @if( $challenge_exists_flg && $challenge->delete_flg === 0 && $challenge->complete_flg === 1)
+                                    <div class="c-detail-step__challenge-flg">達成済</div>
+                                @elseif( $challenge_exists_flg && $challenge->delete_flg === 0)
+                                    <div class="c-detail-step__challenge-flg">挑戦中</div>
+                                @endif
                             @endif
                             <a class="c-detail-step__icon-link" href="https://twitter.com/intent/tweet?url={{ route('steps.detail', ['id' => $step->getId() ]) }}&text=「{{$step->getTitle()}}」　　STEP 〜あなたの人生のSTEPを共有しよう〜" target="_blank">
                                 <i class="fab fa-twitter-square c-detail-step__twitter-icon">
@@ -63,32 +65,46 @@
                                 <div class="c-detail-childstep__text">{{ $childstep->getContent() }}</div>
                             </div>
                         </div>
+                        @if( Auth::check())
 
-                        @if( $challenge_exists_flg && $challenge->delete_flg === 0)
-                            <form class="c-form c-form--childstep-clear" action="{{ route('childsteps.clear', ['challenge_id' => $challenge->id, 'childstep_id' => $childstep->getId() ]) }}" method="post">
-                                @csrf
-                                @if( $clear )
-                                    @if( $clear[$key]->complete_flg == 0)
-                                        <input type="submit" class="c-btn c-btn--childstep-clear" value="STEPクリア">
-                                    @else
-                                        <input type="submit" class="c-btn c-btn--childstep-clear" value="クリア解除">
+                            @if( $challenge_exists_flg && $challenge->delete_flg === 0)
+                                <form class="c-form c-form--childstep-clear" action="{{ route('childsteps.clear', ['challenge_id' => $challenge->id, 'childstep_id' => $childstep->getId() ]) }}" method="post">
+                                    @csrf
+                                    @if( $clear )
+                                        @if( $clear[$key]->complete_flg == 0)
+                                            <input type="submit" class="c-btn c-btn--childstep-clear" value="STEPクリア">
+                                        @else
+                                            <input type="submit" class="c-btn c-btn--childstep-clear" value="クリア解除">
+                                        @endif
                                     @endif
-                                @endif
-                            </form>
+                                </form>
+                            @endif
                         @endif
 
                     </div>
                     @endforeach
 
-                    <form class="c-form" action="{{ route('steps.detail', ['id' => $step->getId() ]) }}" method="post">
+                    @if( Auth::check())
+
+                        <form class="c-form" action="{{ route('steps.detail', ['id' => $step->getId() ]) }}" method="post">
+                            @csrf
+                            @if( $challenge_exists_flg && $challenge->delete_flg === 0 && $challenge->complete_flg === 1)
+                            @elseif( $challenge_exists_flg && $challenge->delete_flg === 0)
+                                <input type="submit" class="c-btn c-form__submit" value="このSTEPのチャレンジをやめる">
+                            @else
+                                <input type="submit" class="c-btn c-form__submit" value="このSTEPにチャレンジする">
+                            @endif
+                        </form>
+                    @else
+{{--                        <a  href="{{ route('steps.detail', ['id' => $step->getId()]) }}">--}}
+{{--                            <div type="submit" class="c-btn c-form__submit" value="このSTEPのチャレンジをやめる">aaaaa</div>--}}
+{{--                        </a>--}}
+                        <form class="c-form" action="{{ route('steps.detail', ['id' => $step->getId() ]) }}" method="post">
                         @csrf
-                        @if( $challenge_exists_flg && $challenge->delete_flg === 0 && $challenge->complete_flg === 1)
-                        @elseif( $challenge_exists_flg && $challenge->delete_flg === 0)
-                            <input type="submit" class="c-btn c-form__submit" value="このSTEPのチャレンジをやめる">
-                        @else
-                            <input type="submit" class="c-btn c-form__submit" value="このSTEPにチャレンジする">
-                        @endif
-                    </form>
+                            <input type="submit" class="c-btn c-form__submit c-form__submit--width" value="ログインしてこのSTEPにチャレンジ">
+                        </form>
+
+                    @endif
 
 
                 </div>

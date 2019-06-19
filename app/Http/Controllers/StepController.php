@@ -56,6 +56,10 @@ class StepController extends Controller
 
     public function detail(int $id)
     {
+
+//        dd('test');
+
+
         //sidebar用のstepsデータを取得
 //        $steps = Step::orderBy('created_at', 'desc')->get();
         $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
@@ -73,35 +77,51 @@ class StepController extends Controller
         //すでにチャレンジ済みかデータを取得して確認
         $step = Step::find($id);
 
-        $challenge_exists_flg = DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $id)->exists();
+
+        if(Auth::check()){
+            $challenge_exists_flg = DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $id)->exists();
 //        if( DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $id)->exists() ) {
-        if( $challenge_exists_flg ) {
+            if( $challenge_exists_flg ) {
 
-            $challenge = Challenge :: where('user_id', Auth::user()->id)
-                ->where('step_id', $id)
-                ->first();
+                $challenge = Challenge :: where('user_id', Auth::user()->id)
+                    ->where('step_id', $id)
+                    ->first();
 
-            if( DB::table('clears')->where('challenge_id', $challenge->id)->exists() ) {
-                $clear = Clear :: where('challenge_id', $challenge->id)
-                    ->orderBy('childstep_id', 'asc')
-                    ->get();
+                if( DB::table('clears')->where('challenge_id', $challenge->id)->exists() ) {
+                    $clear = Clear :: where('challenge_id', $challenge->id)
+                        ->orderBy('childstep_id', 'asc')
+                        ->get();
+                }else{
+                    $clear = [new Clear, new Clear, new Clear];
+                }
             }else{
+                $challenge = new Challenge;
                 $clear = [new Clear, new Clear, new Clear];
-            }
-        }else{
-            $challenge = new Challenge;
-            $clear = [new Clear, new Clear, new Clear];
 
+            }
+
+            return view('steps/detail', [
+                'steps_new' => $steps_new,
+                'steps_rank' => $steps_rank,
+                'step' => $step,
+                'challenge' => $challenge,
+                'clear' => $clear,
+                'challenge_exists_flg' => $challenge_exists_flg,
+            ]);
+
+        }else{
+            return view('steps/detail', [
+                'steps_new' => $steps_new,
+                'steps_rank' => $steps_rank,
+                'step' => $step,
+//                'challenge' => $challenge,
+//                'clear' => $clear,
+//                'challenge_exists_flg' => $challenge_exists_flg,
+            ]);
         }
 
-        return view('steps/detail', [
-            'steps_new' => $steps_new,
-            'steps_rank' => $steps_rank,
-            'step' => $step,
-            'challenge' => $challenge,
-            'clear' => $clear,
-            'challenge_exists_flg' => $challenge_exists_flg,
-        ]);
+
+
 
     }
 

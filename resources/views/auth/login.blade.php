@@ -4,37 +4,7 @@
     <title>ログイン | STEP</title>
 @endsection
 
-
 @section('content')
-{{--<main class="l-main">--}}
-{{--    <section class="c-container">--}}
-{{--        <h2 class="c-container__title">ログイン</h2>--}}
-{{--        <div class="c-container__body">--}}
-{{--            <form class="c-form" method="POST" action="{{ route('login') }}">--}}
-{{--                @csrf--}}
-{{--                <label for="user-name" class="c-form__label">emailアドレス</label>--}}
-{{--                <input type="text" class="c-form__input" name="email" value="{{ old('email') }}">--}}
-{{--                @if($errors->any())--}}
-{{--                    @foreach($errors->get('email') as $message)--}}
-{{--                        <p class="c-form__err-msg">{{$message}}</p>--}}
-{{--                    @endforeach--}}
-{{--                @endif--}}
-
-{{--                <label for="password" class="c-form__label">パスワード</label>--}}
-{{--                <input type="password" class="c-form__input" name="password" value="{{ old('password') }}">--}}
-{{--                @if($errors->any())--}}
-{{--                    @foreach($errors->get('password') as $message)--}}
-{{--                        <p class="c-form__err-msg">{{$message}}</p>--}}
-{{--                    @endforeach--}}
-{{--                @endif--}}
-
-{{--                <div  class="c-form__sub-msg"><label><input type="checkbox" name="pass_save">次回からはログインを省略する</label></div>--}}
-{{--                <input type="submit" class="c-btn c-form__submit">--}}
-{{--                <div class="c-form__sub-msg">パスワードを忘れた方は<a href="{{ route('password.request') }}" class="c-form__link">こちら</a></div>--}}
-{{--            </form>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-{{--</main>--}}
 
 <div class="l-home">
 
@@ -52,9 +22,9 @@
 
                     <div class="c-form__input-area">
                         <label for="email" class="c-form__label">emailアドレス</label>
-                        <input type="text" class="c-form__input" name="email" value="{{ old('email') }}">
+                        <input type="text" class="c-form__input" id="email" name="email" value="{{ old('email') }}">
                         @if($errors->any())
-                            @foreach($errors->get('email') as $message)
+                            @foreach($errodrs->get('email') as $message)
                                 <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif
@@ -63,7 +33,7 @@
                     <div class="c-form__input-area">
 
                         <label for="password" class="c-form__label">パスワード</label>
-                        <input type="password" class="c-form__input" name="password" value="{{ old('password') }}">
+                        <input type="password" class="c-form__input" id="password" name="password" value="{{ old('password') }}">
                         @if($errors->any())
                             @foreach($errors->get('password') as $message)
                                 <p class="c-form__err-msg">{{$message}}</p>
@@ -71,7 +41,7 @@
                         @endif
 
                     </div>
-                    <div  class="c-form__sub-msg"><label><input type="checkbox" name="pass_save">次回からはログインを省略する</label></div>
+{{--                    <div  class="c-form__sub-msg"><label><input type="checkbox" name="pass_save">次回からはログインを省略する</label></div>--}}
 
 
                     <input type="submit" class="c-btn c-form__submit">

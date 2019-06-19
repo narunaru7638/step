@@ -19,15 +19,15 @@
                     <p class="l-main__text">ご指定のメールアドレス宛にパスワード再発行用のURLと認証キーをお送り致します。メールアドレスを入力して下さい。</p>
 
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
                     <form class="c-form" action="{{ route('password.email') }}" method="POST">
                         @csrf
                         <div class="c-form__input-area">
-                            <label for="user-name" class="c-form__label">emailアドレス</label>
-                            <input type="text" class="c-form__input" name="email" id="'email">
+                            <label for="email" class="c-form__label">emailアドレス</label>
+                            <input type="text" class="c-form__input" name="email" id="email">
 {{--                            <p class="c-form__err-msg">入力されていません</p>--}}
                         </div>
 

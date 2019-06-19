@@ -23,7 +23,7 @@
 
                     <div class="c-form__input-area">
                         <label for="email" class="c-form__label">emailアドレス</label>
-                        <input type="text" class="c-form__input" name="email" value="{{ old('email') }}">
+                        <input type="text" class="c-form__input" id="email" name="email" value="{{ old('email') }}">
                         @if($errors->any())
                             @foreach($errors->get('email') as $message)
                                 <p class="c-form__err-msg">{{$message}}</p>
@@ -35,7 +35,7 @@
 
                     <div class="c-form__input-area">
                         <label for="name" class="c-form__label">ユーザネーム(他人に公開されます)</label>
-                        <input type="text" class="c-form__input" name="name" value="{{ old('name') }}">
+                        <input type="text" class="c-form__input" id="name" name="name" value="{{ old('name') }}">
                         @if($errors->any())
                             @foreach($errors->get('name') as $message)
                                 <p class="c-form__err-msg">{{$message}}</p>
@@ -47,7 +47,7 @@
                     <div class="c-form__input-area">
 
                         <label for="password" class="c-form__label">パスワード</label>
-                        <input type="password" class="c-form__input" name="password" value="{{ old('password') }}">
+                        <input type="password" class="c-form__input" id="password" name="password" value="{{ old('password') }}">
                         @if($errors->any())
                             @foreach($errors->get('password') as $message)
                                 <p class="c-form__err-msg">{{$message}}</p>
@@ -57,7 +57,7 @@
 
                     <div class="c-form__input-area">
 
-                        <label for="password_confirmation" class="c-form__label">パスワード(再入力)</label>
+                        <label for="password-confirm" class="c-form__label">パスワード(再入力)</label>
                         <input type="password" class="c-form__input" id="password-confirm" name="password_confirmation" value="{{ old('password_confirmation') }}">
                         @if($errors->any())
                             @foreach($errors->get('password_confirmation') as $message)

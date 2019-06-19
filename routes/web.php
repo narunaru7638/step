@@ -8,7 +8,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/clear-childsteps/{challenge_id}/{childstep_id}', 'StepController@clear')->name('childsteps.clear');
 
-    Route::post('/detail-steps/{id}', 'StepController@challenge');
+//    Route::post('/detail-steps/{id}', 'StepController@challenge');
+
+    Route::post('/detail-steps/{step}', 'StepController@challenge');
+
 
     Route::get('/edit-profile', 'UserController@showEditForm')->name('profile.edit');
     Route::post('/edit-profile', 'UserController@editProfile');
@@ -18,9 +21,14 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/show-mypage', 'StepController@mypageShow')->name('mypage.show');
 
-    Route::get('/detail-steps/{id}', 'StepController@detail')->name('steps.detail');
 
 });
+
+Route::get('/detail-steps/{step}', 'StepController@detail')->name('steps.detail');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 Route::get('/show-steps/{id}', 'StepController@index')->name('steps.index');
 Route::get('ajax/step/{id}', 'Ajax\StepController@index');

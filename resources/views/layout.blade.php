@@ -36,8 +36,9 @@
                                 @csrf
                             </form>
                 @else
-                            <li class="c-nav__item"><a class="c-nav__link" href="{{ route('login') }}">ログイン</a></li>
-                            <li class="c-nav__item"><a class="c-nav__link" href="{{ route('register') }}">ユーザ登録</a></li>
+                        <li class="c-nav__item"><a class="c-nav__link" href="{{ route('home') }}">ABOUT</a></li>
+                        <li class="c-nav__item"><a class="c-nav__link" href="{{ route('login') }}">ログイン</a></li>
+                        <li class="c-nav__item"><a class="c-nav__link" href="{{ route('register') }}">ユーザ登録</a></li>
                 @endif
                 </ul>
             </nav>

@@ -132,6 +132,15 @@
 
         }
 
+        &--width{
+            width: 50%;
+            @include mq(sm){
+                width: 90%;
+            }
+
+
+        }
+
         &--retire{
             color: $color_danger;
             @include mq(sm){
