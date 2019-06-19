@@ -6,7 +6,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/create-steps', 'StepController@showCreateForm')->name('steps.create');
     Route::post('/create-steps', 'StepController@create');
 
-    Route::post('/clear-childsteps/{challenge_id}/{childstep_id}', 'StepController@clear')->name('childsteps.clear');
+    Route::post('/clear-childsteps/{challenge}/{childstep}', 'StepController@clear')->name('childsteps.clear');
 
 //    Route::post('/detail-steps/{id}', 'StepController@challenge');
 
@@ -28,10 +28,11 @@ Route::get('/detail-steps/{step}', 'StepController@detail')->name('steps.detail'
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/show-steps', 'StepController@index')->name('steps.index');
+Route::get('/show-steps/{step}', 'StepController@categoryIndex')->name('steps.category.index');
 
-
-Route::get('/show-steps/{id}', 'StepController@index')->name('steps.index');
-Route::get('ajax/step/{id}', 'Ajax\StepController@index');
+Route::get('ajax/step', 'Ajax\StepController@index');
+Route::get('ajax/step/{step}', 'Ajax\StepController@categoryIndex');
 
 //Route::get('pagination', 'PaginationController@index'); // メイン
 //Route::get('ajax/pagination', 'Ajax\PaginationController@index'); // Ajax

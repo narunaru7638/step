@@ -17,42 +17,28 @@ use Illuminate\Support\Facades\Auth;
 class StepController extends Controller
 {
 
-    public function index(int $id)
+    public function index()
     {
-//        $steps = Step::all();
-
         $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
-
-//        dd($steps_new);
-
-        if($id === 0){
-//            $steps = Step::orderBy('created_at', 'desc')->get();
-            $steps = Step::orderBy('created_at', 'desc')->paginate(10);
-
-        }else{
-            $steps = Step::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(10);
-        }
-
-//        $steps = Step::orderBy('created_at', 'desc')->get();
         $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
 
-
-//        $steps = DB::table('steps')->simplePaginate(5);
-
-//        dd($steps);
-
-
-        $steps_json = json_encode($steps);
-//        dd($steps_json);
-
         return view('steps/index', [
-            'steps' => $steps,
             'steps_new' => $steps_new,
             'steps_rank' => $steps_rank,
-            'steps_json' => $steps_json,
-//            'steps2' => $steps2,
         ]);
     }
+
+    public function categoryIndex(Step $step)
+    {
+        $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
+        $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
+
+        return view('steps/index', [
+            'steps_new' => $steps_new,
+            'steps_rank' => $steps_rank,
+        ]);
+    }
+
 
     public function detail(Step $step)
     {
@@ -114,7 +100,7 @@ class StepController extends Controller
             return view('steps/detail', [
                 'steps_new' => $steps_new,
                 'steps_rank' => $steps_rank,
-                'step' => $step,
+                'step_detail' => $step_detail,
 //                'challenge' => $challenge,
 //                'clear' => $clear,
 //                'challenge_exists_flg' => $challenge_exists_flg,
@@ -172,10 +158,10 @@ class StepController extends Controller
         return redirect()->route('steps.index', ['id' => 0 ]);
     }
 
-    public function clear(int $challenge_id, int $childstep_id)
+    public function clear(Challenge $challenge, Childstep $childstep)
     {
         //すでにクリア情報がDBにあるか確認
-        $clear_check = Clear :: where('childstep_id', $childstep_id)->first();
+        $clear_check = Clear :: where('childstep_id', $childstep->id)->first();
 //        dd($clear_check);
 
 
@@ -183,7 +169,7 @@ class StepController extends Controller
 
         //クリア情報がDBにあって、まだクリアしていない場合、STEPクリアボタンが押されたとして、complete_flg=1にする
         if($clear_check && $clear_check->complete_flg == 0){
-            $clear = Clear :: where('childstep_id', $childstep_id)->first();
+            $clear = Clear :: where('childstep_id', $childstep->id)->first();
             $clear->complete_flg = 1;
             $clear->save();
 
@@ -191,29 +177,29 @@ class StepController extends Controller
 
             //クリア情報がDBにあって、すでにクリアしている場合、クリア解除ボタンが押されたとして、complete_flg=0にする
         }elseif($clear_check && $clear_check->complete_flg == 1) {
-            $clear = Clear :: where('childstep_id', $childstep_id)->first();
+            $clear = Clear :: where('childstep_id', $childstep->id)->first();
             $clear->complete_flg = 0;
             $clear->save();
             //クリア情報がDBにない場合、新規にクリア情報を登録
         }else{
             $clear = new Clear();
-            $clear->challenge_id = $challenge_id;
-            $clear->childstep_id = $childstep_id;
+            $clear->challenge_id = $challenge->id;
+            $clear->childstep_id = $childstep->id;
             $clear->save();
         }
 
-        $number_of_clears = Clear :: where('challenge_id', $challenge_id)->where('complete_flg', 1)->count();
+        $number_of_clears = Clear :: where('challenge_id', $challenge->id)->where('complete_flg', 1)->count();
 
 //        dd($number_of_clears);
 
         if($number_of_clears === 3){
-            $challenge_of_clear = Challenge :: where('id', $challenge_id)->first();
+            $challenge_of_clear = Challenge :: where('id', $challenge->id)->first();
             $challenge_of_clear->complete_flg = 1;
             $challenge_of_clear->save();
 
 
         }else{
-            $challenge_of_clear = Challenge :: where('id', $challenge_id)->first();
+            $challenge_of_clear = Challenge :: where('id', $challenge->id)->first();
             $challenge_of_clear->complete_flg = 0;
             $challenge_of_clear->save();
         }

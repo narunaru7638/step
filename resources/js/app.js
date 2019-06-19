@@ -102,11 +102,20 @@ new Vue({
     },
     methods: {
         getSteps() {
-            const ajax_url = '/ajax/step/'+this.category+'?page='+ this.page;
-            axios.get(ajax_url)
-                .then(response => {
-                    this.items = response.data;
-                });
+            console.log(this.category);
+            if(isNaN(this.category)){
+                const ajax_url = '/ajax/step?page='+ this.page;
+                axios.get(ajax_url)
+                    .then(response => {
+                        this.items = response.data;
+                    });
+            }else{
+                const ajax_url = '/ajax/step/'+this.category+'?page='+ this.page;
+                axios.get(ajax_url)
+                    .then(response => {
+                        this.items = response.data;
+                    });
+            }
         },
         movePage(page) {
             this.page = page;

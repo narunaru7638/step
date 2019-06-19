@@ -33,7 +33,7 @@
 
                         <div class="c-form__input-area">
 
-                            <label for="user-name" class="c-form__label">パスワード</label>
+                            <label for="user-name" class="c-form__label">新しいパスワード</label>
                             <input type="password" class="c-form__input" name="password" id="password" />
                             @if($errors->any())
                                 @foreach($errors->get('password') as $message)
@@ -44,7 +44,7 @@
 
                         <div class="c-form__input-area">
 
-                            <label for="user-name" class="c-form__label">パスワード(再入力)</label>
+                            <label for="user-name" class="c-form__label">新しいパスワード(再入力)</label>
                             <input type="password" class="c-form__input" id="password-confirm" name="password_confirmation" />
                             @if($errors->any())
                                 @foreach($errors->get('password_re') as $message)

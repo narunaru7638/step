@@ -366,10 +366,18 @@ new _vue2.default({
         getSteps: function getSteps() {
             var _this = this;
 
-            var ajax_url = '/ajax/step/' + this.category + '?page=' + this.page;
-            axios.get(ajax_url).then(function (response) {
-                _this.items = response.data;
-            });
+            console.log(this.category);
+            if (isNaN(this.category)) {
+                var ajax_url = '/ajax/step?page=' + this.page;
+                axios.get(ajax_url).then(function (response) {
+                    _this.items = response.data;
+                });
+            } else {
+                var _ajax_url = '/ajax/step/' + this.category + '?page=' + this.page;
+                axios.get(_ajax_url).then(function (response) {
+                    _this.items = response.data;
+                });
+            }
         },
         movePage: function movePage(page) {
             this.page = page;

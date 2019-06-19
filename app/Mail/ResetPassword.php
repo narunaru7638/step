@@ -44,7 +44,7 @@ class ResetPassword extends Mailable
     public function build()
     {
         return $this
-            ->subject('パスワード再設定')
+            ->subject('「STEP」パスワード再発行依頼がございました。')
             ->view('mail.password-reset');
     }
 }

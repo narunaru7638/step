@@ -16,13 +16,15 @@
         <div class="c-container">
             <div class="l-main-wrap">
                 <main class="l-main l-main--1column">
-                    <p class="l-main__text">ご指定のメールアドレス宛にパスワード再発行用のURLと認証キーをお送り致します。メールアドレスを入力して下さい。</p>
+                    <p class="l-main__text">ご指定のメールアドレス宛にパスワード再発行用のURLをお送り致します。メールアドレスを入力して下さい。</p>
 
                     @if (session('status'))
-                        <div role="alert">
+                        <div class="c-alert" role="alert">
                             {{ session('status') }}
                         </div>
+
                     @endif
+
                     <form class="c-form" action="{{ route('password.email') }}" method="POST">
                         @csrf
                         <div class="c-form__input-area">
