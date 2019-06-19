@@ -54,7 +54,7 @@ class StepController extends Controller
         ]);
     }
 
-    public function detail(int $id)
+    public function detail(Step $step)
     {
 
 //        dd('test');
@@ -75,16 +75,17 @@ class StepController extends Controller
 
 
         //すでにチャレンジ済みかデータを取得して確認
-        $step = Step::find($id);
+        $step_detail = Step::find($step->id);
 
+//        dd($step_detail);
 
         if(Auth::check()){
-            $challenge_exists_flg = DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $id)->exists();
+            $challenge_exists_flg = DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $step->id)->exists();
 //        if( DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $id)->exists() ) {
             if( $challenge_exists_flg ) {
 
                 $challenge = Challenge :: where('user_id', Auth::user()->id)
-                    ->where('step_id', $id)
+                    ->where('step_id', $step->id)
                     ->first();
 
                 if( DB::table('clears')->where('challenge_id', $challenge->id)->exists() ) {
@@ -103,7 +104,7 @@ class StepController extends Controller
             return view('steps/detail', [
                 'steps_new' => $steps_new,
                 'steps_rank' => $steps_rank,
-                'step' => $step,
+                'step_detail' => $step_detail,
                 'challenge' => $challenge,
                 'clear' => $clear,
                 'challenge_exists_flg' => $challenge_exists_flg,

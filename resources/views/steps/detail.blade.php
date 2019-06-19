@@ -17,16 +17,16 @@
             <main class="l-main l-main--2column">
 
                 <div class="c-detail-step">
-                    <div class="c-detail-step__title">{{ $step->getTitle() }}</div>
+                    <div class="c-detail-step__title">{{ $step_detail->getTitle() }}</div>
                     <div class="c-detail-step__info">
                         <div class="c-detail-step__info--left">
-                            <a href="{{ route('steps.index', ['id' => $step->getCategoryId()]) }}"><div class="c-detail-step__category">{{ $step->getCategoryName() }}</div></a>
-                            <div class="c-detail-step__date">{{ $step->getCreatedAt() }}</div>
-                            <a href="{{ route('profile.show', ['id' => $step->getUserId()]) }}"><div class="c-detail-step__username">{{ $step->getUserName() }}</div></a>
-                            <div class="c-detail-step__required-time">{{ $step->getRequiredTime() }}</div>
+                            <a href="{{ route('steps.index', ['id' => $step_detail->getCategoryId()]) }}"><div class="c-detail-step__category">{{ $step_detail->getCategoryName() }}</div></a>
+                            <div class="c-detail-step__date">{{ $step_detail->getCreatedAt() }}</div>
+                            <a href="{{ route('profile.show', ['id' => $step_detail->getUserId()]) }}"><div class="c-detail-step__username">{{ $step_detail->getUserName() }}</div></a>
+                            <div class="c-detail-step__required-time">{{ $step_detail->getRequiredTime() }}</div>
                         </div>
                         <div class="c-detail-step__info--right">
-                            <div class="c-detail-step__number-of-challenger">チャレンジした人：{{ $step->getNumberOfChallenger() }}人</div>
+                            <div class="c-detail-step__number-of-challenger">チャレンジした人：{{ $step_detail->getNumberOfChallenger() }}人</div>
                             @if( Auth::check())
                                 @if( $challenge_exists_flg && $challenge->delete_flg === 0 && $challenge->complete_flg === 1)
                                     <div class="c-detail-step__challenge-flg">達成済</div>
@@ -34,16 +34,16 @@
                                     <div class="c-detail-step__challenge-flg">挑戦中</div>
                                 @endif
                             @endif
-                            <a class="c-detail-step__icon-link" href="https://twitter.com/intent/tweet?url={{ route('steps.detail', ['id' => $step->getId() ]) }}&text=「{{$step->getTitle()}}」　　STEP 〜あなたの人生のSTEPを共有しよう〜" target="_blank">
+                            <a class="c-detail-step__icon-link" href="https://twitter.com/intent/tweet?url={{ route('steps.detail', ['id' => $step_detail->getId() ]) }}&text=「{{$step_detail->getTitle()}}」　　STEP 〜あなたの人生のSTEPを共有しよう〜" target="_blank">
                                 <i class="fab fa-twitter-square c-detail-step__twitter-icon">
                                 </i>
                             </a>
                         </div>
                     </div>
-                    <img src="/storage/{{ $step->getPicImg() }}" alt="" class="c-detail-step__img">
-                    <div class="c-detail-step__text">{{ $step->getContent() }}</div>
+                    <img src="/storage/{{ $step_detail->getPicImg() }}" alt="" class="c-detail-step__img">
+                    <div class="c-detail-step__text">{{ $step_detail->getContent() }}</div>
 
-                    @foreach ($step->childsteps as $key => $childstep)
+                    @foreach ($step_detail->childsteps as $key => $childstep)
 
                     <div class="c-detail-childstep">
                         <div class="c-detail-childstep__title">STEP{{ $childstep->getNumberOfStep() }}:{{ $childstep->getTitle() }}</div>
@@ -86,7 +86,7 @@
 
                     @if( Auth::check())
 
-                        <form class="c-form" action="{{ route('steps.detail', ['id' => $step->getId() ]) }}" method="post">
+                        <form class="c-form" action="{{ route('steps.detail', ['id' => $step_detail->getId() ]) }}" method="post">
                             @csrf
                             @if( $challenge_exists_flg && $challenge->delete_flg === 0 && $challenge->complete_flg === 1)
                             @elseif( $challenge_exists_flg && $challenge->delete_flg === 0)
@@ -99,7 +99,7 @@
 {{--                        <a  href="{{ route('steps.detail', ['id' => $step->getId()]) }}">--}}
 {{--                            <div type="submit" class="c-btn c-form__submit" value="このSTEPのチャレンジをやめる">aaaaa</div>--}}
 {{--                        </a>--}}
-                        <form class="c-form" action="{{ route('steps.detail', ['id' => $step->getId() ]) }}" method="post">
+                        <form class="c-form" action="{{ route('steps.detail', ['id' => $step_detail->getId() ]) }}" method="post">
                         @csrf
                             <input type="submit" class="c-btn c-form__submit c-form__submit--width" value="ログインしてこのSTEPにチャレンジ">
                         </form>
