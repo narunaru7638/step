@@ -91,12 +91,12 @@ class UserController extends Controller
 
 
 
-    public function showProfile(int $id)
+    public function showProfile(User $user)
     {
-        $user_info = User :: where('id', $id)->first();
+        $user_info = User :: where('id', $user->id)->first();
 //        return view('show-profile');
 
-        $registed_steps = Step::where('user_id', $id )->orderBy('created_at', 'desc')->get();
+        $registed_steps = Step::where('user_id', $user->id )->orderBy('created_at', 'desc')->get();
 
 
         return view('show-profile', [

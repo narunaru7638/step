@@ -126,33 +126,33 @@ class StepController extends Controller
 
     }
 
-    public function challenge(int $id)
+    public function challenge(Step $step)
     {
          //すでにチャレンジ情報がDBにあるか確認
         $challenge_check = Challenge :: where('user_id', Auth::user()->id)
-                                        ->where('step_id', $id)
+                                        ->where('step_id', $step->id)
                                         ->first();
 
         //チャレンジ情報がDBにあって、まだリタイアしていない場合、リタイアボタンが押されたとして、delete_flg=1にする
         if($challenge_check && $challenge_check->delete_flg == 0){
-            $challenge = Challenge :: where('step_id', $id)->first();
+            $challenge = Challenge :: where('step_id', $step->id)->first();
             $challenge->delete_flg = 1;
             $challenge->save();
         //チャレンジ情報がDBにあって、すでにリタイアしている場合、再度チャレンジボタンが押されたとして、delete_flg=0にする
         }elseif($challenge_check && $challenge_check->delete_flg == 1) {
-            $challenge = Challenge :: where('step_id', $id)->first();
+            $challenge = Challenge :: where('step_id', $step->id)->first();
             $challenge->delete_flg = 0;
             $challenge->save();
         //チャレンジ情報がDBにない場合、新規にチャレンジ情報を登録
         }else{
             $challenge = new Challenge();
             $challenge->user_id = Auth::user()->id;
-            $challenge->step_id = $id;
+            $challenge->step_id = $step->id;
             $challenge->save();
 
 
             //チャレンジ情報と共にクリア情報も作成する
-            $childsteps = Childstep::where('step_id', $id)->get();
+            $childsteps = Childstep::where('step_id', $step->id)->get();
             foreach($childsteps as $childstep) {
                 $clear = new Clear();
                 $clear->challenge_id = $challenge->id;
@@ -160,9 +160,9 @@ class StepController extends Controller
                 $clear->save();
             }
 
-            $step = Step::where('id',$id)->first();
-            $step->number_of_challenger ++;
-            $step->save();
+            $step_challenge = Step::where('id',$step->id)->first();
+            $step_challenge->number_of_challenger ++;
+            $step_challenge->save();
 
         }
 

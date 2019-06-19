@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0cc22d13-6615-47be-b2c0-42af5d28d184" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StepController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StepController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/steps/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/detail.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/public/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +44,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/routes/web.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="241">
+                <state relative-caret-position="345">
                   <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
                 </state>
               </provider>
@@ -133,8 +132,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1200">
-                  <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+                <state relative-caret-position="559">
+                  <caret line="164" column="27" selection-start-line="164" selection-start-column="27" selection-end-line="164" selection-end-column="27" />
                   <folding>
                     <element signature="e#40#53#0#PHP" expanded="true" />
                   </folding>
@@ -229,8 +228,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/StepController.php" />
         <option value="$PROJECT_DIR$/resources/views/steps/detail.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StepController.php" />
       </list>
     </option>
   </component>
@@ -582,12 +581,12 @@
       <workItem from="1558881591117" duration="5312000" />
       <workItem from="1558966768238" duration="42056000" />
       <workItem from="1559321061098" duration="344538000" />
-      <workItem from="1560827889104" duration="24745000" />
+      <workItem from="1560827889104" duration="25004000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="421426000" />
+    <option name="totallyTimeSpent" value="421685000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -985,16 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/steps/detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
@@ -1004,8 +993,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
+        <state relative-caret-position="345">
           <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="164" column="27" selection-start-line="164" selection-start-column="27" selection-end-line="164" selection-end-column="27" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

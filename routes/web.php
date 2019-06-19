@@ -36,7 +36,7 @@ Route::get('ajax/step/{id}', 'Ajax\StepController@index');
 //Route::get('pagination', 'PaginationController@index'); // メイン
 //Route::get('ajax/pagination', 'Ajax\PaginationController@index'); // Ajax
 
-Route::get('/show-profile/{id}', 'UserController@showProfile')->name('profile.show');
+Route::get('/show-profile/{user}', 'UserController@showProfile')->name('profile.show');
 
 
 
