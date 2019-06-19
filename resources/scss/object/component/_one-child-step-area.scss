@@ -1,8 +1,0 @@
-.c-one-child-step-area{
-    display: flex;
-    @include mq(sm) {
-        display: block;
-    }
-
-    margin-top: $space_3l;
-}
