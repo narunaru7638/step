@@ -1,29 +1,4 @@
 .l-main{
-//    background-color: $color_main_light;
-//    padding: 150px 0 $space_4l;
-//    @include mq(sm) {
-//        padding: 120px 0 $space_xl;
-//
-//    }
-//
-//
-//    background-color: $color_grey_light;
-//
-//    width: 100%;
-//
-//
-//    &--2column{
-//        width: 80%;
-//
-//        @include mq(sm) {
-//            width: 80%;
-//            width: 90%;
-//
-//            margin: 0 auto;
-//
-//        }
-//
-//    }
     width: 70%;
     padding-right: $space_5l;
     @include mq(sm) {
@@ -48,6 +23,17 @@
     &__text{
         font-size: $font-size_m;
         margin-bottom: $space_3l;
+    }
+
+    &__toppage-text{
+        letter-spacing: 0.08em;
+        margin-bottom: $space_8l;
+
+    }
+
+    &__font-empha{
+        color: $color_main;
+        font-weight: bold;
     }
 
 }

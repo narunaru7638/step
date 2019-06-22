@@ -217,6 +217,12 @@ img {
   .l-main__text {
     font-size: 16px;
     margin-bottom: 40px; }
+  .l-main__toppage-text {
+    letter-spacing: 0.08em;
+    margin-bottom: 90px; }
+  .l-main__font-empha {
+    color: #ACB6E5;
+    font-weight: bold; }
 
 .l-sidebar {
   width: 30%; }
@@ -317,6 +323,10 @@ img {
     text-align: center;
     font-size: 38px;
     font-family: 'Georgia', serif; }
+    .c-container__title--toppage {
+      margin: 40px 0;
+      color: #ACB6E5;
+      font-weight: bold; }
   .c-container__sub-title {
     text-align: center;
     font-size: 11px; }
@@ -760,6 +770,8 @@ img {
       color: rgba(0, 0, 0, 0.87); }
     .c-pagination__link:hover {
       color: rgba(0, 0, 0, 0.87); }
+  .c-pagination__list-item {
+    color: rgba(0, 0, 0, 0.87); }
 
 .c-alert {
   margin: 40px 0 40px;

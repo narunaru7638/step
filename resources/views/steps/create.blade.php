@@ -19,6 +19,7 @@
 
                 <form class="c-form action="{{ route('steps.create') }}" method="post" enctype="multipart/form-data">
                     @csrf
+
                     <div class="c-form__input-area">
                         <label for="step_title" class="c-form__label">STEP名</label>
                         <input type="text" class="c-form__input" name="step_title" id="step_title" value="{{ old('step_title') }}">
@@ -28,6 +29,7 @@
                             @endforeach
                         @endif
                     </div>
+
                     <div class="c-form__input-area">
                         <label for="step_content" class="c-form__label">STEP説明</label>
                         <textarea cols="30" rows="10" name="step_content" id="step_content" class="c-form__input c-form__textarea">{{ old('step_content') }}</textarea>
@@ -37,6 +39,7 @@
                             @endforeach
                         @endif
                     </div>
+
                     <div class="c-form__input-area" style="overflow:hidden;">
                         <label for="step_img" class="c-form__label">STEPイメージ画像</label>
                         <label for="step_img" class="c-form__area-drop js-area-drop" >画像をドラッグ＆ドロップ
@@ -84,6 +87,7 @@
                         <div class="c-form__childstep-form">
                             {{--子STEP1--}}
                             <h4 class="c-form__sub-title">STEP{{$step_num}}</h4>
+
                             <div class="c-form__input-area">
                                 <label for="childstep{{$step_num}}_title" class="c-form__label">STEP{{$step_num}}名</label>
                                 <input type="text" class="c-form__input" name="childstep{{$step_num}}_title" id="childstep{{$step_num}}_title" value="{{ old('childstep'.$step_num.'_title') }}">
@@ -93,6 +97,7 @@
                                     @endforeach
                                 @endif
                             </div>
+
                             <div class="c-form__input-area">
                                 <label for="childstep{{$step_num}}_content" class="c-form__label">STEP{{$step_num}}説明</label>
                                 <textarea name="childstep{{$step_num}}_content" id="childstep{{$step_num}}_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep'.$step_num.'_content') }}</textarea>
@@ -102,6 +107,7 @@
                                     @endforeach
                                 @endif
                             </div>
+
                             <div class="c-form__input-area" style="overflow:hidden;">
                                 <label for="childstep{{$step_num}}_img" class="c-form__label">STEP{{$step_num}}イメージ画像</label>
                                 <label for="childstep{{$step_num}}_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">画像をドラッグ＆ドロップ
@@ -114,6 +120,7 @@
                                     @endforeach
                                 @endif
                             </div>
+
                             <div class="c-form__input-area">
                                 <label for="childstep{{$step_num}}_required-time" class="c-form__label">STEP{{$step_num}}所要時間</label>
                                 <input type="number" step="1" min="1" max="255" class="c-form__input" name="childstep{{$step_num}}_required-time" id="childstep{{$step_num}}_required-time" value="{{ old('childstep'.$step_num.'_required-time') }}">
@@ -126,8 +133,11 @@
                         </div>
                     </div>
                     @endforeach
+
                     <input type="submit" class="c-btn c-form__submit">
+
                 </form>
+
             </main>
         </div>
     </div>

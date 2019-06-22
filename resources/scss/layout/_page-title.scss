@@ -1,21 +1,16 @@
 .l-page-title{
   width: $site-width_pc;
   @include mq() {
-    //width: 640px;
     width: 100%;
   }
 
   margin: 0 auto;
-  //text-align: center;
   padding: $space_3l 0 ;
 
   &__title{
     text-align: center;
     font-size: $font-size_xxl;
     font-family: 'Georgia', serif;
-    //width: 300px;
-    //min-width: 200px;
-    //max-width: 400px;
     margin: $space_m auto 0;
 
     color: $color_main;//非対応のブラウザでの文字色を設定

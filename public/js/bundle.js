@@ -304,30 +304,35 @@ var _vue2 = _interopRequireDefault(_vue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//カードタイプのSTEP表示のテンプレート
 _vue2.default.component('v-card', {
     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'category_id', 'user_name', 'user_id'],
 
     template: '\n        <div class="c-article-card">\n            <a v-bind:href="\'/detail-steps/\'+id">\n                <img class="c-article-card__img" v-if="pic_img !== null" v-bind:src="\'/storage/\'+pic_img" alt="" >\n                <img class="c-article-card__img" v-if="pic_img === null" v-bind:src="\'/storage/sample-img.png\'" alt="" >\n            </a>\n            <div class="c-article-card__info">\n                <a :href="\'/show-steps/\'+category_id"><p class="c-article-card__category">{{category_name}}</p></a>\n                <a v-bind:href="\'/show-profile/\'+user_id"><p class="c-article-card__username">{{user_name}}</p></a>\n                <p class="c-article-card__date">{{created_at}}</p>\n            </div>\n            <a v-bind:href="\'/detail-steps/\'+id"><p class="c-article-card__title">{{title}}</p></a>\n        </div>\n'
 });
 
+//リストタイプのSTEP表示のテンプレート
 _vue2.default.component('v-list', {
     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'category_id', 'user_name', 'user_id'],
 
     template: '\n        <div class="c-article-list">\n            <a class="c-article-list__img" v-bind:href="\'/detail-steps/\'+id">\n                <img v-if="pic_img !== null" v-bind:src="\'/storage/\'+pic_img" alt="" >\n                <img v-if="pic_img === null" v-bind:src="\'/storage/sample-img.png\'" alt="" >\n            </a>\n            <div class="c-article-list__content">\n                <div class="c-article-list__info">\n                    <a :href="\'/show-steps/\'+category_id"><p class="c-article-list__category" >{{category_name}}</p></a>\n                    <a v-bind:href="\'/show-profile/\'+user_id"><p class="c-article-list__username" >{{user_name}}</p></a>\n                    <p class="c-article-list__date" >{{created_at}}</p>\n                </div>\n                <a v-bind:href="\'/detail-steps/\'+id"><p class="c-article-list__title" >{{title}}</p></a>\n            </div>\n        </div>\n'
 });
 
+//ページネーションのテンプレート
 _vue2.default.component('v-pagination', {
     props: {
         data: {} // paginate()で取得したデータ
     },
     methods: {
+        //ページリンクがクリックされたらmove(page)を実行するメソッド
+        //move(page)の内部ではmove-pageという独自のイベントを呼び出し側に通知
         move: function move(page) {
             if (!this.isCurrentPage(page)) {
                 this.$emit('move-page', page);
             }
         },
         isCurrentPage: function isCurrentPage(page) {
-            return this.data.current_page == page; // 独自イベントを送出
+            return this.data.current_page == page; // laravelでpaginate()を利用したときに用意されるcurrent_page(現在のページ番号)
         },
         getPageClass: function getPageClass(page) {
             var classes = ['page-item'];
@@ -338,12 +343,17 @@ _vue2.default.component('v-pagination', {
         }
     },
     computed: {
+        // 「前へ」を表示するかどうかを判断する疑似変数
         hasPrev: function hasPrev() {
             return this.data.prev_page_url != null;
         },
+
+        // 「次へ」を表示するかどうかを判断する疑似変数
         hasNext: function hasNext() {
             return this.data.next_page_url != null;
         },
+
+        //ページの数が配列になって返ってくる
         pages: function pages() {
             var pages = [];
             for (var i = 1; i <= this.data.last_page; i++) {
@@ -366,13 +376,16 @@ new _vue2.default({
         getSteps: function getSteps() {
             var _this = this;
 
-            console.log(this.category);
+            //カテゴリーIDが取得できなかった場合
             if (isNaN(this.category)) {
+                //AjaxでSTEPデータを取得
                 var ajax_url = '/ajax/step?page=' + this.page;
                 axios.get(ajax_url).then(function (response) {
                     _this.items = response.data;
                 });
+                //カテゴリーIDが取得できた場合
             } else {
+                //AjaxでSTEPデータを取得
                 var _ajax_url = '/ajax/step/' + this.category + '?page=' + this.page;
                 axios.get(_ajax_url).then(function (response) {
                     _this.items = response.data;
@@ -380,19 +393,20 @@ new _vue2.default({
             }
         },
         movePage: function movePage(page) {
-            this.page = page;
-            this.getSteps();
+            this.page = page; //pageをthis.pageに代入
+            this.getSteps(); //STEP情報をAjaxで取得する
         },
         getCategoryId: function getCategoryId() {
-            var url_param_category = location.href;
-            var index = url_param_category.indexOf('show-steps');
-            var category_id = url_param_category.slice(index + 11);
-            this.category = parseInt(category_id);
+            //URLの「show-steps/」以降をカテゴリーIDとして取得する
+            var url_param_category = location.href; //URLの文字列を取得
+            var index = url_param_category.indexOf('show-steps'); //URLの文字列の「show-steps」の開始位置を取得
+            var category_id = url_param_category.slice(index + 11); //「show-steps」のあとの文字を取得(show-steps/以降なので11文字分飛ばす)
+            this.category = parseInt(category_id); //取得した文字を変数categoryに保存
         }
     },
     mounted: function mounted() {
-        this.getCategoryId();
-        this.getSteps();
+        this.getCategoryId(); //ページが読み込まれたときにカテゴリーIDを取得
+        this.getSteps(); //ページが読み込まれたときにステップデータを取得
     },
 
     routes: [

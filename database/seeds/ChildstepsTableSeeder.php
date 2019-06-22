@@ -25,15 +25,10 @@ class ChildstepsTableSeeder extends Seeder
                     'title' => $step->title."サンプル子ステップ {$num}",
                     'content' => "sample content",
                     'number_of_step' => $num,
-    //                'time_required'=> 100,
-    //                'pic_img' => '1234',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
-
-
                 ]);
             }
         }
-
     }
 }

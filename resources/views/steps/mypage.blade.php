@@ -40,7 +40,6 @@
                     @endforeach
                 </div>
 
-
                 <div class="c-article-area-type-list">
                     <h3 class="c-article-area-type-list__title">あなたの投稿したSTEP</h3>
                     @foreach($steps_my_regist as $key=>$step_my_regist)
@@ -58,14 +57,9 @@
                     @endforeach
                 </div>
 
-
             </main>
             @include('partials.sidebar')
-
-
         </div>
-
     </div>
-
 </div>
 @endsection

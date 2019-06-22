@@ -11,6 +11,5 @@ class ChallengesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
     }
 }

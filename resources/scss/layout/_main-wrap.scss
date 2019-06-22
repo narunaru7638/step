@@ -1,15 +1,7 @@
 .l-main-wrap{
-    //width: $site-width_pc;
-    
-    //@include mq(sm) {
-    //    width: 100vw;
-    //
-    //}
-    
     display: flex;
     @include mq(sm) {
         display: block;
     }
 
-    //margin: 0 auto;
 }

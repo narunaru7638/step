@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+//カードタイプのSTEP表示のテンプレート
 Vue.component('v-card', {
     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name', 'category_id', 'user_name', 'user_id'],
 
@@ -19,6 +20,7 @@ Vue.component('v-card', {
 `
 })
 
+//リストタイプのSTEP表示のテンプレート
 Vue.component('v-list', {
     props: ['index', 'id', 'title', 'created_at', 'pic_img', 'category_name','category_id', 'user_name', 'user_id'],
 
@@ -40,18 +42,21 @@ Vue.component('v-list', {
 `
 })
 
+//ページネーションのテンプレート
 Vue.component('v-pagination', {
     props: {
         data: {}  // paginate()で取得したデータ
     },
     methods: {
+        //ページリンクがクリックされたらmove(page)を実行するメソッド
+        //move(page)の内部ではmove-pageという独自のイベントを呼び出し側に通知
         move(page) {
             if(!this.isCurrentPage(page)) {
                 this.$emit('move-page', page);
             }
         },
         isCurrentPage(page) {
-            return (this.data.current_page == page); // 独自イベントを送出
+            return (this.data.current_page == page);// laravelでpaginate()を利用したときに用意されるcurrent_page(現在のページ番号)
         },
         getPageClass(page) {
             let classes = ['page-item'];
@@ -62,12 +67,15 @@ Vue.component('v-pagination', {
         }
     },
     computed: {
+        // 「前へ」を表示するかどうかを判断する疑似変数
         hasPrev() {
             return (this.data.prev_page_url != null);
         },
+        // 「次へ」を表示するかどうかを判断する疑似変数
         hasNext() {
             return (this.data.next_page_url != null);
         },
+        //ページの数が配列になって返ってくる
         pages() {
             let pages = [];
             for(let i = 1 ; i <= this.data.last_page ; i++) {
@@ -102,14 +110,17 @@ new Vue({
     },
     methods: {
         getSteps() {
-            console.log(this.category);
+            //カテゴリーIDが取得できなかった場合
             if(isNaN(this.category)){
+                //AjaxでSTEPデータを取得
                 const ajax_url = '/ajax/step?page='+ this.page;
                 axios.get(ajax_url)
                     .then(response => {
                         this.items = response.data;
                     });
+            //カテゴリーIDが取得できた場合
             }else{
+                //AjaxでSTEPデータを取得
                 const ajax_url = '/ajax/step/'+this.category+'?page='+ this.page;
                 axios.get(ajax_url)
                     .then(response => {
@@ -118,19 +129,20 @@ new Vue({
             }
         },
         movePage(page) {
-            this.page = page;
-            this.getSteps();
+            this.page = page;//pageをthis.pageに代入
+            this.getSteps();//STEP情報をAjaxで取得する
         },
         getCategoryId(){
-            let url_param_category  = location.href;
-            let index = url_param_category.indexOf('show-steps');
-            let category_id = url_param_category.slice(index + 11);
-            this.category = parseInt(category_id);
+            //URLの「show-steps/」以降をカテゴリーIDとして取得する
+            let url_param_category  = location.href;//URLの文字列を取得
+            let index = url_param_category.indexOf('show-steps');//URLの文字列の「show-steps」の開始位置を取得
+            let category_id = url_param_category.slice(index + 11);//「show-steps」のあとの文字を取得(show-steps/以降なので11文字分飛ばす)
+            this.category = parseInt(category_id);//取得した文字を変数categoryに保存
         }
     },
     mounted() {
-        this.getCategoryId();
-        this.getSteps();
+        this.getCategoryId();//ページが読み込まれたときにカテゴリーIDを取得
+        this.getSteps();//ページが読み込まれたときにステップデータを取得
     },
     routes: [
         // コロンで始まる動的セグメント

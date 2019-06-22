@@ -1,15 +1,14 @@
 <div class="l-sidebar l-sidebar--left">
+
     <div class="l-sidebar__container">
         <h2 class="l-sidebar__title">WHATS NEW</h2>
         <h3 class="l-sidebar__sub-title">最新情報</h3>
         <div class="l-sidebar__content">
             @foreach($steps_new as $key=>$step_new)
                 @if( $key <= 4 )
-
                     <div class="c-article-list c-article-list--small">
                         <icon class="c-article-list__icon c-article-list__icon-small">NEW</icon>
                         <a class="c-article-list__img c-article-list__img--small" href="{{ route('steps.detail', ['id' => $step_new->getId()]) }}"><img src="/storage/{{ $step_new->getPicImg() }}" alt=""></a>
-
                         <div class="c-article-list__content c-article-list__content--small">
                             <div class="c-article-list__info c-article-list__info--small">
                                 <a href="{{ route('steps.index', ['id' => $step_new->getCategoryId()]) }}"><p class="c-article-list__category c-article-list__category--small">{{ $step_new->getCategoryName() }}</p></a>
@@ -23,6 +22,7 @@
             @endforeach
         </div>
     </div>
+
     <div class="l-sidebar__container">
         <h2 class="l-sidebar__title">RANKING</h2>
         <h3 class="l-sidebar__sub-title">人気のSTEP</h3>
@@ -45,6 +45,5 @@
             @endforeach
         </div>
     </div>
-
 
 </div>

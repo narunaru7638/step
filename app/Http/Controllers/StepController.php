@@ -13,12 +13,13 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-
 class StepController extends Controller
 {
 
+    //カテゴリー指定しなかった場合のSTEP一覧表示
     public function index()
     {
+        //サイドバー用の情報の取得
         $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
         $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
 
@@ -28,8 +29,11 @@ class StepController extends Controller
         ]);
     }
 
+
+    //カテゴリー指定した場合のSTEP一覧表示
     public function categoryIndex(Step $step)
     {
+        //サイドバー用の情報の取得
         $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
         $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
 
@@ -40,16 +44,17 @@ class StepController extends Controller
     }
 
 
+    //STEP詳細表示
     public function detail(Step $step)
     {
-        //sidebar用のstepsデータを取得
+        //サイドバー用の情報の取得
         $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
         $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
 
-        //すでにチャレンジ済みかデータを取得して確認
+        //指定されたIDのSTEPデータを取得
         $step_detail = Step::find($step->id);
 
-
+        //
         if(Auth::check()){
             $challenge_exists_flg = DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $step->id)->exists();
             if( $challenge_exists_flg ) {
@@ -87,12 +92,10 @@ class StepController extends Controller
                 'step_detail' => $step_detail,
             ]);
         }
-
-
-
-
     }
 
+
+    //STEPにチャレンジしたとき
     public function challenge(Step $step)
     {
          //すでにチャレンジ情報がDBにあるか確認
@@ -100,23 +103,24 @@ class StepController extends Controller
                                         ->where('step_id', $step->id)
                                         ->first();
 
-        //チャレンジ情報がDBにあって、まだリタイアしていない場合、リタイアボタンが押されたとして、delete_flg=1にする
+        //チャレンジ情報がDBにあって、かつdelete_flg=0の場合、チャレンジをやめるボタンが押されたとして、delete_flg=1にする
         if($challenge_check && $challenge_check->delete_flg == 0){
             $challenge = Challenge :: where('step_id', $step->id)->first();
             $challenge->delete_flg = 1;
             $challenge->save();
-        //チャレンジ情報がDBにあって、すでにリタイアしている場合、再度チャレンジボタンが押されたとして、delete_flg=0にする
+
+        //チャレンジ情報がDBにあって、かつdelete_flg=1の場合、チャレンジするボタンが押されたとして、delete_flg=0にする
         }elseif($challenge_check && $challenge_check->delete_flg == 1) {
             $challenge = Challenge :: where('step_id', $step->id)->first();
             $challenge->delete_flg = 0;
             $challenge->save();
+
         //チャレンジ情報がDBにない場合、新規にチャレンジ情報を登録
         }else{
             $challenge = new Challenge();
             $challenge->user_id = Auth::user()->id;
             $challenge->step_id = $step->id;
             $challenge->save();
-
 
             //チャレンジ情報と共にクリア情報も作成する
             $childsteps = Childstep::where('step_id', $step->id)->get();
@@ -130,23 +134,18 @@ class StepController extends Controller
             $step_challenge = Step::where('id',$step->id)->first();
             $step_challenge->number_of_challenger ++;
             $step_challenge->save();
-
         }
 
-
-
-
         return redirect()->route('steps.index', ['id' => 0 ]);
+
     }
 
+
+    //STEPをクリアしたとき
     public function clear(Challenge $challenge, Childstep $childstep)
     {
         //すでにクリア情報がDBにあるか確認
         $clear_check = Clear :: where('childstep_id', $childstep->id)->first();
-//        dd($clear_check);
-
-
-
 
         //クリア情報がDBにあって、まだクリアしていない場合、STEPクリアボタンが押されたとして、complete_flg=1にする
         if($clear_check && $clear_check->complete_flg == 0){
@@ -154,14 +153,13 @@ class StepController extends Controller
             $clear->complete_flg = 1;
             $clear->save();
 
-
-
-            //クリア情報がDBにあって、すでにクリアしている場合、クリア解除ボタンが押されたとして、complete_flg=0にする
+        //クリア情報がDBにあって、すでにクリアしている場合、クリア解除ボタンが押されたとして、complete_flg=0にする
         }elseif($clear_check && $clear_check->complete_flg == 1) {
             $clear = Clear :: where('childstep_id', $childstep->id)->first();
             $clear->complete_flg = 0;
             $clear->save();
-            //クリア情報がDBにない場合、新規にクリア情報を登録
+
+        //クリア情報がDBにない場合、新規にクリア情報を登録
         }else{
             $clear = new Clear();
             $clear->challenge_id = $challenge->id;
@@ -169,52 +167,26 @@ class StepController extends Controller
             $clear->save();
         }
 
+        //クリアした子STEPの数をカウントする
         $number_of_clears = Clear :: where('challenge_id', $challenge->id)->where('complete_flg', 1)->count();
 
-//        dd($number_of_clears);
-
+        //クリアした子STEPの数が3個ならcomplete_flgを立てる(complete_flg=1)
         if($number_of_clears === 3){
             $challenge_of_clear = Challenge :: where('id', $challenge->id)->first();
             $challenge_of_clear->complete_flg = 1;
             $challenge_of_clear->save();
-
-
         }else{
             $challenge_of_clear = Challenge :: where('id', $challenge->id)->first();
             $challenge_of_clear->complete_flg = 0;
             $challenge_of_clear->save();
         }
 
-//        foreach( $clears as $clear){
-//            $clear_check = $clear->complete_flg;
-////            dd($clear_check);
-//
-//
-//        }
-
         return redirect()->route('steps.index', ['id' => 0 ]);
-        //
-//        //チャレンジ情報がDBにあって、まだリタイアしていない場合、リタイアボタンが押されたとして、delete_flg=1にする
-//        if($challenge_check && $challenge_check->delete_flg == 0){
-//            $challenge = Challenge :: where('step_id', $id)->first();
-//            $challenge->delete_flg = 1;
-//            $challenge->save();
-//            //チャレンジ情報がDBにあって、すでにリタイアしている場合、再度チャレンジボタンが押されたとして、delete_flg=0にする
-//        }elseif($challenge_check && $challenge_check->delete_flg == 1) {
-//            $challenge = Challenge :: where('step_id', $id)->first();
-//            $challenge->delete_flg = 0;
-//            $challenge->save();
-//            //チャレンジ情報がDBにない場合、新規にチャレンジ情報を登録
-//        }else{
-//            $challenge = new Challenge();
-//            $challenge->user_id = Auth::user()->id;
-//            $challenge->step_id = $id;
-//            $challenge->save();
-//        }
-//        return redirect()->route('steps.index');
+
     }
 
 
+    //STEP登録フォームの表示
     public function showCreateForm()
     {
         return view('steps/create');
@@ -229,6 +201,7 @@ class StepController extends Controller
      * @param ProfileRequest $request
      * @return Response
      */
+    //STEP登録のPOST送信処理
     public function create(CreateStep $request)
     {
             //stepモデルのインスタンスを作成する
@@ -240,10 +213,12 @@ class StepController extends Controller
             $step->category_id = $request->step_category;
             $step->user_id = Auth::user()->id;
 
-
+            //STEPイメージ画像が送信されていた場合、画像ファイルを登録する
             if(!empty($request->file('step_img'))) {
+
                 //ファイルの名前をハッシュ化して変数に入れる
                 $file_hash_name = sha1_file($request->file('step_img'));
+
                 //ファイルの拡張子を取得して変数に入れる
                 $file_extension = $request->file('step_img')->getClientOriginalExtension();
 
@@ -260,7 +235,7 @@ class StepController extends Controller
             //インスタンスの状態をデータベースに書き込む
             $step->save();
 
-            //childstepに関する入力値をDBに書き込む
+            //子STEPに関する入力値をDBに書き込む
             for ($i = 1; $i <= 3; $i++) {
                 $childstep = new Childstep();
                 $request_title = 'childstep'.$i.'_title';
@@ -270,12 +245,14 @@ class StepController extends Controller
                 $childstep->step_id = $step->id;
                 $childstep->number_of_step = $i;
 
+                //子STEPイメージ画像が送信されていた場合、画像ファイルを登録する
                 if(!empty($request->file('childstep'.$i.'_img'))){
 
                     $file_input_name = 'childstep'.$i.'_img';
 
                     //ファイルの名前をハッシュ化して変数に入れる
                     $file_hash_name = sha1_file($request->file($file_input_name));
+
                     //ファイルの拡張子を取得して変数に入れる
                     $file_extension = $request->file($file_input_name)->getClientOriginalExtension();
 
@@ -289,40 +266,27 @@ class StepController extends Controller
                     $request->$file_input_name->storeAs('public', $file_save_name);
                 }
 
-
-
                 $childstep->save();
+
             }
 
             return redirect()->route('steps.index', ['id' => 0 ]);
 
     }
 
+
+    //マイページの表示
     public function mypageShow()
     {
-
-        //sidebar用のstepsデータを取得
-//        $steps = Step::orderBy('created_at', 'desc')->get();
+        //サイドバー用の情報の取得
         $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
-
         $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
 
-
+        //自身がチャレンジしているSTEPの情報の取得
         $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->get();
-//        $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->get();
 
-//        $steps_my_challenge->cha
-
+        //自身が登録したSTEPの情報の取得
         $steps_my_regist = Step::where('user_id', Auth::user()->id )->orderBy('created_at', 'desc')->get();
-
-
-//        dd($steps_my_challenge);
-
-//        $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->paginate(10);
-//        $steps_my_regist = Step::where('user_id', Auth::user()->id )->orderBy('created_at', 'desc')->paginate(10);
-
-
-//        dd($steps_my_challenge);
 
         return view('steps/mypage', [
             'steps_new' => $steps_new,
@@ -330,14 +294,8 @@ class StepController extends Controller
             'steps_my_challenge' => $steps_my_challenge,
             'steps_my_regist' => $steps_my_regist,
 
-//            'step' => $step,
-//            'challenge' => $challenge,
-//            'clear' => $clear,
-//            'challenge_exists_flg' => $challenge_exists_flg,
         ]);
 
-
     }
-
 
 }

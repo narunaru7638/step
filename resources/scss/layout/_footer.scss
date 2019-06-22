@@ -1,12 +1,7 @@
 .l-footer{
     width: 100%;
-    //@include mq() {
-    //    width: 100vw;
-    //}
     background-color: $color_black4;
     text-align: center;
-
-    //color: $color_black1;
     padding: $space_4l 0;
 
     &__title{

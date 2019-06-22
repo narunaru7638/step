@@ -1,78 +1,25 @@
 .c-container{
     width: $site-width_pc;
     margin: 0 auto;
-    //text-align: center;
-    //padding: $space_3l 0 ;
     @include mq() {
-        //width: 640px;
         width: 100%;
     }
     &__title{
         text-align: center;
         font-size: $font-size_xxl;
         font-family: 'Georgia', serif;
-    }
 
+        &--toppage{
+            margin: $space_3l 0;
+            color: $color_main;
+            font-weight: bold;
+        }
+    }
 
     &__sub-title{
         text-align: center;
         font-size: $font-size_ss;
-
     }
-
-//    @include mq(sm) {
-//        width: 90%;
-//
-//    }
-//    &--2column{
-//        width: 100%;
-//        @include mq(sm) {
-////            width: 90%;
-//
-//        }
-//
-//    }
-//
-//    //    width: 70%;
-//
-//    margin: 0 auto;
-//    background-color: $color_white1;
-//
-//    border-radius: 5px;
-//
-//
-//
-//    &__title{
-//        border-radius: 5px 5px 0 0;
-//        text-align: center;
-//        font-size: $font-size_3l;
-//        padding: $space_l 0;
-//        vertical-align: middle;
-////        font-family: $font-family_accent;
-//        background-color: $color_main;
-//        color: $color_white1;
-//        font-family: $font-family_sub;
-//    }
-//    &__sub-title{
-//        font-size: $font-size_xxl;
-//        @include mq(sm) {
-//            font-size: $font-size_xl;
-//
-//        }
-//
-//        color: $color_black2;
-//        border-left: 6px solid $color_black2;
-//        margin-left: $space_l;
-//        margin-top: $space_xxl;
-//        padding-left: $space_l;
-//    }
-//
-//
-//
-//
-//    &__body{
-//        padding-bottom: $space_l;
-//    }
 
     
 }

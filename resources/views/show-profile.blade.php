@@ -16,6 +16,7 @@
     <div class="c-container">
         <div class="l-main-wrap">
             <main class="l-main l-main--1column">
+
                 <div class="p-profile-show-area">
                     <div class="p-profile-show-area__one-info">
                         <label for="user-name" class="p-profile-show-area__label">ユーザネーム</label>
@@ -48,17 +49,8 @@
                     @endforeach
                 </div>
 
-
-
             </main>
-
-
-
         </div>
     </div>
-
 </div>
-
-</div>
-
 @endsection

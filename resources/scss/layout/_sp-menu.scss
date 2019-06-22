@@ -1,6 +1,5 @@
 .l-sp-menu{
     display: none;
-    //padding: $space_3l;
 
     @include mq(sm) {
         transform: translateX(-100%);
@@ -9,7 +8,6 @@
         &.active{
             display: block;
             position: fixed;
-            //top: 0;
             bottom: 0;
             left: 0;
             right: 0;
@@ -22,15 +20,12 @@
         background: $color_main;
         background: -webkit-linear-gradient(to right, $color_main, $color_sub);
         background: linear-gradient(to right, $color_main, $color_sub);
-        //
-
         z-index: 9;
 
     }
 
     &__wrap-list{
         background-color: $color_white1;
-        //height: 100%;
         padding: $space_m;
         margin: $space_m;
         border-radius: 5px;
@@ -39,7 +34,6 @@
     &__category-list{
         &-item{
             font-weight: bold;
-            //margin-left: $space_3l;
             border-bottom: solid 1px $color_black3;
             padding: $space_s $space_m;
         }

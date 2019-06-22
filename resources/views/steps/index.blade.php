@@ -4,11 +4,7 @@
     <title>STEP一覧 | STEP</title>
 @endsection
 
-
 @section('content')
-
-
-
 <div class="l-home">
 
     <div class="l-page-title">
@@ -41,5 +37,4 @@
         </div>
     </div>
 </div>
-
 @endsection

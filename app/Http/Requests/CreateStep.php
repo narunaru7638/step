@@ -24,7 +24,6 @@ class CreateStep extends FormRequest
     public function rules()
     {
         return [
-            //
             'step_title' => 'required|max:255',
             'step_content' => 'required|max:255',
             'step_img' => 'file|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -45,7 +44,6 @@ class CreateStep extends FormRequest
             'childstep3_content' => 'required|max:255',
             'childstep3_img' => 'file|image|mimes:jpeg,png,jpg,gif|max:2048',
             'childstep3_required-time' => 'nullable|integer|max:255',
-
         ];
     }
 
@@ -72,7 +70,6 @@ class CreateStep extends FormRequest
             'childstep3_content' => 'STEP3説明',
             'childstep3_img' => 'STEP3イメージ画像',
             'childstep3_required-time' => 'STEP3所要時間',
-
         ];
     }
 }
