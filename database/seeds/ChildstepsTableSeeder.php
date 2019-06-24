@@ -22,8 +22,8 @@ class ChildstepsTableSeeder extends Seeder
             foreach( range(1,3) as $num) {
                 DB::table('childsteps')->insert([
                     'step_id' => $step->id,
-                    'title' => $step->title."サンプル子ステップ {$num}",
-                    'content' => "sample content",
+                    'title' => $step->title."STEP {$num}",
+                    'content' => "サンプルコンテント",
                     'number_of_step' => $num,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),

@@ -7,7 +7,7 @@
 @section('content')
     <div class="l-home">
         <div class="l-top-banner">
-            <img src="img/programming.jpg" alt="" class="l-top-banner__img">
+            <img src="img/topbaner.jpg" alt="" class="l-top-banner__img">
         </div>
 
         <div class="c-container">

@@ -31,7 +31,9 @@
                 @if( $key <= 4 )
                     <div class="c-article-list c-article-list--small">
                         <icon class="c-article-list__icon c-article-list__icon--small">{{ $key+1 }}</icon>
+{{--                        <a href="{{ route('steps.detail', ['id' => $step_rank->getId()]) }}" class="c-article-list__img c-article-list__img--small"><img src="/storage/{{ $step_rank->getPicImg() }}" alt=""></a>--}}
                         <a href="{{ route('steps.detail', ['id' => $step_rank->getId()]) }}" class="c-article-list__img c-article-list__img--small"><img src="/storage/{{ $step_rank->getPicImg() }}" alt=""></a>
+
                         <div class="c-article-list__content c-article-list__content--small">
                             <div class="c-article-list__info c-article-list__info--small">
                                 <a href="{{ route('steps.index', ['id' => $step_rank->getCategoryId()]) }}"><p class="c-article-list__category c-article-list__category--small">{{ $step_rank->getCategoryName() }}</p></a>

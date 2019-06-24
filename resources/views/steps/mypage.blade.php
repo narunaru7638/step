@@ -44,7 +44,7 @@
                     <h3 class="c-article-area-type-list__title">あなたの投稿したSTEP</h3>
                     @foreach($steps_my_regist as $key=>$step_my_regist)
                         <div class="c-article-list">
-                            <a class="c-article-list__img" href="{{ route('steps.detail', ['id' => $step_my_regist->getId()]) }}"><img src="/storage/{{ $step_my_challenge->getPicImg() }}" alt="" ></a>
+                            <a class="c-article-list__img" href="{{ route('steps.detail', ['id' => $step_my_regist->getId()]) }}"><img src="/storage/{{ $step_my_regist->getPicImg() }}" alt="" ></a>
                             <div class="c-article-list__content">
                                 <div class="c-article-list__info">
                                     <a href="{{ route('steps.index', ['id' => $step_my_regist->getCategoryId()]) }}"><p class="c-article-list__category">{{ $step_my_regist->getCategoryName() }}</p></a>
