@@ -28,7 +28,7 @@ class EditProfile extends FormRequest
         return [
             'name' => 'required|string|max:255|unique:users,name,'.Auth::user()->name.',name',
             'email' => 'required|string|email|max:255|unique:users,email,'.Auth::user()->email.',email',
-            'profile' => 'string|max:255',
+            'profile' => 'nullable|string|max:255',
             'pic_icon' => 'max:255'
         ];
     }

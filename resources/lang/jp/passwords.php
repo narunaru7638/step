@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'password' => 'Passwords must be at least eight characters and match the confirmation.',
-    'reset' => 'Your password has been reset!',
+    'password' => 'パスワードは8文字以上で、パスワード(再入力)と一致している必要があります。',
+    'reset' => 'パスワードを再設定しました。',
     'sent' => 'パスワード変更/再発行用のメールを、入力されたメールアドレスにお送りしました。',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that e-mail address.",
+    'token' => 'トークンが無効です。',
+    'user' => "入力されたメールアドレスのユーザーは見つかりませんでした。",
 
 ];

@@ -23,7 +23,7 @@
 
                         <div class="c-form__input-area">
                             <label for="user-name" class="c-form__label">emailアドレス</label>
-                            <input type="text" class="c-form__input" name="email" id="email" />
+                            <input type="text" class="c-form__input" name="email" id="email" value="{{ old('email') }}" />
                             @if($errors->any())
                                 @foreach($errors->get('email') as $message)
                                     <p class="c-form__err-msg">{{$message}}</p>

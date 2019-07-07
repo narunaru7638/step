@@ -34,19 +34,23 @@ class UserController extends Controller
         $user->pic_icon = $request->pic_icon;
 
         //ファイルの名前をハッシュ化して変数に入れる
-        $file_hash_name = sha1_file($request->file('pic_icon'));
+        if(!empty($request->file('pic_icon'))) {
 
-        //ファイルの拡張子を取得して変数に入れる
-        $file_extension = $request->file('pic_icon')->getClientOriginalExtension();
 
-        //DBに保存するファイル名を作成して変数に入れる
-        $file_save_name = $file_hash_name . '.' . $file_extension;
+            $file_hash_name = sha1_file($request->file('pic_icon'));
 
-        //DBにファイル名を保存する
-        $user->pic_icon = $file_save_name;
+            //ファイルの拡張子を取得して変数に入れる
+            $file_extension = $request->file('pic_icon')->getClientOriginalExtension();
 
-        //storageに画像ファイルを保存する
-        $request->pic_icon->storeAs('public', $file_save_name);
+            //DBに保存するファイル名を作成して変数に入れる
+            $file_save_name = $file_hash_name . '.' . $file_extension;
+
+            //DBにファイル名を保存する
+            $user->pic_icon = $file_save_name;
+
+            //storageに画像ファイルを保存する
+            $request->pic_icon->storeAs('public', $file_save_name);
+        }
 
         $user->save();
 

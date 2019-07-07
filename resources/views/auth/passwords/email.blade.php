@@ -26,7 +26,12 @@
                         @csrf
                         <div class="c-form__input-area">
                             <label for="email" class="c-form__label">emailアドレス</label>
-                            <input type="text" class="c-form__input" name="email" id="email">
+                            <input type="text" class="c-form__input" name="email" id="email" value="{{ old('email') }}">
+                            @if($errors->any())
+                                @foreach($errors->get('email') as $message)
+                                    <p class="c-form__err-msg">{{$message}}</p>
+                                @endforeach
+                            @endif
                         </div>
                         <input type="submit" class="c-btn c-form__submit">
                         <div class="c-form__sub-msg c-form__sub-msg--position-left"><a href="{{ route('login') }}" class="c-form__link">&#171;ログイン画面に戻る</a></div>

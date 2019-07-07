@@ -58,12 +58,12 @@
                             <label for="step_category" class="c-form__label">カテゴリー</label>
                             <select class="c-form__input c-form__input--select" name="step_category" id="step_category" value="{{ old('step_category') }}">
                                 <option value="1" @if(old('step_category') == 1 ) selected  @endif>未登録</option>
-                                <option value="4" @if(old('step_category') == 4 ) selected  @endif>ビジネス</option>
-                                <option value="2" @if(old('step_category') == 2 ) selected  @endif>プログラミング</option>
-                                <option value="3" @if(old('step_category') == 3 ) selected  @endif>ダイエット</option>
+                                <option value="2" @if(old('step_category') == 2 ) selected  @endif>ビジネス</option>
+                                <option value="3" @if(old('step_category') == 3 ) selected  @endif>プログラミング</option>
+                                <option value="4" @if(old('step_category') == 4 ) selected  @endif>ダイエット</option>
                                 <option value="5" @if(old('step_category') == 5 ) selected  @endif>英語</option>
-                                <option value="7" @if(old('step_category') == 7 ) selected  @endif>スポーツ</option>
-                                <option value="6" @if(old('step_category') == 6 ) selected  @endif>資格</option>
+                                <option value="6" @if(old('step_category') == 6 ) selected  @endif>スポーツ</option>
+                                <option value="7" @if(old('step_category') == 7 ) selected  @endif>資格</option>
                             </select>
                             @if($errors->any())
                                 @foreach($errors->get('step_category') as $message)

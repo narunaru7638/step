@@ -57,7 +57,7 @@
                         <ul class="l-sp-menu__nav">
                             @if(Auth::check())
                                 <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="{{ route('steps.create') }}">STEP登録</a></li>
-                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="">マイページ</a></li>
+                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="{{ route('mypage.show') }}">マイページ</a></li>
                                 <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" id="logout-button-sp-menu" href="#">ログアウト</a></li>
                                 <form id="logout-form-sp-menu" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -71,8 +71,8 @@
                         </ul>
                         <ul class="l-sp-menu__nav">
                             @if(Auth::check())
-                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="">プロフィール</a></li>
-                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="">パスワード変更</a></li>
+                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="{{ route('profile.edit') }}">プロフィール</a></li>
+                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="{{ route('password.edit') }}">パスワード変更</a></li>
                             @endif
                         </ul>
                     </nav>

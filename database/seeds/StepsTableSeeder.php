@@ -27,7 +27,7 @@ class StepsTableSeeder extends Seeder
                     $pic_img = $pic_img_temp[$key].rand(1,4).'.jpg';
                 }else{
                     $pic_img = null;
-                };
+};
 
                 DB::table('steps')->insert([
                     'title' => $category->name.$title,
