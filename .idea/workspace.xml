@@ -2,38 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cc22d13-6615-47be-b2c0-42af5d28d184" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/scss/object/component/_input-progress-form.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/object/component/_progress.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/progress/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Challenge.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Challenge.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Childstep.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Childstep.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StepController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StepController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateStep.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateStep.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Step.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Step.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_10_235909_create_clears_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ChallengesTableSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ChildstepsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ChildstepsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/foundation/_color.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/foundation/_color.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_article-card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_article-card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_article-list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_article-list.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_btn.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_btn.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_detail-childstep.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_detail-childstep.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_menu-hamburger.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_menu-hamburger.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_nav.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/steps/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/steps/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/steps/mypage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/mypage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/public/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,15 +36,6 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="355">
-                  <caret line="114" column="18" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/views/steps/index.blade.php">
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
@@ -80,8 +43,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/js/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="933">
-                  <caret line="155" selection-start-line="155" selection-end-line="155" />
+                <state relative-caret-position="415">
+                  <caret line="205" column="54" selection-start-line="205" selection-start-column="54" selection-end-line="205" selection-end-column="54" />
+                  <folding>
+                    <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -91,10 +57,19 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="575">
+                  <caret line="137" selection-start-line="137" selection-end-line="137" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="309" lean-forward="true" selection-start-line="309" selection-end-line="309" />
+                <state relative-caret-position="4485">
+                  <caret line="309" selection-start-line="309" selection-end-line="309" />
                   <folding>
                     <element signature="e#40#53#0#PHP" expanded="true" />
                   </folding>
@@ -187,7 +162,6 @@
         <option value="$PROJECT_DIR$/resources/scss/object/component/_detail-childstep.scss" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_input-progress-form.scss" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_form.scss" />
-        <option value="$PROJECT_DIR$/resources/views/steps/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/StepController.php" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_article-card.scss" />
         <option value="$PROJECT_DIR$/resources/views/steps/detail.blade.php" />
@@ -199,6 +173,7 @@
         <option value="$PROJECT_DIR$/app/Progress.php" />
         <option value="$PROJECT_DIR$/resources/views/steps/mypage.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/views/steps/create.blade.php" />
       </list>
     </option>
   </component>
@@ -578,12 +553,13 @@
       <workItem from="1562080930913" duration="218000" />
       <workItem from="1562172957080" duration="959000" />
       <workItem from="1562342608877" duration="41156000" />
-      <workItem from="1562807774545" duration="49931000" />
+      <workItem from="1562807774545" duration="50602000" />
+      <workItem from="1563111256249" duration="6787000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="571778000" />
+    <option name="totallyTimeSpent" value="579236000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -598,7 +574,7 @@
     <frame x="-1920" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24174654" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24440895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -845,13 +821,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/scss/object/utility/_none-border-bottom.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/scss/object/utility/_none-border-bottom.scss" />
     <entry file="file://$PROJECT_DIR$/resources/views/steps/mypage.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
@@ -918,13 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="114" column="18" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/scss/object/component/_article-card.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -979,8 +942,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="309" lean-forward="true" selection-start-line="309" selection-end-line="309" />
+        <state relative-caret-position="4485">
+          <caret line="309" selection-start-line="309" selection-end-line="309" />
           <folding>
             <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
@@ -992,8 +955,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="933">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
+        <state relative-caret-position="415">
+          <caret line="205" column="54" selection-start-line="205" selection-start-column="54" selection-end-line="205" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="137" selection-start-line="137" selection-end-line="137" />
         </state>
       </provider>
     </entry>

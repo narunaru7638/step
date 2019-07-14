@@ -153,3 +153,88 @@ new Vue({
 
 
 
+//
+// Vue.component('button-counter', {
+//     // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
+//     data: function () {
+//         return {
+//             count: 0
+//         }
+//     },
+//     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+// })
+// //インスタンス化する
+//
+// new Vue({el: '#app7'})
+
+
+Vue.component('v-create-step-form', {
+    // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
+    data: function () {
+        return {
+            count: 0
+        }
+    },
+    props: ['form_id'],
+
+
+    template: `
+        <div class="c-form__childstep-area">
+            <div class="c-form__childstep-form">
+                <h4 class="c-form__sub-title">STEP{{form_id}}</h4>
+                <div class="c-form__input-area">
+                    <label :for="'childstep'+form_id+'_title'" class="c-form__label">STEP{{form_id}}名</label>
+                    <input type="text" class="c-form__input" :name="'childstep'+form_id+'_title'" :id="'childstep'+form_id+'_title'">
+                    <p class="c-form__err-msg">{{$message}}</p>
+                </div>
+                
+                
+                        <div v-bind:class="'/show-profile/'+form_id">test</div>
+
+                <div class="c-form__input-area">
+                    <label :for="'childstep'+form_id+'_content'" class="c-form__label">STEP{{form_id}}説明</label>
+                    <textarea :name="'childstep'+form_id+'_content'" :id="'childstep'+form_id+'_content'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep"></textarea>
+                    <p class="c-form__err-msg">{{$message}}</p>
+                </div>
+
+                <div class="c-form__input-area" style="overflow:hidden;">
+                    <label for="'childstep'+form_id+'_img'" class="c-form__label">STEP{{form_id}}イメージ画像</label>
+                    <label for="'childstep'+form_id+'_img'" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">画像をドラッグ＆ドロップ
+                        <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">
+                        <input type="file" :name="'childstep'+form_id+'_img'" :id="'childstep'+form_id+'_img'" class="c-form__file-input c-form__file-input--childstep js-input-file">
+                    </label>
+                    <p class="c-form__err-msg">{{form_id}}</p>
+                </div>
+
+                <div class="c-form__input-area">
+                    <label for="'childstep'+form_id+'_required-time'" class="c-form__label">STEP{{form_id}}所要時間</label>
+                    <div class="c-form__required-time-input-area">
+                        <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="'childstep'+form_id+'_required-time'" :id="'childstep'+form_id+'_required-time'">
+                        <span class="c-form__required-time-input-area--unit">時間</span>
+                    </div>
+                    <p class="c-form__err-msg">{{$message}}</p>
+                </div>
+            </div>
+        </div>
+`
+
+
+})
+//インスタンス化する
+
+new Vue({
+    el: '#step-create',
+    data: {
+        forms: [
+            {   id: 1,
+            },
+            {   id: 2,
+            },
+            {   id: 3,
+            }
+        ]
+    }
+
+
+
+})
