@@ -1,0 +1,74 @@
+.c-input-progress-form {
+
+
+    @include mq(sm){
+      width: 90%;
+      margin: auto auto;
+    }
+
+
+  &__title{
+        font-size: $font-size_default;
+        font-weight: bold;
+        margin-bottom: $space_xxl;
+
+
+
+    }
+
+    &__working-time{
+        display: flex;
+        justify-content: left;
+
+        vertical-align: middle;
+        line-height: 28px;
+        height: 28px;
+        margin: 0 auto $space_xxl;
+        width: 90%;
+        //text-align: center;
+
+
+        &__heading{
+            font-size: $font-size_s;
+        }
+
+        &__input-area{
+            font-size: $font-size_default;
+          border: solid 1px $color_black1;
+        }
+    }
+
+    &__report{
+        //margin: 0 auto;
+        //width: 80%;
+        //text-align: center;
+        margin-bottom: $space_xxl;
+
+        &__heading{
+            font-size: $font-size_s;
+            width: 90%;
+            margin: 0 auto;
+
+        }
+
+        &__input-area{
+            font-size: $font-size_default;
+            width: 90%;
+            margin: 0 auto;
+            //text-align: center;
+            display: block;
+
+        }
+    }
+
+    &__submit{
+        margin: auto auto;
+        text-align: center;
+        display: block;
+        @include mq(sm){
+            margin-bottom: $space_xxl;
+        }
+
+    }
+
+}

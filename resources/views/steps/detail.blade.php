@@ -63,21 +63,82 @@
                                 </div>
                                 <div class="c-detail-childstep__text">{{ $childstep->getContent() }}</div>
                             </div>
+
+
                         </div>
 
-                        @if( Auth::check())
-                            @if( $challenge_exists_flg && $challenge->delete_flg === 0)
-                                <form class="c-form c-form--childstep-clear" action="{{ route('childsteps.clear', ['challenge_id' => $challenge->id, 'childstep_id' => $childstep->getId() ]) }}" method="post">
-                                    @csrf
-                                    @if( $clear )
-                                        @if( $clear[$key]->complete_flg == 0)
-                                            <input type="submit" class="c-btn c-btn--childstep-clear" value="STEPクリア">
-                                        @else
-                                            <input type="submit" class="c-btn c-btn--childstep-clear" value="クリア解除">
-                                        @endif
-                                    @endif
-                                </form>
+{{--                        @if( !empty($childstep_progress_exists_flg) )--}}
+                        @if( !empty($progress) )
+
+                            <div class="c-progress">
+                                <div class="c-progress__total-working-time">
+                                    <div class="c-progress__total-working-time--title">トータル練習時間：</div>
+                                    <div class="c-progress__total-working-time--content">{{ $progress[$key]->getTotalWorkingTime() }}時間</div>
+
+                                </div>
+
+                                @if($childstep->getTimeRequired())
+                                <div class="c-progress__required-time">
+                                    <div class="c-progress__required-time--title">必要時間：</div>
+                                    <div class="c-progress__required-time--content">{{$childstep->getTimeRequired()}}時間</div>
+                                </div>
+                                @endif
+
+
+                                <div class="c-progress__percentage-achievement">
+                                    <div class="c-progress__percentage-achievement--title">進捗率：</div>
+                                    <div class="c-progress__percentage-achievement--content">{{ $progress[$key]->getPercentageAchievement() }}%</div>
+                                    <progress class="c-progress__progress-bar id="file" max="100" value="{{ $progress[$key]->getPercentageAchievement() }}"></progress>
+                                </div>
+                            </div>
+
+{{--                            <input type="number" class="c-childstep-progress__input-today-progress">--}}
+
+
+
+{{--                            @if( $progress[$key]->reports !== [] )--}}
+{{--                                @if( empty($progress[$key]->reports) )--}}
+{{--                                @if( $progress[$key]->reports )--}}
+
+{{--                                {{ count($progress[$key]->reports)  }}--}}
+{{--                            {{ is_null(count($progress[$key]->reports))  }}--}}
+{{--                            {{ is_null($progress[$key]->reports) }}--}}
+
+                            @if( count($progress[$key]->reports) )
+
+
+
+{{--                                {{ gettype($progress[$key]->reports) }}--}}
+{{--                            {{$progress[$key]->reports}}--}}
+{{--                                {{ empty($progress[$key]->reports) }}--}}
+
+
+                                <div class="c-detail-childstep__report">
+                                    <div class="c-detail-childstep__report--title">
+                                        気付いたこと・学んだこと
+                                    </div>
+
+                                    @foreach ($progress[$key]->reports as $key => $report)
+                                        <div class="c-detail-childstep__report--content">
+                                            {{ $report->content }}
+                                        </div>
+
+                                        <div class="c-detail-childstep__report--date">
+                                            {{ $report->created_at }}
+                                        </div>
+                                    @endforeach
+
+                                </div>
                             @endif
+
+
+                                @if( $progress[$key]->input_possible_flg === 1)
+
+                                    <a href="{{ route('progress.edit', ['id' => $progress[$key]->getId() ] )}}"><div class="c-btn c-detail-childstep__edit-progress-btn">進捗を編集する</div></a>
+                                @endif
+
+
+
                         @endif
 
                     </div>
@@ -88,7 +149,7 @@
                             @csrf
                             @if( $challenge_exists_flg && $challenge->delete_flg === 0 && $challenge->complete_flg === 1)
                             @elseif( $challenge_exists_flg && $challenge->delete_flg === 0)
-                                <input type="submit" class="c-btn c-form__submit" value="このSTEPのチャレンジをやめる">
+                                <input type="submit" class="c-btn c-btn--warning c-form__submit" value="このSTEPのチャレンジをやめる">
                             @else
                                 <input type="submit" class="c-btn c-form__submit" value="このSTEPにチャレンジする">
                             @endif

@@ -1,7 +1,20 @@
 .c-detail-childstep{
-      margin: $space_xl 0;
-      padding-bottom: $space_xl;
+      margin: $space_3l 0;
+      padding-bottom: $space_3l;
       border-bottom: $color_black4 1px solid;
+
+      &__edit-progress-btn{
+        width:40%;
+        margin: 0 auto;
+        text-align: center;
+
+        @include mq(sm){
+          width:60%;
+        }
+
+
+
+      }
 
   &__step-number{
 
@@ -11,7 +24,7 @@
         font-size: $font-size_l;
         border-left: 10px solid $color_main;
         padding-left: $space_m;
-        margin-bottom: $space_m;
+        margin-bottom: $space_xxl;
         color: $color_main;//非対応のブラウザでの文字色を設定
         background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
         -webkit-background-clip: text;//テキストでくり抜く
@@ -19,8 +32,34 @@
 
       }
 
+
       &__body{
         display: flex;
+        margin-bottom: $space_3l;
+      }
+
+      &__report{
+        &--title{
+            font-size: $font-size_default;
+            font-weight: bold;
+            margin-bottom: $space_xl;
+
+        }
+        &--content{
+          font-size: $font-size_s;
+          margin-bottom: $space_s;
+
+
+        }
+        &--date{
+          font-size: $font-size_ss;
+          text-align: right;
+          margin-bottom: $space_xl;
+
+
+        }
+
+
       }
 
       &__content{

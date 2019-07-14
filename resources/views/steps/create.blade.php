@@ -71,18 +71,12 @@
                                 @endforeach
                             @endif
                         </div>
-                        <div class="c-form__input-area">
-                            <label for="step_required-time" class="c-form__label">所要時間</label>
-                            <input type="number" step="1" min="1" max="255" class="c-form__input" name="step_required-time" id="step_required-time" value="{{ old('step_required-time') }}"/>
-                            @if($errors->any())
-                                @foreach($errors->get('step_required-time') as $message)
-                                    <p class="c-form__err-msg">{{$message}}</p>
-                                @endforeach
-                            @endif
-                        </div>
                     </div>
 
-                    @foreach(range(1,3) as $step_num)
+                    <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" value="1"/>
+
+
+                    @foreach(range(1,10) as $step_num)
                     <div class="c-form__childstep-area">
                         <div class="c-form__childstep-form">
                             {{--子STEP1--}}
@@ -123,7 +117,10 @@
 
                             <div class="c-form__input-area">
                                 <label for="childstep{{$step_num}}_required-time" class="c-form__label">STEP{{$step_num}}所要時間</label>
-                                <input type="number" step="1" min="1" max="255" class="c-form__input" name="childstep{{$step_num}}_required-time" id="childstep{{$step_num}}_required-time" value="{{ old('childstep'.$step_num.'_required-time') }}">
+                                <div class="c-form__required-time-input-area">
+                                    <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" name="childstep{{$step_num}}_required-time" id="childstep{{$step_num}}_required-time" value="{{ old('childstep'.$step_num.'_required-time') }}">
+                                    <span class="c-form__required-time-input-area--unit">時間</span>
+                                </div>
                                 @if($errors->any())
                                     @foreach($errors->get('childstep'.$step_num.'_required-time') as $message)
                                         <p class="c-form__err-msg">{{$message}}</p>

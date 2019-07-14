@@ -101,6 +101,7 @@ Vue.component('v-pagination', {
 `
 });
 
+//stepの一覧表示用のインスタンス
 new Vue({
     el: '#steps-index',
     data: {
@@ -149,3 +150,6 @@ new Vue({
         { path: '/show-steps/:id', component: Vue }
     ]
 });
+
+
+

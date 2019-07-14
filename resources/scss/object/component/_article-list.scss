@@ -5,6 +5,10 @@
   margin-bottom: $space_xl;
   border-bottom: $color_black4 1px solid;
 
+  &--mypage{
+    border-bottom: $color_black4 0px solid;
+  }
+
   @include mq(sm){
     margin: $space_xl auto;
     width: 90%;
@@ -80,12 +84,98 @@
 
 
   &__title{
+    font-weight: bold;
     &--small{
       font-size: $font-size_s;
 
     }
   }
 
+
+  &__childstep{
+        margin-bottom: $space_xxl;
+        border-bottom: $color_black4 1px solid;
+
+
+      &-title{
+        font-size: $font-size_default;
+        border-left: 10px solid $color_main;
+        padding-left: $space_m;
+        margin-left: $space_m;
+        margin-bottom: $space_m;
+        color: $color_main;//非対応のブラウザでの文字色を設定
+        background: -webkit-linear-gradient(0deg, $color_main, $color_sub);//背景色にグラデーションを指定
+        -webkit-background-clip: text;//テキストでくり抜く
+        -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+
+      }
+  }
+
+
+  &__total-working-time{
+    display: flex;
+    vertical-align: middle;
+    line-height: 28px;
+    height: 28px;
+
+    @include mq(sm){
+      margin-bottom: $space_m;
+    }
+
+
+      &--title{
+        font-size: $font-size_s;
+      }
+      &--content{
+        font-size: $font-size_default;
+      }
+  }
+
+  &__required-time{
+    display: flex;
+    vertical-align: middle;
+    line-height: 28px;
+    height: 28px;
+
+    @include mq(sm){
+      margin-bottom: $space_m;
+    }
+
+
+    &--title{
+      font-size: $font-size_s;
+
+    }
+    &--content{
+      font-size: $font-size_default;
+    }
+  }
+
+  &__percentage-achievement{
+    display: flex;
+    vertical-align: middle;
+    line-height: 28px;
+    height: 28px;
+
+    @include mq(sm){
+      margin-bottom: $space_m;
+    }
+
+
+
+    &--title{
+      font-size: $font-size_s;
+
+    }
+    &--content{
+      font-size: $font-size_default;
+
+    }
+  }
+
+  &__progress-bar{
+
+  }
 
 
 

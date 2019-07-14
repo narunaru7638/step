@@ -12,22 +12,16 @@
 </head>
 <body>
     <header class="l-header">
-        <div class="l-header__container">
+        <div class="l-header__container l-header__container--top">
             <div class="l-header__title-area">
                 <h1 class="l-header__site-logo"><a href="{{ route('steps.index') }}">STEP</a></h1>
                 <h2 class="l-header__sub-title">あなたの人生の「STEP」を共有しよう</h2>
             </div>
-            <ul class="l-header__category-list">
-                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 2 ]) }}" class="l-header__category-link">ビジネス</a></li>
-                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 3 ]) }}" class="l-header__category-link">プログラミング</a></li>
-                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 4 ]) }}" class="l-header__category-link">ダイエット</a></li>
-                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 5 ]) }}" class="l-header__category-link">英語</a></li>
-                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 6 ]) }}" class="l-header__category-link">スポーツ</a></li>
-                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 7 ]) }}" class="l-header__category-link">資格</a></li>
-            </ul>
             <nav class="l-header__global-nav">
                 <ul class="c-nav">
                 @if(Auth::check())
+                            <li class="c-nav__item"><a class="c-nav__link" href="{{ route('profile.edit') }}">プロフィール</a></li>
+                            <li class="c-nav__item"><a class="c-nav__link" href="{{ route('password.edit') }}">パスワード変更</a></li>
                             <li class="c-nav__item"><a class="c-nav__link" href="{{ route('steps.create') }}">STEP登録</a></li>
                             <li class="c-nav__item"><a class="c-nav__link" href="{{ route('mypage.show') }}">マイページ</a></li>
                             <li class="c-nav__item"><a class="c-nav__link" id="logout-button" href="#">ログアウト</a></li>
@@ -84,6 +78,16 @@
                 <span class="c-menu-hamburger__line js-toggle-sp-menu-target"></span>
             </div>
         </div>
+        <div class="l-header__container l-header__container--bottom">
+            <ul class="l-header__category-list">
+                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 2 ]) }}" class="l-header__category-link">ビジネス</a></li>
+                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 3 ]) }}" class="l-header__category-link">プログラミング</a></li>
+                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 4 ]) }}" class="l-header__category-link">ダイエット</a></li>
+                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 5 ]) }}" class="l-header__category-link">英語</a></li>
+                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 6 ]) }}" class="l-header__category-link">スポーツ</a></li>
+                <li class="l-header__category-list-item"><a href="{{ route('steps.category.index', ['step' => 7 ]) }}" class="l-header__category-link">資格</a></li>
+            </ul>
+        </div>
     </header>
 
     @yield('content')
@@ -93,10 +97,10 @@
         <h2 class="l-footer__sub-title">あなたの人生の「STEP」を共有しよう</h2>
         <nav class="l-footer__page-list">
             <ul class="l-footer__nav">
-                @if(Auth::check())
-                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('profile.edit') }}">プロフィール</a></li>
-                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('password.edit') }}">パスワード変更</a></li>
-                @endif
+{{--                @if(Auth::check())--}}
+{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('profile.edit') }}">プロフィール</a></li>--}}
+{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('password.edit') }}">パスワード変更</a></li>--}}
+{{--                @endif--}}
 
             </ul>
 

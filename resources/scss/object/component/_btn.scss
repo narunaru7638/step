@@ -9,12 +9,21 @@
     padding: $space_m $space_l;
     box-sizing: border-box;
 
-    background: $color_sub;
+    background-color: $color_sub;
     &:hover{
         transform: translateY(-3px);
         transition: .3s;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
+    }
+
+    &--warning{
+
+        color: $color_black1;
+
+        color: $color_danger;
+
+        background-color: $color_warning;
     }
 
 }

@@ -25,6 +25,7 @@ class ChildstepsTableSeeder extends Seeder
                     'title' => $step->title."STEP {$num}",
                     'content' => "サンプルコンテント",
                     'number_of_step' => $num,
+                    'time_required' => 5,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ]);

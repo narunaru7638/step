@@ -1,12 +1,14 @@
 .c-nav{
   display: flex;
+  //display: block;
+
   justify-content: flex-end;
   align-items: center;
   height: $space_5l;
   vertical-align: center;
 
   &__link{
-    margin: 0 $space_s;
+    margin: 0 $space_m;
     font-size: $font-size_m;
   }
 }

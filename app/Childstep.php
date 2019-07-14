@@ -7,14 +7,34 @@ use Illuminate\Database\Eloquent\Model;
 class Childstep extends Model
 {
 
-    public function clears()
+//    public function clears()
+//    {
+//        return $this->hasMany('App\Clear');
+//    }
+
+//    public function childstep_progresses()
+//    {
+//        return $this->hasMany('App\Progress');
+//    }
+
+    public function progresses()
     {
-        return $this->hasMany('App\Clear');
+        return $this->hasMany('App\Progress');
     }
+
+
 
     public function getId()
     {
         return $this->id;
+//        if(!empty($this->id)){
+//            return $this->id;
+//        }else{
+//            return 0;
+//
+//        }
+
+
     }
 
     public function getTitle()
@@ -52,6 +72,8 @@ class Childstep extends Model
     {
         return $this->created_at;
     }
+
+
 
 
 }

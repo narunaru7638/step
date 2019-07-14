@@ -6,6 +6,7 @@ use App\Step;
 use App\Childstep;
 use App\Challenge;
 use App\Clear;
+use App\Progress;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateStep;
@@ -47,6 +48,15 @@ class StepController extends Controller
     //STEP詳細表示
     public function detail(Step $step)
     {
+        $steps_new = null;
+        $steps_rank = null;
+        $step_detail = null;
+        $challenge = null;
+        $progress = null;
+        $reports = null;
+        $challenge_exists_flg = null;
+        $progress_exists_flg = null;
+
         //サイドバー用の情報の取得
         $steps_new = Step::orderBy('created_at', 'desc')->take(5)->get();
         $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
@@ -54,44 +64,68 @@ class StepController extends Controller
         //指定されたIDのSTEPデータを取得
         $step_detail = Step::find($step->id);
 
-        //
+        //ログインしているか確認する
         if(Auth::check()){
+            //詳細を閲覧しているSTEPにチャレンジしたことあるか確認する
             $challenge_exists_flg = DB::table('challenges')->where('user_id', Auth::user()->id)->where('step_id', $step->id)->exists();
+
+            //詳細を閲覧しているSTEPにチャレンジしていた場合(一度チャレンジをやめた場合も含む)
             if( $challenge_exists_flg ) {
 
+                //チャレンジ情報を取得する
                 $challenge = Challenge :: where('user_id', Auth::user()->id)
                     ->where('step_id', $step->id)
                     ->first();
 
-                if( DB::table('clears')->where('challenge_id', $challenge->id)->exists() ) {
-                    $clear = Clear :: where('challenge_id', $challenge->id)
+                //子STEP進捗情報があるか確認
+                $progress_exists_flg = DB::table('progresses')->where('challenge_id', $challenge->id)->exists();
+//                dump($childstep_progress_exists_flg);
+
+
+                //子STEP進捗情報がある場合
+                if( $progress_exists_flg ) {
+                    $progress = Progress :: where('challenge_id', $challenge->id)
                         ->orderBy('childstep_id', 'asc')
                         ->get();
+
+//                    dd($progress);
+//
+//                    $reports =
+
+
+
+
+
+                    //子STEP進捗情報がない場合
                 }else{
-                    $clear = [new Clear, new Clear, new Clear];
+
                 }
+
+            //詳細を閲覧しているSTEPにチャレンジしていなかった場合
             }else{
-                $challenge = new Challenge;
-                $clear = [new Clear, new Clear, new Clear];
 
             }
 
-            return view('steps/detail', [
-                'steps_new' => $steps_new,
-                'steps_rank' => $steps_rank,
-                'step_detail' => $step_detail,
-                'challenge' => $challenge,
-                'clear' => $clear,
-                'challenge_exists_flg' => $challenge_exists_flg,
-            ]);
 
+
+        //ログインしていないならばチャレンジ関連の情報は取得しない
         }else{
-            return view('steps/detail', [
-                'steps_new' => $steps_new,
-                'steps_rank' => $steps_rank,
-                'step_detail' => $step_detail,
-            ]);
         }
+
+
+        return view('steps/detail', [
+            'steps_new' => $steps_new,
+            'steps_rank' => $steps_rank,
+            'step_detail' => $step_detail,
+            'challenge' => $challenge,
+            'progress' => $progress,
+            'challenge_exists_flg' => $challenge_exists_flg,
+            'progress_exists_flg' => $progress_exists_flg,
+            'reports' => $reports,
+
+        ]);
+
+
     }
 
 
@@ -122,13 +156,19 @@ class StepController extends Controller
             $challenge->step_id = $step->id;
             $challenge->save();
 
-            //チャレンジ情報と共にクリア情報も作成する
+            //チャレンジ情報と共に子STEP進捗情報も作成する
             $childsteps = Childstep::where('step_id', $step->id)->get();
             foreach($childsteps as $childstep) {
-                $clear = new Clear();
-                $clear->challenge_id = $challenge->id;
-                $clear->childstep_id = $childstep->id;
-                $clear->save();
+                $progress = new Progress();
+                $progress->challenge_id = $challenge->id;
+                $progress->childstep_id = $childstep->id;
+
+                //１番目のSTEPのみは最初から進捗が入力できるようにする
+                if(1 === Childstep::find($childstep->id)->number_of_step){
+                    $progress->input_possible_flg = 1;
+                };
+
+                $progress->save();
             }
 
             $step_challenge = Step::where('id',$step->id)->first();
@@ -142,48 +182,48 @@ class StepController extends Controller
 
 
     //STEPをクリアしたとき
-    public function clear(Challenge $challenge, Childstep $childstep)
-    {
-        //すでにクリア情報がDBにあるか確認
-        $clear_check = Clear :: where('childstep_id', $childstep->id)->first();
-
-        //クリア情報がDBにあって、まだクリアしていない場合、STEPクリアボタンが押されたとして、complete_flg=1にする
-        if($clear_check && $clear_check->complete_flg == 0){
-            $clear = Clear :: where('childstep_id', $childstep->id)->first();
-            $clear->complete_flg = 1;
-            $clear->save();
-
-        //クリア情報がDBにあって、すでにクリアしている場合、クリア解除ボタンが押されたとして、complete_flg=0にする
-        }elseif($clear_check && $clear_check->complete_flg == 1) {
-            $clear = Clear :: where('childstep_id', $childstep->id)->first();
-            $clear->complete_flg = 0;
-            $clear->save();
-
-        //クリア情報がDBにない場合、新規にクリア情報を登録
-        }else{
-            $clear = new Clear();
-            $clear->challenge_id = $challenge->id;
-            $clear->childstep_id = $childstep->id;
-            $clear->save();
-        }
-
-        //クリアした子STEPの数をカウントする
-        $number_of_clears = Clear :: where('challenge_id', $challenge->id)->where('complete_flg', 1)->count();
-
-        //クリアした子STEPの数が3個ならcomplete_flgを立てる(complete_flg=1)
-        if($number_of_clears === 3){
-            $challenge_of_clear = Challenge :: where('id', $challenge->id)->first();
-            $challenge_of_clear->complete_flg = 1;
-            $challenge_of_clear->save();
-        }else{
-            $challenge_of_clear = Challenge :: where('id', $challenge->id)->first();
-            $challenge_of_clear->complete_flg = 0;
-            $challenge_of_clear->save();
-        }
-
-        return redirect()->route('steps.index', ['id' => 0 ]);
-
-    }
+//    public function clear(Challenge $challenge, Childstep $childstep)
+//    {
+//        //すでにクリア情報がDBにあるか確認
+//        $clear_check = Clear :: where('childstep_id', $childstep->id)->first();
+//
+//        //クリア情報がDBにあって、まだクリアしていない場合、STEPクリアボタンが押されたとして、complete_flg=1にする
+//        if($clear_check && $clear_check->complete_flg == 0){
+//            $clear = Clear :: where('childstep_id', $childstep->id)->first();
+//            $clear->complete_flg = 1;
+//            $clear->save();
+//
+//        //クリア情報がDBにあって、すでにクリアしている場合、クリア解除ボタンが押されたとして、complete_flg=0にする
+//        }elseif($clear_check && $clear_check->complete_flg == 1) {
+//            $clear = Clear :: where('childstep_id', $childstep->id)->first();
+//            $clear->complete_flg = 0;
+//            $clear->save();
+//
+//        //クリア情報がDBにない場合、新規にクリア情報を登録
+//        }else{
+//            $clear = new Clear();
+//            $clear->challenge_id = $challenge->id;
+//            $clear->childstep_id = $childstep->id;
+//            $clear->save();
+//        }
+//
+//        //クリアした子STEPの数をカウントする
+//        $number_of_clears = Clear :: where('challenge_id', $challenge->id)->where('complete_flg', 1)->count();
+//
+//        //クリアした子STEPの数が3個ならcomplete_flgを立てる(complete_flg=1)
+//        if($number_of_clears === 3){
+//            $challenge_of_clear = Challenge :: where('id', $challenge->id)->first();
+//            $challenge_of_clear->complete_flg = 1;
+//            $challenge_of_clear->save();
+//        }else{
+//            $challenge_of_clear = Challenge :: where('id', $challenge->id)->first();
+//            $challenge_of_clear->complete_flg = 0;
+//            $challenge_of_clear->save();
+//        }
+//
+//        return redirect()->route('steps.index', ['id' => 0 ]);
+//
+//    }
 
 
     //STEP登録フォームの表示
@@ -211,6 +251,7 @@ class StepController extends Controller
             $step->title = $request->step_title;
             $step->content = $request->step_content;
             $step->category_id = $request->step_category;
+
             $step->user_id = Auth::user()->id;
 
             //STEPイメージ画像が送信されていた場合、画像ファイルを登録する
@@ -236,37 +277,50 @@ class StepController extends Controller
             $step->save();
 
             //子STEPに関する入力値をDBに書き込む
-            for ($i = 1; $i <= 3; $i++) {
+            for ($i = 1; $i <= $request->number_of_childstep; $i++) {
                 $childstep = new Childstep();
-                $request_title = 'childstep'.$i.'_title';
-                $request_content = 'childstep'.$i.'_content';
-                $childstep->title = $request->$request_title;
-                $childstep->content = $request->$request_content;
-                $childstep->step_id = $step->id;
-                $childstep->number_of_step = $i;
 
-                //子STEPイメージ画像が送信されていた場合、画像ファイルを登録する
-                if(!empty($request->file('childstep'.$i.'_img'))){
+                if(!empty($request)){
+                    $request_title = 'childstep'.$i.'_title';
+                    $request_content = 'childstep'.$i.'_content';
+                    $childstep->title = $request->$request_title;
+                    $childstep->content = $request->$request_content;
+                    $childstep->step_id = $step->id;
+                    $childstep->number_of_step = $i;
 
-                    $file_input_name = 'childstep'.$i.'_img';
+                    //子STEPイメージ画像が送信されていた場合、画像ファイルを登録する
+                    if(!empty($request->file('childstep'.$i.'_img'))){
 
-                    //ファイルの名前をハッシュ化して変数に入れる
-                    $file_hash_name = sha1_file($request->file($file_input_name));
+                        $file_input_name = 'childstep'.$i.'_img';
 
-                    //ファイルの拡張子を取得して変数に入れる
-                    $file_extension = $request->file($file_input_name)->getClientOriginalExtension();
+                        //ファイルの名前をハッシュ化して変数に入れる
+                        $file_hash_name = sha1_file($request->file($file_input_name));
 
-                    //DBに保存するファイル名を作成して変数に入れる
-                    $file_save_name = $file_hash_name . '.' . $file_extension;
+                        //ファイルの拡張子を取得して変数に入れる
+                        $file_extension = $request->file($file_input_name)->getClientOriginalExtension();
 
-                    //DBにファイル名を保存する
-                    $childstep->pic_img = $file_save_name;
+                        //DBに保存するファイル名を作成して変数に入れる
+                        $file_save_name = $file_hash_name . '.' . $file_extension;
 
-                    //storageに画像ファイルを保存する
-                    $request->$file_input_name->storeAs('public', $file_save_name);
+                        //DBにファイル名を保存する
+                        $childstep->pic_img = $file_save_name;
+
+                        //storageに画像ファイルを保存する
+                        $request->$file_input_name->storeAs('public', $file_save_name);
+
+
+                    }
+
+
+
+
+                    $childstep->save();
+
+
                 }
 
-                $childstep->save();
+
+
 
             }
 
@@ -284,6 +338,8 @@ class StepController extends Controller
 
         //自身がチャレンジしているSTEPの情報の取得
         $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->get();
+
+
 
         //自身が登録したSTEPの情報の取得
         $steps_my_regist = Step::where('user_id', Auth::user()->id )->orderBy('created_at', 'desc')->get();

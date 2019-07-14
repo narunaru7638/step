@@ -23,6 +23,15 @@ Route::group(['middleware' => 'auth'], function(){
 
     //マイページ
     Route::get('/show-mypage', 'StepController@mypageShow')->name('mypage.show');
+
+    //子STEP進捗表示＆編集画面
+//    Route::get('/edit-childstep-progress/{childstep_progress}', 'ChildstepProgressController@editChildstepProgress')->name('childstep_progress.edit-childstep_progress');
+//    Route::get('/progress/edit', 'ProgressController@edit')->name('progress.edit');
+    Route::get('/progress/edit/{progress}', 'ProgressController@edit')->name('progress.edit');
+    Route::post('/progress/update/{progress}', 'ProgressController@update')->name('progress.update');
+
+
+
 });
 
 //STEP詳細ページ

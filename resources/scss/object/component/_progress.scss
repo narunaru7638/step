@@ -1,0 +1,97 @@
+.c-progress {
+
+  //background-color: red;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: $space_xxl;
+
+  @include mq(sm){
+    display: block;
+  }
+
+
+
+  &__total-working-time {
+    display: flex;
+    vertical-align: middle;
+    line-height: 28px;
+    height: 28px;
+
+    @include mq(sm){
+      margin-bottom: $space_m;
+    }
+
+
+
+
+
+    &--title {
+      font-size: $font-size_s;
+    }
+
+    &--content {
+      font-size: $font-size_default;
+    }
+
+
+  }
+
+  &__required-time {
+    display: flex;
+    vertical-align: middle;
+    line-height: 28px;
+    height: 28px;
+
+    @include mq(sm){
+      margin-bottom: $space_m;
+    }
+
+
+    &--title {
+      font-size: $font-size_s;
+    }
+
+    &--content {
+      font-size: $font-size_default;
+    }
+
+
+  }
+
+
+  &__percentage-achievement {
+    display: flex;
+    vertical-align: middle;
+    line-height: 28px;
+    height: 28px;
+
+    @include mq(sm){
+      margin-bottom: $space_m;
+    }
+
+
+
+
+    &--title {
+      font-size: $font-size_s;
+    }
+
+    &--content {
+      font-size: $font-size_default;
+    }
+
+
+  }
+
+  &__progress-bar{
+    vertical-align: middle;
+    line-height: 28px;
+    height: 28px;
+
+  }
+
+
+}

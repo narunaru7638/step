@@ -365,6 +365,7 @@ _vue2.default.component('v-pagination', {
     template: '\n        <div class="c-pagination">\n            <ul class="c-pagination__list">\n                <li class="c-pagination__list-item" v-if="hasPrev">\n                    <a class="c-pagination__link" href="#" @click.prevent="move(data.current_page-1)">&lt;</a>\n                </li>\n                <li class="c-pagination__list-item" :class="getPageClass(page)" v-for="page in pages">\n                    <a class="c-pagination__link" href="#" v-text="page" @click.prevent="move(page)"></a>\n                </li>\n                <li class="c-pagination__list-item" v-if="hasNext">\n                    <a class="c-pagination__link" href="#" @click.prevent="move(data.current_page+1)">&gt;</a>\n                </li>\n            </ul>\n        </div>\n'
 });
 
+//stepの一覧表示用のインスタンス
 new _vue2.default({
     el: '#steps-index',
     data: {

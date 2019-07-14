@@ -1,3 +1,10 @@
 .l-home{
-  padding-top: $space_5l;
+  padding-top: 120px;
+  @include mq(sm) {
+    padding-top: 60px;
+
+
+  }
+
+
 }

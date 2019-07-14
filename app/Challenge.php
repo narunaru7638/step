@@ -10,6 +10,11 @@ class Challenge extends Model
 //        return $this->belongsTo('App\Step');
 //    }
 
+    public function progresses()
+    {
+        return $this->hasMany('App\Progress');
+    }
+
     public function getId()
     {
         return $this->id;
@@ -29,6 +34,7 @@ class Challenge extends Model
     {
         return $this->created_at;
     }
+
 
 
 }
