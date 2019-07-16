@@ -434,23 +434,81 @@ _vue2.default.component('v-create-step-form', {
     // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
     data: function data() {
         return {
-            count: 0
+            count: 1
         };
     },
-    props: ['form_id'],
+    props: ['form_id', 'old_value', 'old_number_of_childstep', 'count_of_childstep', 'old_childstep1_title', 'old_childstep1_content', 'old_childstep1_required_time', 'old_childstep2_title', 'old_childstep2_content', 'old_childstep2_required_time'],
 
-    template: '\n        <div class="c-form__childstep-area">\n            <div class="c-form__childstep-form">\n                <h4 class="c-form__sub-title">STEP{{form_id}}</h4>\n                <div class="c-form__input-area">\n                    <label :for="\'childstep\'+form_id+\'_title\'" class="c-form__label">STEP{{form_id}}\u540D</label>\n                    <input type="text" class="c-form__input" :name="\'childstep\'+form_id+\'_title\'" :id="\'childstep\'+form_id+\'_title\'">\n                    <p class="c-form__err-msg">{{$message}}</p>\n                </div>\n                \n                \n                        <div v-bind:class="\'/show-profile/\'+form_id">test</div>\n\n                <div class="c-form__input-area">\n                    <label :for="\'childstep\'+form_id+\'_content\'" class="c-form__label">STEP{{form_id}}\u8AAC\u660E</label>\n                    <textarea :name="\'childstep\'+form_id+\'_content\'" :id="\'childstep\'+form_id+\'_content\'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep"></textarea>\n                    <p class="c-form__err-msg">{{$message}}</p>\n                </div>\n\n                <div class="c-form__input-area" style="overflow:hidden;">\n                    <label for="\'childstep\'+form_id+\'_img\'" class="c-form__label">STEP{{form_id}}\u30A4\u30E1\u30FC\u30B8\u753B\u50CF</label>\n                    <label for="\'childstep\'+form_id+\'_img\'" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">\u753B\u50CF\u3092\u30C9\u30E9\u30C3\u30B0\uFF06\u30C9\u30ED\u30C3\u30D7\n                        <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">\n                        <input type="file" :name="\'childstep\'+form_id+\'_img\'" :id="\'childstep\'+form_id+\'_img\'" class="c-form__file-input c-form__file-input--childstep js-input-file">\n                    </label>\n                    <p class="c-form__err-msg">{{form_id}}</p>\n                </div>\n\n                <div class="c-form__input-area">\n                    <label for="\'childstep\'+form_id+\'_required-time\'" class="c-form__label">STEP{{form_id}}\u6240\u8981\u6642\u9593</label>\n                    <div class="c-form__required-time-input-area">\n                        <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="\'childstep\'+form_id+\'_required-time\'" :id="\'childstep\'+form_id+\'_required-time\'">\n                        <span class="c-form__required-time-input-area--unit">\u6642\u9593</span>\n                    </div>\n                    <p class="c-form__err-msg">{{$message}}</p>\n                </div>\n            </div>\n        </div>\n'
+    mounted: function mounted() {
+        // console.log(this._props.old_number_of_childstep)
+        if (this._props.old_number_of_childstep) {
+            this.count = this._props.old_number_of_childstep;
+        } else {
+            this.count = 1;
+        }
+        console.log(this.count);
+    },
+
+    updated: function updated() {
+        // console.log(this.count)
+        this.count = this.count + 1;
+        console.log(this.count);
+
+        // console.log(count)
+    },
+
+    template: '\n        <div class="c-form__childstep-area">\n            <div class="c-form__childstep-form">\n                <h4 class="c-form__sub-title">STEP{{form_id}}</h4>\n                \n                <div class="c-form__input-area">\n                    <label :for="\'childstep\'+form_id+\'_title\'" class="c-form__label">STEP{{form_id}}\u540D</label>\n                    <input type="text" class="c-form__input" :name="\'childstep\'+form_id+\'_title\'" :id="\'childstep\'+form_id+\'_title\'" :value="\'old_childstep\'+count_of_childstep+\'_title\'">\n                    <p class="c-form__err-msg"></p>\n                </div>\n                \n                \n\n                <div class="c-form__input-area">\n                    <label :for="\'childstep\'+form_id+\'_content\'" class="c-form__label">STEP{{form_id}}\u8AAC\u660E</label>\n                    <textarea :name="\'childstep\'+form_id+\'_content\'" :id="\'childstep\'+form_id+\'_content\'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{old_childstep1_content}}</textarea>\n                    <p class="c-form__err-msg"></p>\n                </div>\n\n                <div class="c-form__input-area" style="overflow:hidden;">\n                    <label for="\'childstep\'+form_id+\'_img\'" class="c-form__label">STEP{{form_id}}\u30A4\u30E1\u30FC\u30B8\u753B\u50CF</label>\n                    <label for="\'childstep\'+form_id+\'_img\'" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">\u753B\u50CF\u3092\u30C9\u30E9\u30C3\u30B0\uFF06\u30C9\u30ED\u30C3\u30D7\n                        <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">\n                        <input type="file" :name="\'childstep\'+form_id+\'_img\'" :id="\'childstep\'+form_id+\'_img\'" class="c-form__file-input c-form__file-input--childstep js-input-file">\n                    </label>\n                    <p class="c-form__err-msg"></p>\n                </div>\n\n                <div class="c-form__input-area">\n                    <label for="\'childstep\'+form_id+\'_required-time\'" class="c-form__label">STEP{{form_id}}\u6240\u8981\u6642\u9593</label>\n                    <div class="c-form__required-time-input-area">\n                        <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="\'childstep\'+form_id+\'_required-time\'" :id="\'childstep\'+form_id+\'_required-time\'" :value="old_childstep1_required_time">\n                        <span class="c-form__required-time-input-area--unit">\u6642\u9593</span>\n                    </div>\n                    <p class="c-form__err-msg"></p>\n                </div>\n            </div>\n        </div>\n'
 
 });
-//インスタンス化する
 
+_vue2.default.component('v-create-step-submit-btn', {
+    // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
+
+
+    props: ['count_of_childstep', 'old_number_of_childstep'],
+
+    mounted: function mounted() {
+        this.$parent.oldNumberOfChildstep = this._props.old_number_of_childstep;
+    },
+
+    template: '\n        <div>\n        \n            <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" :value="count_of_childstep" />\n            <div v-on:click="$emit(\'enadd-step-form\')">STEP\u3092\u8FFD\u52A0\u3059\u308B</div>\n            \n        </div>\n'
+
+});
+
+//インスタンス化する
 new _vue2.default({
     el: '#step-create',
     data: {
-        forms: [{ id: 1
-        }, { id: 2
-        }, { id: 3
-        }]
+        forms: [{
+            id: 1
+            // oldValue: 'abcdefg',
+        }],
+        countOfChildstep: 1,
+
+        oldNumberOfChildstep: '',
+
+        makeID: function makeID() {
+            // return numberOfStep = numberOfStep + 1;
+            return this.countOfChildstep = this.countOfChildstep + 1;
+        }
+
+    },
+    methods: {
+        addStepForm: function addStepForm() {
+            var form = {
+                id: this.makeID()
+            };
+            this.forms.push(form);
+        }
+
+    },
+
+    mounted: function mounted() {
+        var loopForForm = Number(this.oldNumberOfChildstep);
+
+        for (var i = 1; i < loopForForm; i++) {
+            this.addStepForm();
+        }
     }
 
 });

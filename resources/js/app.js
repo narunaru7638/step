@@ -172,29 +172,48 @@ Vue.component('v-create-step-form', {
     // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
     data: function () {
         return {
-            count: 0
+            count: 1
         }
     },
-    props: ['form_id'],
+    props: ['form_id', 'old_value', 'old_number_of_childstep', 'count_of_childstep', 'old_childstep1_title', 'old_childstep1_content', 'old_childstep1_required_time', 'old_childstep2_title', 'old_childstep2_content', 'old_childstep2_required_time'],
+
+    mounted: function(){
+        // console.log(this._props.old_number_of_childstep)
+        if(this._props.old_number_of_childstep){
+            this.count = this._props.old_number_of_childstep
+        }else{
+            this.count = 1
+        }
+        console.log(this.count)
+
+    },
+
+    updated: function(){
+        // console.log(this.count)
+        this.count = this.count + 1
+        console.log(this.count)
+
+        // console.log(count)
+    },
 
 
     template: `
         <div class="c-form__childstep-area">
             <div class="c-form__childstep-form">
                 <h4 class="c-form__sub-title">STEP{{form_id}}</h4>
+                
                 <div class="c-form__input-area">
                     <label :for="'childstep'+form_id+'_title'" class="c-form__label">STEP{{form_id}}名</label>
-                    <input type="text" class="c-form__input" :name="'childstep'+form_id+'_title'" :id="'childstep'+form_id+'_title'">
-                    <p class="c-form__err-msg">{{$message}}</p>
+                    <input type="text" class="c-form__input" :name="'childstep'+form_id+'_title'" :id="'childstep'+form_id+'_title'" :value="'old_childstep'+count_of_childstep+'_title'">
+                    <p class="c-form__err-msg"></p>
                 </div>
                 
                 
-                        <div v-bind:class="'/show-profile/'+form_id">test</div>
 
                 <div class="c-form__input-area">
                     <label :for="'childstep'+form_id+'_content'" class="c-form__label">STEP{{form_id}}説明</label>
-                    <textarea :name="'childstep'+form_id+'_content'" :id="'childstep'+form_id+'_content'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep"></textarea>
-                    <p class="c-form__err-msg">{{$message}}</p>
+                    <textarea :name="'childstep'+form_id+'_content'" :id="'childstep'+form_id+'_content'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{old_childstep1_content}}</textarea>
+                    <p class="c-form__err-msg"></p>
                 </div>
 
                 <div class="c-form__input-area" style="overflow:hidden;">
@@ -203,16 +222,16 @@ Vue.component('v-create-step-form', {
                         <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">
                         <input type="file" :name="'childstep'+form_id+'_img'" :id="'childstep'+form_id+'_img'" class="c-form__file-input c-form__file-input--childstep js-input-file">
                     </label>
-                    <p class="c-form__err-msg">{{form_id}}</p>
+                    <p class="c-form__err-msg"></p>
                 </div>
 
                 <div class="c-form__input-area">
                     <label for="'childstep'+form_id+'_required-time'" class="c-form__label">STEP{{form_id}}所要時間</label>
                     <div class="c-form__required-time-input-area">
-                        <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="'childstep'+form_id+'_required-time'" :id="'childstep'+form_id+'_required-time'">
+                        <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="'childstep'+form_id+'_required-time'" :id="'childstep'+form_id+'_required-time'" :value="old_childstep1_required_time">
                         <span class="c-form__required-time-input-area--unit">時間</span>
                     </div>
-                    <p class="c-form__err-msg">{{$message}}</p>
+                    <p class="c-form__err-msg"></p>
                 </div>
             </div>
         </div>
@@ -220,20 +239,80 @@ Vue.component('v-create-step-form', {
 
 
 })
-//インスタンス化する
 
+
+
+Vue.component('v-create-step-submit-btn', {
+    // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
+
+
+    props:['count_of_childstep', 'old_number_of_childstep'],
+
+    mounted: function(){
+        this.$parent.oldNumberOfChildstep = this._props.old_number_of_childstep
+    },
+
+
+    template: `
+        <div>
+        
+            <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" :value="count_of_childstep" />
+            <div v-on:click="$emit('enadd-step-form')">STEPを追加する</div>
+            
+        </div>
+`
+
+
+})
+
+
+
+
+
+//インスタンス化する
 new Vue({
     el: '#step-create',
     data: {
         forms: [
-            {   id: 1,
-            },
-            {   id: 2,
-            },
-            {   id: 3,
+            {
+                id: 1,
+                // oldValue: 'abcdefg',
             }
-        ]
+        ],
+        countOfChildstep: 1,
+
+        oldNumberOfChildstep: '',
+
+        makeID: function(){
+            // return numberOfStep = numberOfStep + 1;
+            return this.countOfChildstep = this.countOfChildstep + 1;
+        }
+
+    },
+    methods: {
+        addStepForm: function () {
+            let form = {
+                id: this.makeID(),
+            };
+            this.forms.push(form);
+        }
+
+
+
+    },
+
+    mounted: function(){
+        let loopForForm = Number(this.oldNumberOfChildstep)
+
+        for(let i = 1; i < loopForForm; i++){
+            this.addStepForm()
+
+
+        }
+
     }
+
+
 
 
 

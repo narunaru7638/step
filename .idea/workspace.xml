@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cc22d13-6615-47be-b2c0-42af5d28d184" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StepController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StepController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/steps/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/create.blade.php" afterDir="false" />
@@ -32,7 +32,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.53312886">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -41,13 +41,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+            <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="415">
-                  <caret line="205" column="54" selection-start-line="205" selection-start-column="54" selection-end-line="205" selection-end-column="54" />
-                  <folding>
-                    <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                  </folding>
+                <state relative-caret-position="567">
+                  <caret line="136" column="55" lean-forward="true" selection-start-line="136" selection-start-column="55" selection-end-line="136" selection-end-column="55" />
                 </state>
               </provider>
             </entry>
@@ -57,10 +54,10 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
+            <entry file="file://$PROJECT_DIR$/resources/js/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="575">
-                  <caret line="137" selection-start-line="137" selection-end-line="137" />
+                <state relative-caret-position="-517">
+                  <caret line="187" lean-forward="true" selection-start-line="187" selection-end-line="187" />
                 </state>
               </provider>
             </entry>
@@ -68,8 +65,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4485">
-                  <caret line="309" selection-start-line="309" selection-end-line="309" />
+                <state relative-caret-position="-252">
+                  <caret line="232" column="28" selection-start-line="232" selection-start-column="28" selection-end-line="232" selection-end-column="28" />
                   <folding>
                     <element signature="e#40#53#0#PHP" expanded="true" />
                   </folding>
@@ -108,6 +105,7 @@
       <find>whereha</find>
       <find>childstep-progress</find>
       <find>find</find>
+      <find>step_num</find>
     </findStrings>
     <replaceStrings>
       <replace>/img/programming.jpg</replace>
@@ -162,7 +160,6 @@
         <option value="$PROJECT_DIR$/resources/scss/object/component/_detail-childstep.scss" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_input-progress-form.scss" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_form.scss" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/StepController.php" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_article-card.scss" />
         <option value="$PROJECT_DIR$/resources/views/steps/detail.blade.php" />
         <option value="$PROJECT_DIR$/resources/scss/object/utility/_none-border-bottom.scss" />
@@ -172,6 +169,7 @@
         <option value="$PROJECT_DIR$/resources/scss/object/component/_article-list.scss" />
         <option value="$PROJECT_DIR$/app/Progress.php" />
         <option value="$PROJECT_DIR$/resources/views/steps/mypage.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StepController.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/views/steps/create.blade.php" />
       </list>
@@ -554,12 +552,12 @@
       <workItem from="1562172957080" duration="959000" />
       <workItem from="1562342608877" duration="41156000" />
       <workItem from="1562807774545" duration="50602000" />
-      <workItem from="1563111256249" duration="6787000" />
+      <workItem from="1563111256249" duration="33215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="579236000" />
+    <option name="totallyTimeSpent" value="605664000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -574,7 +572,7 @@
     <frame x="-1920" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24440895" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13205537" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -940,33 +938,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/steps/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4485">
-          <caret line="309" selection-start-line="309" selection-end-line="309" />
+        <state relative-caret-position="-252">
+          <caret line="232" column="28" selection-start-line="232" selection-start-column="28" selection-end-line="232" selection-end-column="28" />
           <folding>
             <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/steps/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="205" column="54" selection-start-line="205" selection-start-column="54" selection-end-line="205" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="-517">
+          <caret line="187" lean-forward="true" selection-start-line="187" selection-end-line="187" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
+        <state relative-caret-position="567">
+          <caret line="136" column="55" lean-forward="true" selection-start-line="136" selection-start-column="55" selection-end-line="136" selection-end-column="55" />
         </state>
       </provider>
     </entry>

@@ -229,7 +229,16 @@ class StepController extends Controller
     //STEP登録フォームの表示
     public function showCreateForm()
     {
-        return view('steps/create');
+//        return view('steps/create');
+        $test_var = "1234asd";
+
+
+        return view('steps/create', [
+            'test_var' => $test_var,
+
+        ]);
+
+
     }
 
 
