@@ -120,7 +120,7 @@ img {
 .l-header {
   width: 100%;
   position: fixed;
-  z-index: 2;
+  z-index: 5;
   height: 60px;
   line-height: 60px; }
   .l-header__container {
@@ -961,6 +961,23 @@ img {
   @media screen and (max-width: 414px) {
     .c-input-progress-form__submit {
       margin-bottom: 30px; } }
+
+.c-flash-message {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 20px;
+  z-index: 6;
+  display: none; }
+  .c-flash-message--success {
+    color: white;
+    background-color: #ACB6E5; }
+  .c-flash-message--danger {
+    color: white;
+    background-color: #e05550; }
 
 .p-profile-show-area {
   text-align: center;

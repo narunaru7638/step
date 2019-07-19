@@ -131,72 +131,137 @@
 {{--                    </div>--}}
 {{--                    @endforeach--}}
 
+{{--                {{ $errors }}--}}
+{{--                {{ $errors->any() }}--}}
+{{--                {{ $request->session()->all() }}--}}
 
-                <div id="step-create">
-                    <v-create-step-form v-for="form in forms" v-bind:form_id="form.id"
-                                        @if(old('number_of_childstep'))
+                {{--                testtesttest--}}
+{{--                {{$errors->first('step_title')}}--}}
+
+{{--                @foreach($errors->get('step_title') as $message)--}}
+{{--                    <p class="c-form__err-msg">{{$message}}</p>--}}
+{{--                    :error_messages1 = {{$message}}--}}
+{{--                    {{$message}}--}}
+{{--                @endforeach--}}
+
+
+                    <div id="step-create">
+                        <v-create-step-form v-for="form in forms" v-bind:form_id="form.id"
+                                            @if(old('number_of_childstep'))
+                                                    v-bind:old_number_of_childstep = {{ old('number_of_childstep') }}
+                                                    v-bind:count_of_childstep="countOfChildstep"
+                                            @else
+                                                    v-bind:count_of_childstep="countOfChildstep"
+                                            @endif
+
+                                            @if($errors->any()) :error_messages = {{$errors}} @endif
+
+
+                                            @if($errors->first('childstep1_title')) error_messages_title_childstep1 = {{$errors->first('childstep1_title')}} @endif
+                                            @if($errors->first('childstep1_content')) error_messages_content_childstep1 = {{$errors->first('childstep1_content')}} @endif
+                                            @if($errors->first('childstep1_img')) error_messages_img_childstep1 = {{$errors->first('childstep1_img')}} @endif
+                                            @if($errors->first('childstep1_required-time')) error_messages_required_time_childstep1 = {{$errors->first('childstep1_required-time')}} @endif
+
+                                            @if($errors->first('childstep2_title')) error_messages_title_childstep2 = {{$errors->first('childstep2_title')}} @endif
+                                            @if($errors->first('childstep2_content')) error_messages_content_childstep2 = {{$errors->first('childstep2_content')}} @endif
+                                            @if($errors->first('childstep2_img')) error_messages_img_childstep2 = {{$errors->first('childstep2_img')}} @endif
+                                            @if($errors->first('childstep2_required-time')) error_messages_required_time_childstep2 = {{$errors->first('childstep2_required-time')}} @endif
+
+                                            @if($errors->first('childstep3_title')) error_messages_title_childstep3 = {{$errors->first('childstep3_title')}} @endif
+                                            @if($errors->first('childstep3_content')) error_messages_content_childstep3 = {{$errors->first('childstep3_content')}} @endif
+                                            @if($errors->first('childstep3_img')) error_messages_img_childstep3 = {{$errors->first('childstep3_img')}} @endif
+                                            @if($errors->first('childstep3_required-time')) error_messages_required_time_childstep3 = {{$errors->first('childstep3_required-time')}} @endif
+
+                                            @if($errors->first('childstep4_title')) error_messages_title_childstep4 = {{$errors->first('childstep4_title')}} @endif
+                                            @if($errors->first('childstep4_content')) error_messages_content_childstep4 = {{$errors->first('childstep4_content')}} @endif
+                                            @if($errors->first('childstep4_img')) error_messages_img_childstep4 = {{$errors->first('childstep4_img')}} @endif
+                                            @if($errors->first('childstep4_required-time')) error_messages_required_time_childstep4 = {{$errors->first('childstep4_required-time')}} @endif
+
+                                            @if($errors->first('childstep5_title')) error_messages_title_childstep5 = {{$errors->first('childstep5_title')}} @endif
+                                            @if($errors->first('childstep5_content')) error_messages_content_childstep5 = {{$errors->first('childstep5_content')}} @endif
+                                            @if($errors->first('childstep5_img')) error_messages_img_childstep5 = {{$errors->first('childstep5_img')}} @endif
+                                            @if($errors->first('childstep5_required-time')) error_messages_required_time_childstep5 = {{$errors->first('childstep5_required-time')}} @endif
+
+                                            @if($errors->first('childstep6_title')) error_messages_title_childstep6 = {{$errors->first('childstep6_title')}} @endif
+                                            @if($errors->first('childstep6_content')) error_messages_content_childstep6 = {{$errors->first('childstep6_content')}} @endif
+                                            @if($errors->first('childstep6_img')) error_messages_img_childstep6 = {{$errors->first('childstep6_img')}} @endif
+                                            @if($errors->first('childstep6_required-time')) error_messages_required_time_childstep6 = {{$errors->first('childstep6_required-time')}} @endif
+
+                                            @if($errors->first('childstep7_title')) error_messages_title_childstep7 = {{$errors->first('childstep7_title')}} @endif
+                                            @if($errors->first('childstep7_content')) error_messages_content_childstep7 = {{$errors->first('childstep7_content')}} @endif
+                                            @if($errors->first('childstep7_img')) error_messages_img_childstep7 = {{$errors->first('childstep7_img')}} @endif
+                                            @if($errors->first('childstep7_required-time')) error_messages_required_time_childstep7 = {{$errors->first('childstep7_required-time')}} @endif
+
+                                            @if($errors->first('childstep8_title')) error_messages_title_childstep8 = {{$errors->first('childstep8_title')}} @endif
+                                            @if($errors->first('childstep8_content')) error_messages_content_childstep8 = {{$errors->first('childstep8_content')}} @endif
+                                            @if($errors->first('childstep8_img')) error_messages_img_childstep8 = {{$errors->first('childstep8_img')}} @endif
+                                            @if($errors->first('childstep8_required-time')) error_messages_required_time_childstep8 = {{$errors->first('childstep8_required-time')}} @endif
+
+                                            @if($errors->first('childstep9_title')) error_messages_title_childstep9 = {{$errors->first('childstep9_title')}} @endif
+                                            @if($errors->first('childstep9_content')) error_messages_content_childstep9 = {{$errors->first('childstep9_content')}} @endif
+                                            @if($errors->first('childstep9_img')) error_messages_img_childstep9 = {{$errors->first('childstep9_img')}} @endif
+                                            @if($errors->first('childstep9_required-time')) error_messages_required_time_childstep9 = {{$errors->first('childstep9_required-time')}} @endif
+
+                                            @if($errors->first('childstep10_title')) error_messages_title_childstep10 = {{$errors->first('childstep10_title')}} @endif
+                                            @if($errors->first('childstep10_content')) error_messages_content_childstep10 = {{$errors->first('childstep10_content')}} @endif
+                                            @if($errors->first('childstep10_img')) error_messages_img_childstep10 = {{$errors->first('childstep10_img')}} @endif
+                                            @if($errors->first('childstep10_required-time')) error_messages_required_time_childstep10 = {{$errors->first('childstep10_required-time')}} @endif
+
+
+                                            @if(old('childstep1_title')) old_childstep1_title={{ old('childstep1_title') }} @endif
+                                            @if(old('childstep1_content')) old_childstep1_content={{ old('childstep1_content') }} @endif
+                                            @if(old('childstep1_required-time')) old_childstep1_required_time={{ old('childstep1_required-time') }} @endif
+
+                                            @if(old('childstep2_title')) old_childstep2_title={{ old('childstep2_title') }} @endif
+                                            @if(old('childstep2_content')) old_childstep2_content={{ old('childstep2_content') }} @endif
+                                            @if(old('childstep2_required-time')) old_childstep2_required_time={{ old('childstep2_required-time') }} @endif
+
+                                            @if(old('childstep3_title')) old_childstep3_title={{ old('childstep3_title') }} @endif
+                                            @if(old('childstep3_content')) old_childstep3_content={{ old('childstep3_content') }} @endif
+                                            @if(old('childstep3_required-time')) old_childstep3_required_time={{ old('childstep3_required-time') }} @endif
+
+                                            @if(old('childstep4_title')) old_childstep4_title={{ old('childstep4_title') }} @endif
+                                            @if(old('childstep4_content')) old_childstep4_content={{ old('childstep4_content') }} @endif
+                                            @if(old('childstep4_required-time')) old_childstep4_required_time={{ old('childstep4_required-time') }} @endif
+
+                                            @if(old('childstep5_title')) old_childstep5_title={{ old('childstep5_title') }} @endif
+                                            @if(old('childstep5_content')) old_childstep5_content={{ old('childstep5_content') }} @endif
+                                            @if(old('childstep5_required-time')) old_childstep5_required_time={{ old('childstep5_required-time') }} @endif
+
+                                            @if(old('childstep6_title')) old_childstep6_title={{ old('childstep6_title') }} @endif
+                                            @if(old('childstep6_content')) old_childstep6_content={{ old('childstep6_content') }} @endif
+                                            @if(old('childstep6_required-time')) old_childstep6_required_time={{ old('childstep6_required-time') }} @endif
+
+                                            @if(old('childstep7_title')) old_childstep7_title={{ old('childstep7_title') }} @endif
+                                            @if(old('childstep7_content')) old_childstep7_content={{ old('childstep7_content') }} @endif
+                                            @if(old('childstep7_required-time')) old_childstep7_required_time={{ old('childstep7_required-time') }} @endif
+
+                                            @if(old('childstep8_title')) old_childstep8_title={{ old('childstep8_title') }} @endif
+                                            @if(old('childstep8_content')) old_childstep8_content={{ old('childstep8_content') }} @endif
+                                            @if(old('childstep8_required-time')) old_childstep8_required_time={{ old('childstep8_required-time') }} @endif
+
+                                            @if(old('childstep9_title')) old_childstep9_title={{ old('childstep9_title') }} @endif
+                                            @if(old('childstep9_content')) old_childstep9_content={{ old('childstep9_content') }} @endif
+                                            @if(old('childstep9_required-time')) old_childstep9_required_time={{ old('childstep9_required-time') }} @endif
+
+                                            @if(old('childstep10_title')) old_childstep10_title={{ old('childstep10_title') }} @endif
+                                            @if(old('childstep10_content')) old_childstep10_content={{ old('childstep10_content') }} @endif
+                                            @if(old('childstep10_required-time')) old_childstep10_required_time={{ old('childstep10_required-time') }} @endif
+                        ></v-create-step-form>
+
+                        <v-create-step-submit-btn v-on:enadd-step-form="addStepForm"
+                                                  v-on:enreduce-step-form="reduceStepForm"
+                                            @if(old('number_of_childstep'))
                                                 v-bind:old_number_of_childstep = {{ old('number_of_childstep') }}
                                                 v-bind:count_of_childstep="countOfChildstep"
-                                        @else
-                                                v-bind:count_of_childstep="countOfChildstep"
-                                        @endif
+                                            @else
+                                                    v-bind:count_of_childstep="countOfChildstep"
+                                            @endif
+                        ></v-create-step-submit-btn>
 
+                    </div>
 
-                                        @if(old('childstep1_title')) old_childstep1_title={{ old('childstep1_title') }} @endif
-                                        @if(old('childstep1_content')) old_childstep1_content={{ old('childstep1_content') }} @endif
-                                        @if(old('childstep1_required-time')) old_childstep1_required_time={{ old('childstep1_required-time') }} @endif
-
-                                        @if(old('childstep2_title')) old_childstep2_title={{ old('childstep2_title') }} @endif
-                                        @if(old('childstep2_content')) old_childstep2_content={{ old('childstep2_content') }} @endif
-                                        @if(old('childstep2_required-time')) old_childstep2_required_time={{ old('childstep2_required-time') }} @endif
-
-                                        @if(old('childstep3_title')) old_childstep3_title={{ old('childstep3_title') }} @endif
-                                        @if(old('childstep3_content')) old_childstep3_content={{ old('childstep3_content') }} @endif
-                                        @if(old('childstep3_required-time')) old_childstep3_required_time={{ old('childstep3_required-time') }} @endif
-
-                                        @if(old('childstep4_title')) old_childstep4_title={{ old('childstep4_title') }} @endif
-                                        @if(old('childstep4_content')) old_childstep4_content={{ old('childstep4_content') }} @endif
-                                        @if(old('childstep4_required-time')) old_childstep4_required_time={{ old('childstep4_required-time') }} @endif
-
-                                        @if(old('childstep5_title')) old_childstep5_title={{ old('childstep5_title') }} @endif
-                                        @if(old('childstep5_content')) old_childstep5_content={{ old('childstep5_content') }} @endif
-                                        @if(old('childstep5_required-time')) old_childstep5_required_time={{ old('childstep5_required-time') }} @endif
-
-                                        @if(old('childstep6_title')) old_childstep6_title={{ old('childstep6_title') }} @endif
-                                        @if(old('childstep6_content')) old_childstep6_content={{ old('childstep6_content') }} @endif
-                                        @if(old('childstep6_required-time')) old_childstep6_required_time={{ old('childstep6_required-time') }} @endif
-
-                                        @if(old('childstep7_title')) old_childstep7_title={{ old('childstep7_title') }} @endif
-                                        @if(old('childstep7_content')) old_childstep7_content={{ old('childstep7_content') }} @endif
-                                        @if(old('childstep7_required-time')) old_childstep7_required_time={{ old('childstep7_required-time') }} @endif
-
-                                        @if(old('childstep8_title')) old_childstep8_title={{ old('childstep8_title') }} @endif
-                                        @if(old('childstep8_content')) old_childstep8_content={{ old('childstep8_content') }} @endif
-                                        @if(old('childstep8_required-time')) old_childstep8_required_time={{ old('childstep8_required-time') }} @endif
-
-                                        @if(old('childstep9_title')) old_childstep9_title={{ old('childstep9_title') }} @endif
-                                        @if(old('childstep9_content')) old_childstep9_content={{ old('childstep9_content') }} @endif
-                                        @if(old('childstep9_required-time')) old_childstep9_required_time={{ old('childstep9_required-time') }} @endif
-
-                                        @if(old('childstep10_title')) old_childstep10_title={{ old('childstep10_title') }} @endif
-                                        @if(old('childstep10_content')) old_childstep10_content={{ old('childstep10_content') }} @endif
-                                        @if(old('childstep10_required-time')) old_childstep10_required_time={{ old('childstep10_required-time') }} @endif
-
-
-                    ></v-create-step-form>
-                    <v-create-step-submit-btn v-on:enadd-step-form="addStepForm"
-                                        @if(old('number_of_childstep'))
-                                            v-bind:old_number_of_childstep = {{ old('number_of_childstep') }}
-                                            v-bind:count_of_childstep="countOfChildstep"
-                                        @else
-                                                v-bind:count_of_childstep="countOfChildstep"
-                                        @endif
-
-                    ></v-create-step-submit-btn>
-
-                </div>
-
-                <input type="submit" class="c-btn c-form__submit">
+                    <input type="submit" class="c-btn c-form__submit">
 
 
 
@@ -208,9 +273,6 @@
 
 
 
-{{--                <div id="step-create">--}}
-{{--                    <v-create-step-form></v-create-step-form>--}}
-{{--                </div>--}}
 
 
 

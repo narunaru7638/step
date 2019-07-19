@@ -253,6 +253,8 @@ class StepController extends Controller
     //STEP登録のPOST送信処理
     public function create(CreateStep $request)
     {
+
+
             //stepモデルのインスタンスを作成する
             $step = new Step();
 
@@ -333,7 +335,7 @@ class StepController extends Controller
 
             }
 
-            return redirect()->route('steps.index', ['id' => 0 ]);
+            return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-success', 'STEPの登録に成功しました');
 
     }
 

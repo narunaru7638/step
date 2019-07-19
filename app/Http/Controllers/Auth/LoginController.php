@@ -28,7 +28,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->performLogout($request);
-        return redirect()->route('login'); // ここを好きな遷移先に変更する。
+        return redirect()->route('login')->with('flash_message-success', 'ログアウトしました'); // ここを好きな遷移先に変更する。
     }
 
 
@@ -37,7 +37,12 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/show-steps';
+//    protected $redirectTo = '/show-steps';
+    protected function redirectTo() {
+        session()->flash('flash_message-success', 'ログインしました');
+        return '/show-steps';
+    }
+
 
     /**
      * Create a new controller instance.

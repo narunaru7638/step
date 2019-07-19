@@ -54,7 +54,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('steps.index', ['id' => 0 ]);
+        return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-success', 'プロフィールを変更しました');
     }
 
     //パスワード変更画面を表示
@@ -70,7 +70,8 @@ class UserController extends Controller
             $user = User :: where('id', Auth::user()->id)->first();
             $user->password = bcrypt($request->password);
             $user->save();
-            return redirect()->route('steps.index', ['id' => 0 ]);
+            return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-success', 'パスワードを変更しました');
+
         }else{
             $error_msg = '登録されている古いパスワードと一致しません。';
             return redirect('edit-password')->with('db_pass_check', $error_msg)->withInput();

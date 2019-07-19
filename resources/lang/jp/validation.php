@@ -70,9 +70,13 @@ return [
     'present'              => ':attributeには現在時刻を指定してください。',
     'regex'                => '正しい形式の:attributeを指定してください。',
     'required'             => ':attributeは必須です。',
-    'required_if'          => ':otherが:valueの時:attributeは必須です。',
+//    'required_if'          => ':otherが:valueの時:attributeは必須です。',
+    'required_if'          => 'ステップの数が:valueの時:attributeは必須です。',
+
     'required_unless'      => ':otherが:values以外の時:attributeは必須です。',
-    'required_with'        => ':valuesのうちいずれかが指定された時:attributeは必須です。',
+//    'required_with'        => ':valuesのうちいずれかが指定された時:attributeは必須です。',
+    'required_with'        => 'ステップ名、ステップ説明のうちいずれかが指定された時:attributeは必須です。',
+
     'required_with_all'    => ':valuesのうちすべてが指定された時:attributeは必須です。',
     'required_without'     => ':valuesのうちいずれかがが指定されなかった時:attributeは必須です。',
     'required_without_all' => ':valuesのうちすべてが指定されなかった時:attributeは必須です。',
