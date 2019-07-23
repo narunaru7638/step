@@ -2,11 +2,12 @@
 
 @section('page-title')
     <title>STEP一覧 | STEP</title>
+    <meta name="description" content="「STEP」とは、夢や目標を達成する正しい学習順序を共有し、順序に従って学習を進められるサイトです。STEP一覧から、あなたの目標に近いものをクリックしてみましょう。">
+    <meta name="keywords" content="努力,目標,達成,順序,学習,一覧">
 @endsection
 
 @section('content')
 <div class="l-home">
-
     <div class="l-page-title">
         <h2 class="l-page-title__title">STEP LIST</h2>
         <h3 class="l-page-title__sub-title">ステップ一覧</h3>

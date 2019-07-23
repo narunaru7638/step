@@ -24,7 +24,6 @@ return [
     'before'               => ':attributeには:date以前の日付を指定してください。',
     'before_or_equal'      => ':attributeには:dateかそれ以前の日付を指定してください。',
     'between'              => [
-//        'numeric' => ':attributeには:min〜:maxまでの数値を指定してください。',
         'numeric' => ':attributeには有効な値を指定してください。',
         'file'    => ':attributeには:min〜:max KBのファイルを指定してください。',
         'string'  => ':attributeには:min〜:max文字の文字列を指定してください。',
@@ -53,7 +52,7 @@ return [
     'json'                 => ':attributeには正しい形式のJSON文字列を指定してください。',
     'max'                  => [
         'numeric' => ':attributeには:max以下の数値を指定してください。',
-        'file'    => ':attributeには:max KB以下のファイルを指定してください。',
+        'file'    => ':attributeには:maxKB以下のファイルを指定してください。',
         'string'  => ':attributeには:max文字以下の文字列を指定してください。',
         'array'   => ':attributeには:max個以下の要素を持つ配列を指定してください。',
     ],
@@ -61,7 +60,7 @@ return [
     'mimetypes'            => ':attributeには:valuesのうちいずれかの形式のファイルを指定してください。',
     'min'                  => [
         'numeric' => ':attributeには:min以上の数値を指定してください。',
-        'file'    => ':attributeには:min KB以上のファイルを指定してください。',
+        'file'    => ':attributeには:minKB以上のファイルを指定してください。',
         'string'  => ':attributeには:min文字以上の文字列を指定してください。',
         'array'   => ':attributeには:min個以上の要素を持つ配列を指定してください。',
     ],
@@ -70,13 +69,9 @@ return [
     'present'              => ':attributeには現在時刻を指定してください。',
     'regex'                => '正しい形式の:attributeを指定してください。',
     'required'             => ':attributeは必須です。',
-//    'required_if'          => ':otherが:valueの時:attributeは必須です。',
-    'required_if'          => 'ステップの数が:valueの時:attributeは必須です。',
-
+    'required_if'          => 'ステップの数が:value個の時:attributeは必須です。',
     'required_unless'      => ':otherが:values以外の時:attributeは必須です。',
-//    'required_with'        => ':valuesのうちいずれかが指定された時:attributeは必須です。',
     'required_with'        => 'ステップ名、ステップ説明のうちいずれかが指定された時:attributeは必須です。',
-
     'required_with_all'    => ':valuesのうちすべてが指定された時:attributeは必須です。',
     'required_without'     => ':valuesのうちいずれかがが指定されなかった時:attributeは必須です。',
     'required_without_all' => ':valuesのうちすべてが指定されなかった時:attributeは必須です。',

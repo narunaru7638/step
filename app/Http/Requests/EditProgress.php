@@ -24,7 +24,18 @@ class EditProgress extends FormRequest
     public function rules()
     {
         return [
-            //
+            'working_time' => 'nullable|integer|max:255|min:1',
+            'report' => 'nullable|string|max:255',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'working_time' => '作業時間',
+            'report' => '気付いたこと・学んだこと',
+        ];
+    }
+
+
 }

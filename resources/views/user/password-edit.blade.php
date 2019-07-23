@@ -2,6 +2,8 @@
 
 @section('page-title')
     <title>パスワード変更 | STEP</title>
+    <meta name="description" content="パスワード変更ページです。古いパスワードと新しいパスワードを入力してください。">
+    <meta name="keywords" content="努力,目標,達成,順序,学習,パスワード,パスワード変更">
 @endsection
 
 @section('content')

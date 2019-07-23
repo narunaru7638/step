@@ -2,6 +2,8 @@
 
 @section('page-title')
     <title>ユーザ登録 | STEP</title>
+    <meta name="description" content="ユーザ登録ページです。メールアドレス、ニックネーム、パスワードを登録することで、学習順序共有サイト「STEP」はすぐに利用できます。">
+    <meta name="keywords" content="努力,目標,達成,順序,学習,登録,ユーザ登録">
 @endsection
 
 @section('content')
@@ -21,7 +23,7 @@
                         <input type="text" class="c-form__input" id="email" name="email" value="{{ old('email') }}">
                         @if($errors->any())
                             @foreach($errors->get('email') as $message)
-                                <p class="c-form__err-msg">{{$message}}</p>
+                        <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif
                     </div>
@@ -31,7 +33,7 @@
                         <input type="text" class="c-form__input" id="name" name="name" value="{{ old('name') }}">
                         @if($errors->any())
                             @foreach($errors->get('name') as $message)
-                                <p class="c-form__err-msg">{{$message}}</p>
+                        <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif
                     </div>
@@ -41,7 +43,7 @@
                         <input type="password" class="c-form__input" id="password" name="password" value="{{ old('password') }}">
                         @if($errors->any())
                             @foreach($errors->get('password') as $message)
-                                <p class="c-form__err-msg">{{$message}}</p>
+                        <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif
                     </div>
@@ -51,7 +53,7 @@
                         <input type="password" class="c-form__input" id="password-confirm" name="password_confirmation" value="{{ old('password_confirmation') }}">
                         @if($errors->any())
                             @foreach($errors->get('password_confirmation') as $message)
-                                <p class="c-form__err-msg">{{$message}}</p>
+                        <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif
                     </div>

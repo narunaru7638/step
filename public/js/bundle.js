@@ -415,57 +415,28 @@ new _vue2.default({
     { path: '/show-steps/:id', component: _vue2.default }]
 });
 
-//
-// Vue.component('button-counter', {
-//     // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
-//     data: function () {
-//         return {
-//             count: 0
-//         }
-//     },
-//     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-// })
-// //インスタンス化する
-//
-// new Vue({el: '#app7'})
-
 //STEP登録フォームのテンプレート
 _vue2.default.component('v-create-step-form', {
     // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
     data: function data() {
         return {
             count: 1
-
-            // hoge: this['old_childstep'+this._props.form_id+'_content']
-
         };
     },
-    mounted: function mounted() {
-        // console.log(this.props.form_id)
-        // console.log(this._props.form_id)
-        // console.log(this.form_id)
-        // console.log(form_id)
-
-
-    },
-
-    props: ['form_id', 'old_value', 'old_number_of_childstep', 'count_of_childstep', 'error_messages', 'old_childstep1_title', 'old_childstep1_content', 'old_childstep1_required_time', 'old_childstep2_title', 'old_childstep2_content', 'old_childstep2_required_time', 'old_childstep3_title', 'old_childstep3_content', 'old_childstep3_required_time', 'old_childstep4_title', 'old_childstep4_content', 'old_childstep4_required_time', 'old_childstep5_title', 'old_childstep5_content', 'old_childstep5_required_time', 'old_childstep6_title', 'old_childstep6_content', 'old_childstep6_required_time', 'old_childstep7_title', 'old_childstep7_content', 'old_childstep7_required_time', 'old_childstep8_title', 'old_childstep8_content', 'old_childstep8_required_time', 'old_childstep9_title', 'old_childstep9_content', 'old_childstep9_required_time', 'old_childstep10_title', 'old_childstep10_content', 'old_childstep10_required_time', 'error_messages_title_childstep1', 'error_messages_content_childstep1', 'error_messages_img_childstep1', 'error_messages_required_time_childstep1', 'error_messages_title_childstep2', 'error_messages_content_childstep2', 'error_messages_img_childstep2', 'error_messages_required_time_childstep2', 'error_messages_title_childstep3', 'error_messages_content_childstep3', 'error_messages_img_childstep3', 'error_messages_required_time_childstep3', 'error_messages_title_childstep4', 'error_messages_content_childstep4', 'error_messages_img_childstep4', 'error_messages_required_time_childstep4', 'error_messages_title_childstep5', 'error_messages_content_childstep5', 'error_messages_img_childstep5', 'error_messages_required_time_childstep5', 'error_messages_title_childstep6', 'error_messages_content_childstep6', 'error_messages_img_childstep6', 'error_messages_required_time_childstep6', 'error_messages_title_childstep7', 'error_messages_content_childstep7', 'error_messages_img_childstep7', 'error_messages_required_time_childstep7', 'error_messages_title_childstep8', 'error_messages_content_childstep8', 'error_messages_img_childstep8', 'error_messages_required_time_childstep8', 'error_messages_title_childstep9', 'error_messages_content_childstep9', 'error_messages_img_childstep9', 'error_messages_required_time_childstep9', 'error_messages_title_childstep10', 'error_messages_content_childstep10', 'error_messages_img_childstep10', 'error_messages_required_time_childstep10'],
-
-    template: '\n        <div class="c-form__childstep-area">\n            <div class="c-form__childstep-form">\n\n                <h4 class="c-form__sub-title">STEP{{form_id}}</h4>\n\n\n                \n                \n                {{this[\'error_messages\']}}\n                {{this[\'error_messages\']["step_title"][0]}}\n<!--                {{this["step_title"][0]}}-->\n<!--                {{this[0]}}-->\n                <div v-for=""></div>\n                \n\n                <div class="c-form__input-area">\n              \n                    <label :for="\'childstep\'+form_id+\'_title\'" class="c-form__label">STEP{{form_id}}\u540D</label>\n                    <input type="text" class="c-form__input" :name="\'childstep\'+form_id+\'_title\'" :id="\'childstep\'+form_id+\'_title\'" v-bind:value="this[\'old_childstep\'+form_id+\'_title\']">\n\n<!--                        <p v-if=" form_id === 1 " class="c-form__err-msg">{{Object.values(error_messages)[0][0]}}</p>-->\n<!--                        <p v-if=" form_id === 2 " class="c-form__err-msg">{{Object.values(error_messages)[4][0]}}</p>-->\n\n<!--                        <div v-if=" form_id === 2 " >testtest</div>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages1)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages2)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages3)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages4)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages5)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages6)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages7)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages8)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages9)[0][0]}}</p>-->\n<!--                        <p class="c-form__err-msg">{{Object.values(error_messages10)[0][0]}}</p>-->\n\n<!--                    <p class="c-form__err-msg">{{error_messages1}}</p>-->\n                    <p class="c-form__err-msg">{{this[\'error_messages_title_childstep\'+this._props.form_id]}}</p>\n<!--                    {{this[\'old_childstep\'+this._props.form_id+\'_content\']}}-->\n\n                    \n                </div>\n                \n                \n\n                <div class="c-form__input-area">\n                    <label :for="\'childstep\'+form_id+\'_content\'" class="c-form__label">STEP{{form_id}}\u8AAC\u660E</label>\n\n                    <textarea :name="\'childstep\'+form_id+\'_content\'" :id="\'childstep\'+form_id+\'_content\'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{this[\'old_childstep\'+this._props.form_id+\'_content\']}}</textarea>\n                    <p class="c-form__err-msg">{{this[\'error_messages_content_childstep\'+this._props.form_id]}}</p>\n\n\n<!--                    <p class="c-form__err-msg">{{Object.values(error_messages)[1][0]}}</p>-->\n                </div>\n\n                <div class="c-form__input-area" style="overflow:hidden;">\n                    <label for="\'childstep\'+form_id+\'_img\'" class="c-form__label">STEP{{form_id}}\u30A4\u30E1\u30FC\u30B8\u753B\u50CF</label>\n                    <label for="\'childstep\'+form_id+\'_img\'" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">\u753B\u50CF\u3092\u30C9\u30E9\u30C3\u30B0\uFF06\u30C9\u30ED\u30C3\u30D7\n                        <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">\n                        <input type="file" :name="\'childstep\'+form_id+\'_img\'" :id="\'childstep\'+form_id+\'_img\'" class="c-form__file-input c-form__file-input--childstep js-input-file">\n                    </label>\n<!--                    <p class="c-form__err-msg">{{Object.values(error_messages)[2][0]}}</p>-->\n                    <p class="c-form__err-msg">{{this[\'error_messages_img_childstep\'+this._props.form_id]}}</p>\n\n                </div>\n\n                <div class="c-form__input-area">\n                    <label for="\'childstep\'+form_id+\'_required-time\'" class="c-form__label">STEP{{form_id}}\u6240\u8981\u6642\u9593</label>\n                    <div class="c-form__required-time-input-area">\n                        <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="\'childstep\'+form_id+\'_required-time\'" :id="\'childstep\'+form_id+\'_required-time\'" v-bind:value="this[\'old_childstep\'+form_id+\'_required_time\']">\n                        <span class="c-form__required-time-input-area--unit">\u6642\u9593</span>\n                    </div>\n<!--                    <p class="c-form__err-msg">{{Object.values(error_messages)[3][0]}}</p>-->\n                    <p class="c-form__err-msg">{{this[\'error_messages_required_time_childstep\'+this._props.form_id]}}</p>\n\n                </div>\n            </div>\n        </div>\n'
-
+    props: ['form_id', 'old_value', 'old_number_of_childstep', 'count_of_childstep', 'old_childstep1_title', 'old_childstep1_content', 'old_childstep1_required_time', 'old_childstep2_title', 'old_childstep2_content', 'old_childstep2_required_time', 'old_childstep3_title', 'old_childstep3_content', 'old_childstep3_required_time', 'old_childstep4_title', 'old_childstep4_content', 'old_childstep4_required_time', 'old_childstep5_title', 'old_childstep5_content', 'old_childstep5_required_time', 'old_childstep6_title', 'old_childstep6_content', 'old_childstep6_required_time', 'old_childstep7_title', 'old_childstep7_content', 'old_childstep7_required_time', 'old_childstep8_title', 'old_childstep8_content', 'old_childstep8_required_time', 'old_childstep9_title', 'old_childstep9_content', 'old_childstep9_required_time', 'old_childstep10_title', 'old_childstep10_content', 'old_childstep10_required_time', 'error_messages_title_childstep1', 'error_messages_content_childstep1', 'error_messages_img_childstep1', 'error_messages_required_time_childstep1', 'error_messages_title_childstep2', 'error_messages_content_childstep2', 'error_messages_img_childstep2', 'error_messages_required_time_childstep2', 'error_messages_title_childstep3', 'error_messages_content_childstep3', 'error_messages_img_childstep3', 'error_messages_required_time_childstep3', 'error_messages_title_childstep4', 'error_messages_content_childstep4', 'error_messages_img_childstep4', 'error_messages_required_time_childstep4', 'error_messages_title_childstep5', 'error_messages_content_childstep5', 'error_messages_img_childstep5', 'error_messages_required_time_childstep5', 'error_messages_title_childstep6', 'error_messages_content_childstep6', 'error_messages_img_childstep6', 'error_messages_required_time_childstep6', 'error_messages_title_childstep7', 'error_messages_content_childstep7', 'error_messages_img_childstep7', 'error_messages_required_time_childstep7', 'error_messages_title_childstep8', 'error_messages_content_childstep8', 'error_messages_img_childstep8', 'error_messages_required_time_childstep8', 'error_messages_title_childstep9', 'error_messages_content_childstep9', 'error_messages_img_childstep9', 'error_messages_required_time_childstep9', 'error_messages_title_childstep10', 'error_messages_content_childstep10', 'error_messages_img_childstep10', 'error_messages_required_time_childstep10'],
+    template: '\n        <div class="c-form__childstep-area">\n            <div class="c-form__childstep-form">\n                <h4 class="c-form__sub-title">STEP{{form_id}}</h4>\n                <div class="c-form__input-area">\n                    <label :for="\'childstep\'+form_id+\'_title\'" class="c-form__label">STEP{{form_id}}\u540D</label>\n                    <input type="text" class="c-form__input" :name="\'childstep\'+form_id+\'_title\'" :id="\'childstep\'+form_id+\'_title\'" v-bind:value="this[\'old_childstep\'+form_id+\'_title\']">\n                    <p class="c-form__err-msg">{{this[\'error_messages_title_childstep\'+this._props.form_id]}}</p>                    \n                </div>                                \n                <div class="c-form__input-area">\n                    <label :for="\'childstep\'+form_id+\'_content\'" class="c-form__label">STEP{{form_id}}\u8AAC\u660E</label>\n                    <textarea :name="\'childstep\'+form_id+\'_content\'" :id="\'childstep\'+form_id+\'_content\'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{this[\'old_childstep\'+this._props.form_id+\'_content\']}}</textarea>\n                    <p class="c-form__err-msg">{{this[\'error_messages_content_childstep\'+this._props.form_id]}}</p>\n                </div>\n                <div class="c-form__input-area" style="overflow:hidden;">\n                    <label for="\'childstep\'+form_id+\'_img\'" class="c-form__label">STEP{{form_id}}\u30A4\u30E1\u30FC\u30B8\u753B\u50CF</label>\n                    <label for="\'childstep\'+form_id+\'_img\'" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">\u753B\u50CF\u3092\u30C9\u30E9\u30C3\u30B0\uFF06\u30C9\u30ED\u30C3\u30D7\n                        <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">\n                        <input type="file" :name="\'childstep\'+form_id+\'_img\'" :id="\'childstep\'+form_id+\'_img\'" class="c-form__file-input c-form__file-input--childstep js-input-file">\n                    </label>\n                    <p class="c-form__err-msg">{{this[\'error_messages_img_childstep\'+this._props.form_id]}}</p>\n                </div>\n                <div class="c-form__input-area">\n                    <label for="\'childstep\'+form_id+\'_required-time\'" class="c-form__label">STEP{{form_id}}\u6240\u8981\u6642\u9593</label>\n                    <div class="c-form__required-time-input-area">\n                        <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="\'childstep\'+form_id+\'_required-time\'" :id="\'childstep\'+form_id+\'_required-time\'" v-bind:value="this[\'old_childstep\'+form_id+\'_required_time\']">\n                        <span class="c-form__required-time-input-area--unit">\u6642\u9593</span>\n                    </div>\n                    <p class="c-form__err-msg">{{this[\'error_messages_required_time_childstep\'+this._props.form_id]}}</p>\n                </div>\n            </div>\n        </div>\n'
 });
 
+//STEP登録フォームを増減させるボタンのテンプレート
 _vue2.default.component('v-create-step-submit-btn', {
     props: ['count_of_childstep', 'old_number_of_childstep'],
-
     mounted: function mounted() {
         this.$parent.oldNumberOfChildstep = this._props.old_number_of_childstep;
     },
-
-    template: '\n        <div>  \n            <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" :value="count_of_childstep" hidden />\n            <div class="aaa" v-on:click="$emit(\'enadd-step-form\')">STEP\u3092\u5897\u3084\u3059</div>\n            <div class="aaa" v-on:click="$emit(\'enreduce-step-form\')">STEP\u3092\u6E1B\u3089\u3059</div>\n        </div>\n'
+    template: '\n        <div>  \n            <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" :value="count_of_childstep" class="js-count-of-childstep" hidden/>\n            <div class="c-btn__row-btn-area">\n                <div class="c-btn c-btn--reduce-childstep c-step-number-change-btn js-reduce-childstep" v-on:click="$emit(\'enreduce-step-form\')">STEP\u3092\u6E1B\u3089\u3059</div>\n                <div class="c-btn c-btn--add-childstep c-step-number-change-btn js-add-childstep" v-on:click="$emit(\'enadd-step-form\')">STEP\u3092\u5897\u3084\u3059</div>\n            </div>\n        </div>\n'
 });
 
-//インスタンス化する
+//STEP登録用のインスタンス
 new _vue2.default({
     el: '#step-create',
     data: {
@@ -473,18 +444,18 @@ new _vue2.default({
             id: 1
         }],
         errorMessages: '',
-
         countOfChildstep: 1,
         oldNumberOfChildstep: '',
         oldChildstep1Title: '',
-
+        //新しいIDを作成する関数。現在のフォームの数にプラス1した値をIDにする。
         makeID: function makeID() {
-            // return numberOfStep = numberOfStep + 1;
             return this.countOfChildstep = this.countOfChildstep + 1;
         }
     },
     methods: {
+        //フォームを追加するメソッド
         addStepForm: function addStepForm() {
+            //フォームが10個より少ないなら新しいIDを取得して、追加
             if (this.countOfChildstep < 10) {
                 var form = {
                     id: this.makeID()
@@ -492,14 +463,15 @@ new _vue2.default({
                 this.forms.push(form);
             }
         },
+        //フォームを減らすメソッド
         reduceStepForm: function reduceStepForm() {
             if (this.countOfChildstep > 1) {
-                this.countOfChildstep = this.countOfChildstep - 1;
+                this.countOfChildstep = this.countOfChildstep - 1; //現在のフォームの数を1減らす
                 this.forms.pop();
             }
         }
     },
-
+    //POST送信でバリデーションエラーとなった場合に、POST送信前に作成していたフォームの数だけ、フォームを作成する
     mounted: function mounted() {
         var loopForForm = Number(this.oldNumberOfChildstep);
         for (var i = 1; i < loopForForm; i++) {
@@ -12784,6 +12756,55 @@ $(function () {
     }
 });
 
+//STEP登録画面における子STEP追加時のフラッシュメッセージ
+$(function () {
+    var childstepCount = Number($('.js-count-of-childstep').val());
+    var $childstepAdd = $('.js-add-childstep');
+    var $msgToggleAddChildstep = $('.js-toggle-msg--add-childstep');
+    var $msgToggleCannotAddChildstep = $('.js-toggle-msg--cannot-add-childstep');
+    var $childstepReduce = $('.js-reduce-childstep');
+    var $msgToggleReduceChildstep = $('.js-toggle-msg--reduce-childstep');
+    var $msgToggleCannotReduceChildstep = $('.js-toggle-msg--cannot-reduce-childstep');
+
+    $childstepAdd.on('click', function () {
+        if (Number(childstepCount) < 10) {
+            if ($msgToggleAddChildstep.length) {
+                $msgToggleAddChildstep.slideDown();
+                childstepCount = childstepCount + 1;
+                setTimeout(function () {
+                    $msgToggleAddChildstep.slideUp();
+                }, 3000);
+            }
+        } else {
+            if ($msgToggleCannotAddChildstep.length) {
+                $msgToggleCannotAddChildstep.slideDown();
+                setTimeout(function () {
+                    $msgToggleCannotAddChildstep.slideUp();
+                }, 3000);
+            }
+        }
+    });
+
+    $childstepReduce.on('click', function () {
+        if (Number(childstepCount) > 1) {
+            if ($msgToggleReduceChildstep.length) {
+                $msgToggleReduceChildstep.slideDown();
+                childstepCount = childstepCount - 1;
+                setTimeout(function () {
+                    $msgToggleReduceChildstep.slideUp();
+                }, 3000);
+            }
+        } else {
+            if ($msgToggleCannotReduceChildstep.length) {
+                $msgToggleCannotReduceChildstep.slideDown();
+                setTimeout(function () {
+                    $msgToggleCannotReduceChildstep.slideUp();
+                }, 3000);
+            }
+        }
+    });
+});
+
 /***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -12804,61 +12825,35 @@ $('.js-toggle-sp-menu').on('click', function () {
 "use strict";
 
 
-//画像登録
 var $dropArea = $('.js-area-drop');
 var $fileInput = $('.js-input-file');
 var $imgPrev = $('.prev-img');
-$dropArea.on('dragover', function (e) {
+$(document).on('dragover', '.js-area-drop', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $(this).css('border', '3px #ccc dashed');
 });
-$dropArea.on('dragleave', function (e) {
+$(document).on('dragleave', '.js-area-drop', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $(this).css('border', 'none');
 });
-$fileInput.on('change', function (e) {
+$(document).on('change', '.js-input-file', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $dropArea.css('border', 'none');
-    // $dropArea.css('border', 'dotted');
-
-
-    //$(this).attr('src', )
+    $(this).closest('.js-area-drop').css('border', 'none');
     var file = this.files[0],
         $img = $(this).siblings('.prev-img'),
-        fileReader = new FileReader();
-    // var fileHeight = file.height();
 
-    // $dropArea.css('height', $fileHeight);
-
-
+    // console.log('test');
+    fileReader = new FileReader();
     fileReader.onload = function (event) {
         $img.attr('src', event.target.result).show();
     };
     fileReader.readAsDataURL(file);
-
-    // var $imgPrev = $('.prev-img');
-    // var fileHeight = $imgPrev.height();
-    // console.log(fileHeight);
-    // $dropArea.css('height', fileHeight);
-    // $dropArea.css('z-index', '2');
-    //
-    // $dropArea.css('height', 'auto');
-    // $fileInput.css('height', 'auto');
     $imgPrev.css('max-height', '100%');
     $imgPrev.css('max-width', '100%');
-
-    // $imgPrev.css('max-width', 'auto');
-
-
-    // $dropArea.css('min-height', 'auto');
-    // $dropArea.css('height', '');
-
-
-    // $imgPrev.css('max-height', '100%');
-
 });
 
 /***/ })

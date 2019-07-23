@@ -14,6 +14,7 @@
         transform: translateY(-3px);
         transition: .3s;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
 
     }
 
@@ -24,6 +25,22 @@
         color: $color_danger;
 
         background-color: $color_warning;
+    }
+
+    &--reduce-childstep{
+        background-color: $color_warning;
+        color: $color_black2;
+    }
+
+    &--add-childstep{
+        background-color: $color_safe;
+
+
+    }
+    &__row-btn-area{
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: $space_xxl;
     }
 
 }

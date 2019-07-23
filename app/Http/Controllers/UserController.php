@@ -24,6 +24,7 @@ class UserController extends Controller
         return view('user/profile');
     }
 
+
     //プロフィール編集のPOST送信処理
     public function editProfile(EditProfile $request)
     {
@@ -31,11 +32,10 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->profile = $request->profile;
-        $user->pic_icon = $request->pic_icon;
 
         //ファイルの名前をハッシュ化して変数に入れる
         if(!empty($request->file('pic_icon'))) {
-
+            $user->pic_icon = $request->pic_icon;
 
             $file_hash_name = sha1_file($request->file('pic_icon'));
 
@@ -57,26 +57,32 @@ class UserController extends Controller
         return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-success', 'プロフィールを変更しました');
     }
 
+
     //パスワード変更画面を表示
     public function passwordEditForm()
     {
         return view('user/password-edit');
     }
 
+
     //パスワード変更画面のPOST送信処理
     public function editPassword(EditPassword $request)
     {
+        //登録されているパスワードと入力された古いパスワードが一致しているか確認
+        //登録されているパスワードと入力された古いパスワードが一致していたらパスワード変更処理
         if(Hash::check($request->password_old, Auth::user()->password)){
             $user = User :: where('id', Auth::user()->id)->first();
             $user->password = bcrypt($request->password);
             $user->save();
             return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-success', 'パスワードを変更しました');
 
+        //登録されているパスワードと入力された古いパスワードが一致していなければエラーメッセージを返す
         }else{
             $error_msg = '登録されている古いパスワードと一致しません。';
             return redirect('edit-password')->with('db_pass_check', $error_msg)->withInput();
         }
     }
+
 
     //プロフィールの表示
     public function showProfile(User $user)
@@ -89,7 +95,6 @@ class UserController extends Controller
             'registed_steps' => $registed_steps,
         ]);
     }
-
 }
 
 

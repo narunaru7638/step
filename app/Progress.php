@@ -12,6 +12,9 @@ class Progress extends Model
         return $this->belongsTo('App\Childstep');
     }
 
+    public function challenge(){
+        return $this->belongsTo('App\Challenge');
+    }
 
     public function reports()
     {

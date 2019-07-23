@@ -2,6 +2,8 @@
 
 @section('page-title')
     <title>プロフィール編集ページ | STEP</title>
+    <meta name="description" content="プロフィール編集ページです。編集したいプロフィール情報を入力してください。">
+    <meta name="keywords" content="努力,目標,達成,順序,学習,プロフィール,プロフィール編集">
 @endsection
 
 @section('content')

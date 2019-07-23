@@ -23,6 +23,10 @@
     &__input-area{
         margin-bottom: $space_xxl;
 
+        &--for-update{
+            margin-top: $space_xxl;
+        }
+
 
     }
 
@@ -166,6 +170,13 @@
 
         }
 
+        &--edit-step{
+            //text-align: center;
+            display: block;
+            margin: auto auto;
+            margin-bottom: $space_3l;
+        }
+
         &--retire{
             color: $color_danger;
             @include mq(sm){
@@ -182,8 +193,6 @@
             color: $color_sub;
             text-decoration: underline;
 
-        }
-        &--page-back{
         }
     }
 

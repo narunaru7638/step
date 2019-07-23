@@ -2,34 +2,34 @@
 
 @section('page-title')
     <title>パスワード再発行 | STEP</title>
+    <meta name="description" content="パスワード再発行ページです。ご指定のメールアドレス宛にパスワード再発行用のURLをお送り致します。メールアドレスを入力して下さい。">
+    <meta name="keywords" content="努力,目標,達成,順序,学習,パスワード,パスワード再発行">
 @endsection
-
 
 @section('content')
     <div class="l-home">
-
         <div class="l-page-title">
-            <h2 class="l-page-title__title">PASSWORD RESET</h2>
+            <h2 class="l-page-title__title">PASSWORD REISSUE</h2>
             <h3 class="l-page-title__sub-title">パスワード再発行</h3>
         </div>
-
         <div class="c-container">
             <div class="l-main-wrap">
                 <main class="l-main l-main--1column">
                     <p class="l-main__text">ご指定のメールアドレス宛にパスワード再発行用のURLをお送り致します。メールアドレスを入力して下さい。</p>
                     @if (session('status'))
-                        <div class="c-alert" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="c-alert" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
+
                     <form class="c-form" action="{{ route('password.email') }}" method="POST">
-                        @csrf
+                    @csrf
                         <div class="c-form__input-area">
                             <label for="email" class="c-form__label">emailアドレス</label>
                             <input type="text" class="c-form__input" name="email" id="email" value="{{ old('email') }}">
                             @if($errors->any())
                                 @foreach($errors->get('email') as $message)
-                                    <p class="c-form__err-msg">{{$message}}</p>
+                            <p class="c-form__err-msg">{{$message}}</p>
                                 @endforeach
                             @endif
                         </div>

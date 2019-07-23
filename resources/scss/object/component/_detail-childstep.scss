@@ -35,6 +35,8 @@
 
       &__body{
         display: flex;
+        //display: block;
+
         margin-bottom: $space_3l;
       }
 
@@ -73,6 +75,7 @@
           margin-bottom: $space_m;
 
           &--left{
+            display: flex;
 
           }
           &--right{
@@ -87,6 +90,9 @@
       }
       &__challenge-flg{
         margin-right: $space_m;
+        color: $color_danger;
+        font-weight: bold;
+
 
       }
 

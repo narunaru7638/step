@@ -114,6 +114,26 @@
 
   }
 
+  &__link{
+    color: $color_sub;
+    font-weight: bold;
+    font-size: $font-size_s;
+    //border-bottom: $space_xxl;
+    //display: block;
+
+    &:hover{
+      color: $color_sub;
+      text-decoration: underline;
+
+    }
+    &--position-right{
+      text-align: right;
+      margin-bottom: $space_xl;
+      //display: block;
+
+    }
+  }
+
 
 
 

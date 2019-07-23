@@ -2,6 +2,9 @@
 
 @section('page-title')
     <title>トップページ | STEP</title>
+    <meta name="description" content="「STEP」とは、夢や目標を達成する正しい学習順序を共有し、順序に従って学習を進められるサイトです。あなたの学習順序を登録して、あなたの人生のSTEPを共有しましょう。">
+    <meta name="keywords" content="努力,目標,達成,順序,学習,ABOUT,トップページ">
+
 @endsection
 
 @section('content')
@@ -9,13 +12,10 @@
         <div class="l-top-banner">
             <img src="img/topbaner.jpg" alt="" class="l-top-banner__img">
         </div>
-
         <div class="c-container">
             <div class="c-container__title c-container__title--toppage">努力すれば目標は達成できる？</div>
-
             <div class="l-main-wrap">
                 <main class="l-main l-main--1column">
-{{--                        <h1></h1>--}}
                     <div class="l-main__toppage-text">
                         <p>　このサイトをご覧いただき、ありがとうございます。</p>
                         <p>突然ですが、あなたに質問です。</p>
@@ -115,10 +115,6 @@
                         <br>
                         <p><span class="l-main__font-empha">　あなたの人生の「STEP」を共有してみましょう。</span></p>
                     </div>
-
-
-
-                    </section>
                 </main>
             </div>
         </div>

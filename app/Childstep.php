@@ -22,6 +22,11 @@ class Childstep extends Model
         return $this->hasMany('App\Progress');
     }
 
+    public function step(){
+        return $this->belongsTo('App\Step');
+    }
+
+
 
 
     public function getId()

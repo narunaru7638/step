@@ -2,6 +2,8 @@
 
 @section('page-title')
     <title>STEP登録 | STEP</title>
+    <meta name="description" content="STEP登録ページです。あなたの学習順序を登録して、あなたの人生のSTEPを共有しましょう。">
+    <meta name="keywords" content="努力,目標,達成,順序,学習,情報登録,登録">
 @endsection
 
 @section('content')
@@ -17,7 +19,7 @@
         <div class="l-main-wrap">
             <main class="l-main l-main--1column">
 
-                <form class="c-form action="{{ route('steps.create') }}" method="post" enctype="multipart/form-data">
+                <form class="c-form" action="{{ route('steps.create') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="c-form__input-area">
@@ -25,7 +27,7 @@
                         <input type="text" class="c-form__input" name="step_title" id="step_title" value="{{ old('step_title') }}">
                         @if($errors->any())
                             @foreach($errors->get('step_title') as $message)
-                                <p class="c-form__err-msg">{{$message}}</p>
+                        <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif
                     </div>
@@ -35,7 +37,7 @@
                         <textarea cols="30" rows="10" name="step_content" id="step_content" class="c-form__input c-form__textarea">{{ old('step_content') }}</textarea>
                         @if($errors->any())
                             @foreach($errors->get('step_content') as $message)
-                                <p class="c-form__err-msg">{{$message}}</p>
+                        <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif
                     </div>
@@ -48,7 +50,7 @@
                         </label>
                         @if($errors->any())
                             @foreach($errors->get('step_img') as $message)
-                                <p class="c-form__err-msg">{{$message}}</p>
+                        <p class="c-form__err-msg">{{$message}}</p>
                             @endforeach
                         @endif
                     </div>
@@ -67,82 +69,12 @@
                             </select>
                             @if($errors->any())
                                 @foreach($errors->get('step_category') as $message)
-                                    <p class="c-form__err-msg">{{$message}}</p>
+                            <p class="c-form__err-msg">{{$message}}</p>
                                 @endforeach
                             @endif
                         </div>
                     </div>
 
-{{--                    <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" value="1"/>--}}
-
-
-{{--                    @foreach(range(1,10) as $step_num)--}}
-{{--                    <div class="c-form__childstep-area">--}}
-{{--                        <div class="c-form__childstep-form">--}}
-{{--                            --}}{{--子STEP1--}}
-{{--                            <h4 class="c-form__sub-title">STEP{{$step_num}}</h4>--}}
-
-{{--                            <div class="c-form__input-area">--}}
-{{--                                <label for="childstep{{$step_num}}_title" class="c-form__label">STEP{{$step_num}}名</label>--}}
-{{--                                <input type="text" class="c-form__input" name="childstep{{$step_num}}_title" id="childstep{{$step_num}}_title" value="{{ old('childstep'.$step_num.'_title') }}">--}}
-{{--                                @if($errors->any())--}}
-{{--                                    @foreach($errors->get('childstep'.$step_num.'_title') as $message)--}}
-{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
-{{--                                    @endforeach--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-
-{{--                            <div class="c-form__input-area">--}}
-{{--                                <label for="childstep{{$step_num}}_content" class="c-form__label">STEP{{$step_num}}説明</label>--}}
-{{--                                <textarea name="childstep{{$step_num}}_content" id="childstep{{$step_num}}_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep'.$step_num.'_content') }}</textarea>--}}
-{{--                                @if($errors->any())--}}
-{{--                                    @foreach($errors->get('childstep'.$step_num.'_content') as $message)--}}
-{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
-{{--                                    @endforeach--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-
-{{--                            <div class="c-form__input-area" style="overflow:hidden;">--}}
-{{--                                <label for="childstep{{$step_num}}_img" class="c-form__label">STEP{{$step_num}}イメージ画像</label>--}}
-{{--                                <label for="childstep{{$step_num}}_img" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">画像をドラッグ＆ドロップ--}}
-{{--                                    <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">--}}
-{{--                                    <input type="file" name="childstep{{$step_num}}_img" id="childstep{{$step_num}}_img" class="c-form__file-input c-form__file-input--childstep js-input-file" id="childstep{{$step_num}}_img" name="childstep{{$step_num}}_img" >--}}
-{{--                                </label>--}}
-{{--                                @if($errors->any())--}}
-{{--                                    @foreach($errors->get('childstep'.$step_num.'_img') as $message)--}}
-{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
-{{--                                    @endforeach--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-
-{{--                            <div class="c-form__input-area">--}}
-{{--                                <label for="childstep{{$step_num}}_required-time" class="c-form__label">STEP{{$step_num}}所要時間</label>--}}
-{{--                                <div class="c-form__required-time-input-area">--}}
-{{--                                    <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" name="childstep{{$step_num}}_required-time" id="childstep{{$step_num}}_required-time" value="{{ old('childstep'.$step_num.'_required-time') }}">--}}
-{{--                                    <span class="c-form__required-time-input-area--unit">時間</span>--}}
-{{--                                </div>--}}
-{{--                                @if($errors->any())--}}
-{{--                                    @foreach($errors->get('childstep'.$step_num.'_required-time') as $message)--}}
-{{--                                        <p class="c-form__err-msg">{{$message}}</p>--}}
-{{--                                    @endforeach--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    @endforeach--}}
-
-{{--                {{ $errors }}--}}
-{{--                {{ $errors->any() }}--}}
-{{--                {{ $request->session()->all() }}--}}
-
-                {{--                testtesttest--}}
-{{--                {{$errors->first('step_title')}}--}}
-
-{{--                @foreach($errors->get('step_title') as $message)--}}
-{{--                    <p class="c-form__err-msg">{{$message}}</p>--}}
-{{--                    :error_messages1 = {{$message}}--}}
-{{--                    {{$message}}--}}
-{{--                @endforeach--}}
 
 
                     <div id="step-create">
@@ -153,9 +85,6 @@
                                             @else
                                                     v-bind:count_of_childstep="countOfChildstep"
                                             @endif
-
-                                            @if($errors->any()) :error_messages = {{$errors}} @endif
-
 
                                             @if($errors->first('childstep1_title')) error_messages_title_childstep1 = {{$errors->first('childstep1_title')}} @endif
                                             @if($errors->first('childstep1_content')) error_messages_content_childstep1 = {{$errors->first('childstep1_content')}} @endif
@@ -207,7 +136,6 @@
                                             @if($errors->first('childstep10_img')) error_messages_img_childstep10 = {{$errors->first('childstep10_img')}} @endif
                                             @if($errors->first('childstep10_required-time')) error_messages_required_time_childstep10 = {{$errors->first('childstep10_required-time')}} @endif
 
-
                                             @if(old('childstep1_title')) old_childstep1_title={{ old('childstep1_title') }} @endif
                                             @if(old('childstep1_content')) old_childstep1_content={{ old('childstep1_content') }} @endif
                                             @if(old('childstep1_required-time')) old_childstep1_required_time={{ old('childstep1_required-time') }} @endif
@@ -258,24 +186,9 @@
                                                     v-bind:count_of_childstep="countOfChildstep"
                                             @endif
                         ></v-create-step-submit-btn>
-
                     </div>
-
-                    <input type="submit" class="c-btn c-form__submit">
-
-
-
-
-
-
-
+                    <input type="submit" class="c-btn c-form__submit" value="STEPを登録する">
                 </form>
-
-
-
-
-
-
             </main>
         </div>
     </div>

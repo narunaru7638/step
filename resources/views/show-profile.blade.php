@@ -2,6 +2,8 @@
 
 @section('page-title')
     <title>{{ $user_info->name }}さんのプロフィール | STEP</title>
+    <meta name="description" content="{{ $user_info->name }}さんのプロフィールです。{{ $user_info->profile }}">
+    <meta name="keywords" content="努力,目標,達成,順序,学習,ユーザ情報,プロフィール">
 @endsection
 
 @section('content')
@@ -39,7 +41,7 @@
                             <a  class="c-article-list__img" href="{{ route('steps.detail', ['id' => $registed_step->getId()]) }}"><img src="/storage/{{ $registed_step->getPicImg() }}" alt=""></a>
                             <div class="c-article-list__content">
                                 <div class="c-article-list__info">
-                                    <a href="{{ route('steps.index', ['id' => $registed_step->getCategoryId()]) }}"><p class="c-article-list__category">{{ $registed_step->getCategoryName() }}</p></a>
+                                    <a href="{{ route('steps.category.index', ['id' => $registed_step->getCategoryId()]) }}"><p class="c-article-list__category">{{ $registed_step->getCategoryName() }}</p></a>
                                     <a href="{{ route('profile.show', ['id' => $registed_step->getUserId()]) }}"><p class="c-article-list__username">{{ $registed_step->getUserName() }}</p></a>
                                     <p class="c-article-list__date">{{ $registed_step->getCreatedAt() }}</p>
                                 </div>

@@ -1,17 +1,11 @@
 <?php
 
-//認証されている人だけが見られるルーティング
+//ログインしている人だけが見られるルーティング
 Route::group(['middleware' => 'auth'], function(){
 
     //STEP登録
     Route::get('/create-steps', 'StepController@showCreateForm')->name('steps.create');
     Route::post('/create-steps', 'StepController@create');
-
-    //子STEPをクリアする
-    Route::post('/clear-childsteps/{challenge}/{childstep}', 'StepController@clear')->name('childsteps.clear');
-
-    //STEPにチャレンジする
-    Route::post('/detail-steps/{step}', 'StepController@challenge');
 
     //プロフィール編集
     Route::get('/edit-profile', 'UserController@showEditForm')->name('profile.edit');
@@ -24,11 +18,25 @@ Route::group(['middleware' => 'auth'], function(){
     //マイページ
     Route::get('/show-mypage', 'StepController@mypageShow')->name('mypage.show');
 
-    //子STEP進捗表示＆編集画面
-//    Route::get('/edit-childstep-progress/{childstep_progress}', 'ChildstepProgressController@editChildstepProgress')->name('childstep_progress.edit-childstep_progress');
-//    Route::get('/progress/edit', 'ProgressController@edit')->name('progress.edit');
-    Route::get('/progress/edit/{progress}', 'ProgressController@edit')->name('progress.edit');
-    Route::post('/progress/update/{progress}', 'ProgressController@update')->name('progress.update');
+    //STEPにチャレンジする
+    Route::post('/detail-steps/{step}', 'StepController@challenge');
+
+    //進捗に紐づくチャレンジのSTEPのuser_idとログインしているユーザのIDが同じときだけ見られるルーティング
+    Route::group(['middleware' => 'can:view,progress'], function() {
+        //子STEP進捗フォーム表示
+        Route::get('/progress/edit/{progress}', 'ProgressController@edit')->name('progress.edit');
+        //子STEP進捗編集
+        Route::post('/progress/update/{progress}', 'ProgressController@update')->name('progress.update');
+    });
+
+    //STEPの作成者(user_id)とログインしているユーザのIDが同じときだけ見られるルーティング
+    Route::group(['middleware' => 'can:view,step'], function() {
+
+        //Step情報変更ページ
+        Route::get('/edit-steps/{step}', 'StepController@stepEditForm')->name('steps.edit');
+        Route::post('/edit-steps/{step}', 'StepController@edit')->name('steps.update');
+    });
+
 
 
 

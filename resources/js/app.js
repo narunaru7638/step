@@ -152,43 +152,15 @@ new Vue({
 });
 
 
-
-//
-// Vue.component('button-counter', {
-//     // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
-//     data: function () {
-//         return {
-//             count: 0
-//         }
-//     },
-//     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-// })
-// //インスタンス化する
-//
-// new Vue({el: '#app7'})
-
 //STEP登録フォームのテンプレート
 Vue.component('v-create-step-form', {
     // コンポーネントで使う場合のdataは必ず関数にすること！通常のオブジェクト形式だと全コンポーネントでdataが共有されてしまう
     data: function () {
         return {
             count: 1,
-
-            // hoge: this['old_childstep'+this._props.form_id+'_content']
-
         }
-
-
     },
-    mounted() {
-        // console.log(this.props.form_id)
-        // console.log(this._props.form_id)
-        // console.log(this.form_id)
-        // console.log(form_id)
-
-
-    },
-    props: ['form_id', 'old_value', 'old_number_of_childstep', 'count_of_childstep','error_messages',
+    props: ['form_id', 'old_value', 'old_number_of_childstep', 'count_of_childstep',
             'old_childstep1_title', 'old_childstep1_content', 'old_childstep1_required_time',
             'old_childstep2_title', 'old_childstep2_content', 'old_childstep2_required_time',
             'old_childstep3_title', 'old_childstep3_content', 'old_childstep3_required_time',
@@ -210,113 +182,61 @@ Vue.component('v-create-step-form', {
             'error_messages_title_childstep9', 'error_messages_content_childstep9', 'error_messages_img_childstep9', 'error_messages_required_time_childstep9',
             'error_messages_title_childstep10', 'error_messages_content_childstep10', 'error_messages_img_childstep10', 'error_messages_required_time_childstep10',
     ],
-
     template: `
         <div class="c-form__childstep-area">
             <div class="c-form__childstep-form">
-
                 <h4 class="c-form__sub-title">STEP{{form_id}}</h4>
-
-
-                
-                
-                {{this['error_messages']}}
-                {{this['error_messages']["step_title"][0]}}
-<!--                {{this["step_title"][0]}}-->
-<!--                {{this[0]}}-->
-                <div v-for=""></div>
-                
-
                 <div class="c-form__input-area">
-              
                     <label :for="'childstep'+form_id+'_title'" class="c-form__label">STEP{{form_id}}名</label>
                     <input type="text" class="c-form__input" :name="'childstep'+form_id+'_title'" :id="'childstep'+form_id+'_title'" v-bind:value="this['old_childstep'+form_id+'_title']">
-
-<!--                        <p v-if=" form_id === 1 " class="c-form__err-msg">{{Object.values(error_messages)[0][0]}}</p>-->
-<!--                        <p v-if=" form_id === 2 " class="c-form__err-msg">{{Object.values(error_messages)[4][0]}}</p>-->
-
-<!--                        <div v-if=" form_id === 2 " >testtest</div>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages1)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages2)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages3)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages4)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages5)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages6)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages7)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages8)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages9)[0][0]}}</p>-->
-<!--                        <p class="c-form__err-msg">{{Object.values(error_messages10)[0][0]}}</p>-->
-
-<!--                    <p class="c-form__err-msg">{{error_messages1}}</p>-->
-                    <p class="c-form__err-msg">{{this['error_messages_title_childstep'+this._props.form_id]}}</p>
-<!--                    {{this['old_childstep'+this._props.form_id+'_content']}}-->
-
-                    
-                </div>
-                
-                
-
+                    <p class="c-form__err-msg">{{this['error_messages_title_childstep'+this._props.form_id]}}</p>                    
+                </div>                                
                 <div class="c-form__input-area">
                     <label :for="'childstep'+form_id+'_content'" class="c-form__label">STEP{{form_id}}説明</label>
-
                     <textarea :name="'childstep'+form_id+'_content'" :id="'childstep'+form_id+'_content'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{this['old_childstep'+this._props.form_id+'_content']}}</textarea>
                     <p class="c-form__err-msg">{{this['error_messages_content_childstep'+this._props.form_id]}}</p>
-
-
-<!--                    <p class="c-form__err-msg">{{Object.values(error_messages)[1][0]}}</p>-->
                 </div>
-
                 <div class="c-form__input-area" style="overflow:hidden;">
                     <label for="'childstep'+form_id+'_img'" class="c-form__label">STEP{{form_id}}イメージ画像</label>
                     <label for="'childstep'+form_id+'_img'" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">画像をドラッグ＆ドロップ
                         <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">
                         <input type="file" :name="'childstep'+form_id+'_img'" :id="'childstep'+form_id+'_img'" class="c-form__file-input c-form__file-input--childstep js-input-file">
                     </label>
-<!--                    <p class="c-form__err-msg">{{Object.values(error_messages)[2][0]}}</p>-->
                     <p class="c-form__err-msg">{{this['error_messages_img_childstep'+this._props.form_id]}}</p>
-
                 </div>
-
                 <div class="c-form__input-area">
                     <label for="'childstep'+form_id+'_required-time'" class="c-form__label">STEP{{form_id}}所要時間</label>
                     <div class="c-form__required-time-input-area">
                         <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="'childstep'+form_id+'_required-time'" :id="'childstep'+form_id+'_required-time'" v-bind:value="this['old_childstep'+form_id+'_required_time']">
                         <span class="c-form__required-time-input-area--unit">時間</span>
                     </div>
-<!--                    <p class="c-form__err-msg">{{Object.values(error_messages)[3][0]}}</p>-->
                     <p class="c-form__err-msg">{{this['error_messages_required_time_childstep'+this._props.form_id]}}</p>
-
                 </div>
             </div>
         </div>
 `
-
-
 })
 
 
-
+//STEP登録フォームを増減させるボタンのテンプレート
 Vue.component('v-create-step-submit-btn', {
     props:['count_of_childstep', 'old_number_of_childstep'],
-
     mounted: function(){
         this.$parent.oldNumberOfChildstep = this._props.old_number_of_childstep
     },
-
     template: `
         <div>  
-            <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" :value="count_of_childstep" hidden />
-            <div class="aaa" v-on:click="$emit('enadd-step-form')">STEPを増やす</div>
-            <div class="aaa" v-on:click="$emit('enreduce-step-form')">STEPを減らす</div>
+            <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" :value="count_of_childstep" class="js-count-of-childstep" hidden/>
+            <div class="c-btn__row-btn-area">
+                <div class="c-btn c-btn--reduce-childstep c-step-number-change-btn js-reduce-childstep" v-on:click="$emit('enreduce-step-form')">STEPを減らす</div>
+                <div class="c-btn c-btn--add-childstep c-step-number-change-btn js-add-childstep" v-on:click="$emit('enadd-step-form')">STEPを増やす</div>
+            </div>
         </div>
 `
 })
 
 
-
-
-
-//インスタンス化する
+//STEP登録用のインスタンス
 new Vue({
     el: '#step-create',
     data: {
@@ -326,18 +246,18 @@ new Vue({
             }
         ],
         errorMessages:'',
-
         countOfChildstep: 1,
         oldNumberOfChildstep: '',
         oldChildstep1Title: '',
-
+        //新しいIDを作成する関数。現在のフォームの数にプラス1した値をIDにする。
         makeID: function(){
-            // return numberOfStep = numberOfStep + 1;
             return this.countOfChildstep = this.countOfChildstep + 1;
         }
     },
     methods: {
+        //フォームを追加するメソッド
         addStepForm: function () {
+            //フォームが10個より少ないなら新しいIDを取得して、追加
             if(this.countOfChildstep < 10){
                 let form = {
                     id: this.makeID(),
@@ -345,14 +265,15 @@ new Vue({
                 this.forms.push(form);
             }
         },
+        //フォームを減らすメソッド
         reduceStepForm: function () {
             if (this.countOfChildstep > 1) {
-                this.countOfChildstep = this.countOfChildstep - 1;
+                this.countOfChildstep = this.countOfChildstep - 1;//現在のフォームの数を1減らす
                 this.forms.pop();
             }
         }
     },
-
+    //POST送信でバリデーションエラーとなった場合に、POST送信前に作成していたフォームの数だけ、フォームを作成する
     mounted: function(){
         let loopForForm = Number(this.oldNumberOfChildstep)
         for(let i = 1; i < loopForForm; i++){

@@ -6,10 +6,14 @@
 
   display: flex;
   justify-content: space-around;
-  margin-bottom: $space_xxl;
+  margin-bottom: $space_xl;
+
 
   @include mq(sm){
+    margin: auto $space_m;
     display: block;
+    margin-bottom: $space_xxl;
+
   }
 
 

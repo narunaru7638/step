@@ -22,6 +22,23 @@
         </div>
     @endif
 
+    <div class="c-flash-message c-flash-message--success js-toggle-msg--add-childstep">
+        子STEPの入力フォームを増やしました
+    </div>
+    <div class="c-flash-message c-flash-message--success js-toggle-msg--reduce-childstep">
+        子STEPの入力フォームを減らしました
+    </div>
+    <div class="c-flash-message c-flash-message--danger js-toggle-msg--cannot-add-childstep">
+        子STEPの入力フォームはこれ以上増やせません
+    </div>
+    <div class="c-flash-message c-flash-message--danger js-toggle-msg--cannot-reduce-childstep">
+        子STEPの入力フォームはこれ以上減らせません
+    </div>
+
+
+
+
+
 
     <header class="l-header">
         <div class="l-header__container l-header__container--top">
@@ -32,7 +49,7 @@
             <nav class="l-header__global-nav">
                 <ul class="c-nav">
                 @if(Auth::check())
-                            <li class="c-nav__item"><a class="c-nav__link" href="{{ route('profile.edit') }}">プロフィール</a></li>
+                            <li class="c-nav__item"><a class="c-nav__link" href="{{ route('profile.edit') }}">プロフィール変更</a></li>
                             <li class="c-nav__item"><a class="c-nav__link" href="{{ route('password.edit') }}">パスワード変更</a></li>
                             <li class="c-nav__item"><a class="c-nav__link" href="{{ route('steps.create') }}">STEP登録</a></li>
                             <li class="c-nav__item"><a class="c-nav__link" href="{{ route('mypage.show') }}">マイページ</a></li>
@@ -77,7 +94,7 @@
                         </ul>
                         <ul class="l-sp-menu__nav">
                             @if(Auth::check())
-                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="{{ route('profile.edit') }}">プロフィール</a></li>
+                                <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="{{ route('profile.edit') }}">プロフィール変更</a></li>
                                 <li class="l-sp-menu__nav-item"><a class="l-sp-menu__nav-link" href="{{ route('password.edit') }}">パスワード変更</a></li>
                             @endif
                         </ul>
@@ -108,16 +125,6 @@
     <footer id="footer" class="l-footer">
         <h1 class="l-footer__title">STEP</h1>
         <h2 class="l-footer__sub-title">あなたの人生の「STEP」を共有しよう</h2>
-        <nav class="l-footer__page-list">
-            <ul class="l-footer__nav">
-{{--                @if(Auth::check())--}}
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('profile.edit') }}">プロフィール</a></li>--}}
-{{--                    <li class="l-footer__list-item"><a class="l-footer__link" href="{{ route('password.edit') }}">パスワード変更</a></li>--}}
-{{--                @endif--}}
-
-            </ul>
-
-        </nav>
         <p class="l-footer__text">Copyright © <a href="https://twitter.com/narumismis" class="l-footer__link">なる</a>. All Rights Reserved</p>
     </footer>
     @if(Auth::check())

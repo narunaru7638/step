@@ -23,6 +23,18 @@
     &__text{
         font-size: $font-size_m;
         margin-bottom: $space_3l;
+        //&--margin-left{
+        //    margin-left: $space_xxl;
+        //    margin-right: $space_xxl;
+        //
+        //}
+
+        @include mq(sm) {
+            width: 90%;
+            margin: auto auto;
+        }
+
+
     }
 
     &__toppage-text{

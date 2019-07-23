@@ -79,6 +79,7 @@
 
   &__challenge_flg{
     color: $color_danger;
+    font-weight: bold;
   }
 
 
@@ -93,8 +94,15 @@
 
 
   &__childstep{
-        margin-bottom: $space_xxl;
-        border-bottom: $color_black4 1px solid;
+      margin: auto $space_l;
+      @include mq(sm){
+        margin: auto $space_xxl;
+        //width: 90%;
+      }
+
+
+    margin-bottom: $space_xxl;
+      border-bottom: $color_black4 1px solid;
 
 
       &-title{
