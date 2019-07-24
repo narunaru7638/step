@@ -181,10 +181,6 @@ Vue.component('v-create-step-form', {
             'error_messages_title_childstep8', 'error_messages_content_childstep8', 'error_messages_img_childstep8', 'error_messages_required_time_childstep8',
             'error_messages_title_childstep9', 'error_messages_content_childstep9', 'error_messages_img_childstep9', 'error_messages_required_time_childstep9',
             'error_messages_title_childstep10', 'error_messages_content_childstep10', 'error_messages_img_childstep10', 'error_messages_required_time_childstep10',
-
-            'error_messages',
-
-
     ],
     template: `
         <div class="c-form__childstep-area">
@@ -196,20 +192,12 @@ Vue.component('v-create-step-form', {
                 <div class="c-form__input-area">
                     <label :for="'childstep'+form_id+'_title'" class="c-form__label">STEP{{form_id}}名</label>
                     <input type="text" class="c-form__input" :name="'childstep'+form_id+'_title'" :id="'childstep'+form_id+'_title'" v-bind:value="this['old_childstep'+form_id+'_title']">
-                    <p class="c-form__err-msg">{{this['error_messages_title_childstep'+this._props.form_id]}}</p>
-<!--                    <span v-if="error_messages">-->
-<!--                        <p class="c-form__err-msg" v-if="error_messages['childstep'+form_id+'_title']">{{error_messages['childstep'+form_id+'_title'][0]}}</p>-->
-<!--                    </span>-->
-                    
+                    <p class="c-form__err-msg">{{this['error_messages_title_childstep'+this._props.form_id]}}</p>                    
                 </div>                                
                 <div class="c-form__input-area">
                     <label :for="'childstep'+form_id+'_content'" class="c-form__label">STEP{{form_id}}説明</label>
                     <textarea :name="'childstep'+form_id+'_content'" :id="'childstep'+form_id+'_content'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{this['old_childstep'+this._props.form_id+'_content']}}</textarea>
                     <p class="c-form__err-msg">{{this['error_messages_content_childstep'+this._props.form_id]}}</p>
-<!--                    <span v-if="error_messages">-->
-<!--                        <p class="c-form__err-msg" v-if="error_messages['childstep'+form_id+'_content']">{{error_messages['childstep'+form_id+'_content'][0]}}</p>-->
-<!--                    </span>-->
-
                 </div>
                 <div class="c-form__input-area" style="overflow:hidden;">
                     <label for="'childstep'+form_id+'_img'" class="c-form__label">STEP{{form_id}}イメージ画像</label>
@@ -218,10 +206,6 @@ Vue.component('v-create-step-form', {
                         <input type="file" :name="'childstep'+form_id+'_img'" :id="'childstep'+form_id+'_img'" class="c-form__file-input c-form__file-input--childstep js-input-file">
                     </label>
                     <p class="c-form__err-msg">{{this['error_messages_img_childstep'+this._props.form_id]}}</p>
-<!--                    <span v-if="error_messages">-->
-<!--                        <p class="c-form__err-msg" v-if="error_messages['childstep'+form_id+'_img']">{{error_messages['childstep'+form_id+'_img'][0]}}</p>-->
-<!--                    </span>-->
-
                 </div>
                 <div class="c-form__input-area">
                     <label for="'childstep'+form_id+'_required-time'" class="c-form__label">STEP{{form_id}}所要時間</label>
@@ -230,10 +214,6 @@ Vue.component('v-create-step-form', {
                         <span class="c-form__required-time-input-area--unit">時間</span>
                     </div>
                     <p class="c-form__err-msg">{{this['error_messages_required_time_childstep'+this._props.form_id]}}</p>
-<!--                    <span v-if="error_messages">-->
-<!--                        <p class="c-form__err-msg" v-if="error_messages['childstep'+form_id+'_required-time']">{{error_messages['childstep'+form_id+'_required-time'][0]}}</p>-->
-<!--                    </span>-->
-
                 </div>
             </div>
         </div>
