@@ -2,51 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cc22d13-6615-47be-b2c0-42af5d28d184" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/scss/object/utility/_margin-bottom.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/object/utility/_margin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/steps/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Childstep.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Childstep.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProgressController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgressController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StepController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StepController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateStep.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateStep.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/EditProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/EditProfile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/EditProgress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/EditProgress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Progress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Progress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/imagePreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/imagePreview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/toggleMsg.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/toggleMsg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/jp/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/jp/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/foundation/_color.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/foundation/_color.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/layout/_main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/layout/_main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_article-list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_article-list.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_btn.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_btn.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_detail-childstep.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_detail-childstep.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_detail-step.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_detail-step.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/object/component/_progress.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/object/component/_progress.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/progress/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/progress/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/show-profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/show-profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/steps/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/steps/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/steps/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/steps/mypage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/steps/mypage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/password-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/password-edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/public/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,8 +39,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/js/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="178" column="53" selection-start-line="178" selection-start-column="53" selection-end-line="178" selection-end-column="53" />
+                <state relative-caret-position="196">
+                  <caret line="172" column="96" selection-start-line="172" selection-start-column="96" selection-end-line="172" selection-end-column="96" />
                 </state>
               </provider>
             </entry>
@@ -88,16 +48,16 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/Requests/CreateStep.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="417">
+                <state relative-caret-position="615">
                   <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/lang/jp/validation.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-123">
+                <state relative-caret-position="1095">
                   <caret line="73" column="75" selection-start-line="73" selection-start-column="75" selection-end-line="73" selection-end-column="75" />
                 </state>
               </provider>
@@ -163,11 +123,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2435">
-                  <caret line="189" column="86" selection-start-line="189" selection-start-column="86" selection-end-line="189" selection-end-column="86" />
+                <state relative-caret-position="392">
+                  <caret line="89" selection-start-line="89" selection-end-line="89" />
                 </state>
               </provider>
             </entry>
@@ -179,8 +139,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/js/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="349">
-                  <caret line="178" column="53" selection-start-line="178" selection-start-column="53" selection-end-line="178" selection-end-column="53" />
+                <state relative-caret-position="712">
+                  <caret line="226" selection-start-line="226" selection-end-line="226" />
                 </state>
               </provider>
             </entry>
@@ -197,8 +157,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="286" column="27" selection-start-line="286" selection-start-column="27" selection-end-line="286" selection-end-column="27" />
+                <state relative-caret-position="-728">
+                  <caret line="119" column="34" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -243,19 +203,19 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/steps/detail.blade.php">
+            <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="304">
-                  <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+                <state relative-caret-position="75">
+                  <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/steps/mypage.blade.php">
+            <entry file="file://$PROJECT_DIR$/resources/views/steps/detail.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="22">
-                  <caret line="41" selection-start-line="41" selection-end-line="41" />
+                <state relative-caret-position="304">
+                  <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
                 </state>
               </provider>
             </entry>
@@ -310,9 +270,9 @@
       <find>__challenge-flg</find>
       <find>sec</find>
       <find>chil</find>
-      <find>ba</find>
       <find>inde</find>
       <find>back</find>
+      <find>ba</find>
     </findStrings>
     <replaceStrings>
       <replace>/img/programming.jpg</replace>
@@ -350,14 +310,11 @@
         <option value="$PROJECT_DIR$/app/Http/Requests/EditProgress.php" />
         <option value="$PROJECT_DIR$/app/Childstep.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/steps/create.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_progress.scss" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_detail-childstep.scss" />
         <option value="$PROJECT_DIR$/resources/scss/object/component/_article-list.scss" />
@@ -374,11 +331,14 @@
         <option value="$PROJECT_DIR$/resources/scss/style.scss" />
         <option value="$PROJECT_DIR$/resources/views/progress/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/imagePreview.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/StepController.php" />
         <option value="$PROJECT_DIR$/resources/views/steps/detail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProgressController.php" />
         <option value="$PROJECT_DIR$/app/Progress.php" />
         <option value="$PROJECT_DIR$/resources/lang/jp/validation.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StepController.php" />
+        <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/views/steps/create.blade.php" />
       </list>
     </option>
   </component>
@@ -779,12 +739,12 @@
       <workItem from="1562342608877" duration="41156000" />
       <workItem from="1562807774545" duration="50602000" />
       <workItem from="1563111256249" duration="69998000" />
-      <workItem from="1563428479346" duration="92495000" />
+      <workItem from="1563428479346" duration="108213000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="734942000" />
+    <option name="totallyTimeSpent" value="750660000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -837,7 +797,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/layout.blade.php</url>
-          <line>123</line>
+          <line>122</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -918,13 +878,6 @@
           <folding>
             <element signature="e#32#45#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="70" column="57" selection-start-line="70" selection-start-column="57" selection-end-line="70" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -1076,13 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/imagePreview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/steps/mypage.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -1094,13 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="92" column="95" selection-start-line="92" selection-start-column="95" selection-end-line="92" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="286" column="27" selection-start-line="286" selection-start-column="27" selection-end-line="286" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1125,23 +1064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProgressController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Progress.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/show-profile.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -1156,31 +1078,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+    <entry file="file://$PROJECT_DIR$/resources/lang/jp/validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="178" column="53" selection-start-line="178" selection-start-column="53" selection-end-line="178" selection-end-column="53" />
+        <state relative-caret-position="1095">
+          <caret line="73" column="75" selection-start-line="73" selection-start-column="75" selection-end-line="73" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StepController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2435">
-          <caret line="189" column="86" selection-start-line="189" selection-start-column="86" selection-end-line="189" selection-end-column="86" />
+        <state relative-caret-position="-728">
+          <caret line="119" column="34" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProgressController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/imagePreview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Progress.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/CreateStep.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
+        <state relative-caret-position="615">
           <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/jp/validation.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-123">
-          <caret line="73" column="75" selection-start-line="73" selection-start-column="75" selection-end-line="73" selection-end-column="75" />
+        <state relative-caret-position="75">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="172" column="96" selection-start-line="172" selection-start-column="96" selection-end-line="172" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/steps/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>

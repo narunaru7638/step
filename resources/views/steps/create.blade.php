@@ -46,7 +46,8 @@
                         <label for="step_img" class="c-form__label">STEPイメージ画像</label>
                         <label for="step_img" class="c-form__area-drop js-area-drop" >画像をドラッグ＆ドロップ
                             <img src="" alt="" class="c-form__prev-img prev-img">
-                            <input type="file" class="c-form__file-input js-input-file" name="step_img" id="step_img" value="{{ old('step_img') }}">
+{{--                            <input type="file" class="c-form__file-input js-input-file" name="step_img" id="step_img" value="{{ old('step_img') }}">--}}
+                            <input type="file" class="c-form__file-input js-input-file" name="step_img" id="step_img">
                         </label>
                         @if($errors->any())
                             @foreach($errors->get('step_img') as $message)
@@ -75,8 +76,6 @@
                         </div>
                     </div>
 
-
-
                     <div id="step-create">
                         <v-create-step-form v-for="form in forms" v-bind:form_id="form.id"
                                             @if(old('number_of_childstep'))
@@ -85,6 +84,10 @@
                                             @else
                                                     v-bind:count_of_childstep="countOfChildstep"
                                             @endif
+
+{{--                                            @if($errors->any()) :error_messages = {{$errors}} @endif--}}
+
+
 
                                             @if($errors->first('childstep1_title')) error_messages_title_childstep1 = {{$errors->first('childstep1_title')}} @endif
                                             @if($errors->first('childstep1_content')) error_messages_content_childstep1 = {{$errors->first('childstep1_content')}} @endif

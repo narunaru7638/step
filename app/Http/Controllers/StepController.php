@@ -108,18 +108,24 @@ class StepController extends Controller
     //STEP登録フォームの表示
     public function showCreateForm()
     {
-        $test_var = "1234asd";
 
-        return view('steps/create', [
-            'test_var' => $test_var,
 
-        ]);
+//        $test_var = "1234asd";
+//
+//        return view('steps/create', [
+//            'test_var' => $test_var,
+//
+//        ]);
+
+        return view('steps/create');
+
     }
 
 
     //STEP登録のPOST送信処理
     public function create(CreateStep $request)
     {
+
         //stepモデルのインスタンスを作成する
         $step = new Step();
 

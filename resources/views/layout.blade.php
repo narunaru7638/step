@@ -14,7 +14,6 @@
     @if (session('flash_message-success'))
         <div class="c-flash-message c-flash-message--success js-toggle-msg">
             {{ session('flash_message-success') }}
-            {!!Session::get('msg')!!}
         </div>
     @elseif (session('flash_message-danger'))
         <div class="c-flash-message c-flash-message--danger js-toggle-msg">
