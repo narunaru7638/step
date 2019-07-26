@@ -51,7 +51,7 @@
                         @endif
                     </div>
 
-                    <input type="submit" class="c-btn c-form__submit">
+                    <input type="submit" class="c-btn c-form__submit" value="パスワードを変更する">
 
                 </form>
             </main>

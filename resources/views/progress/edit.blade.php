@@ -18,7 +18,7 @@
                     <div class="c-detail-step">
                         <div class="c-detail-step__title">{{ $step_detail->getTitle() }}</div>
                         <div class="c-detail-childstep">
-                            <div class="c-detail-childstep__title">STEP{{ $childstep->getNumberOfStep() }}:{{ $childstep->getTitle() }}</div>
+                            <div class="c-detail-childstep__title">子STEP{{ $childstep->getNumberOfStep() }}:{{ $childstep->getTitle() }}</div>
                             <div class="c-detail-childstep__body">
                                 <img src="/storage/{{ $childstep->getPicImg() }}" alt="" class="c-detail-childstep__img">
                                 <div class="c-detail-childstep__content">
@@ -106,7 +106,7 @@
                         @endif
 
                         </div>
-                        <input type="submit" class="c-btn c-form__submit c-input-progress-form__submit" value="進捗を更新">
+                        <input type="submit" class="c-btn c-form__submit c-input-progress-form__submit" value="進捗を更新する">
                     </form>
                 </main>
                 @include('partials.sidebar')

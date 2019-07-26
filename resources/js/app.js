@@ -185,22 +185,20 @@ Vue.component('v-create-step-form', {
     template: `
         <div class="c-form__childstep-area">
             <div class="c-form__childstep-form">
-                <h4 class="c-form__sub-title">STEP{{form_id}}</h4>
-
-                
+                <h4 class="c-form__sub-title">子STEP{{form_id}}</h4>
                 
                 <div class="c-form__input-area">
-                    <label :for="'childstep'+form_id+'_title'" class="c-form__label">STEP{{form_id}}名</label>
+                    <label :for="'childstep'+form_id+'_title'" class="c-form__label">子STEP{{form_id}}名</label>
                     <input type="text" class="c-form__input" :name="'childstep'+form_id+'_title'" :id="'childstep'+form_id+'_title'" v-bind:value="this['old_childstep'+form_id+'_title']">
                     <p class="c-form__err-msg">{{this['error_messages_title_childstep'+this._props.form_id]}}</p>                    
                 </div>                                
                 <div class="c-form__input-area">
-                    <label :for="'childstep'+form_id+'_content'" class="c-form__label">STEP{{form_id}}説明</label>
+                    <label :for="'childstep'+form_id+'_content'" class="c-form__label">子STEP{{form_id}}説明</label>
                     <textarea :name="'childstep'+form_id+'_content'" :id="'childstep'+form_id+'_content'" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{this['old_childstep'+this._props.form_id+'_content']}}</textarea>
                     <p class="c-form__err-msg">{{this['error_messages_content_childstep'+this._props.form_id]}}</p>
                 </div>
                 <div class="c-form__input-area" style="overflow:hidden;">
-                    <label for="'childstep'+form_id+'_img'" class="c-form__label">STEP{{form_id}}イメージ画像</label>
+                    <label for="'childstep'+form_id+'_img'" class="c-form__label">子STEP{{form_id}}イメージ画像</label>
                     <label for="'childstep'+form_id+'_img'" class="c-form__area-drop c-form__area-drop--childstep js-area-drop">画像をドラッグ＆ドロップ
                         <img src="" alt="" class="c-form__prev-img c-form__prev-img--childstep prev-img">
                         <input type="file" :name="'childstep'+form_id+'_img'" :id="'childstep'+form_id+'_img'" class="c-form__file-input c-form__file-input--childstep js-input-file">
@@ -208,7 +206,7 @@ Vue.component('v-create-step-form', {
                     <p class="c-form__err-msg">{{this['error_messages_img_childstep'+this._props.form_id]}}</p>
                 </div>
                 <div class="c-form__input-area">
-                    <label for="'childstep'+form_id+'_required-time'" class="c-form__label">STEP{{form_id}}所要時間</label>
+                    <label for="'childstep'+form_id+'_required-time'" class="c-form__label">子STEP{{form_id}}所要時間</label>
                     <div class="c-form__required-time-input-area">
                         <input type="number" step="1" min="1" max="255" class="c-form__input c-form__required-time-input-area--input" :name="'childstep'+form_id+'_required-time'" :id="'childstep'+form_id+'_required-time'" v-bind:value="this['old_childstep'+form_id+'_required_time']">
                         <span class="c-form__required-time-input-area--unit">時間</span>
@@ -231,8 +229,8 @@ Vue.component('v-create-step-submit-btn', {
         <div>  
             <input type="number" step="1" min="1" max="10" name="number_of_childstep" id="number_of_childstep" :value="count_of_childstep" class="js-count-of-childstep" hidden/>
             <div class="c-btn__row-btn-area">
-                <div class="c-btn c-btn--reduce-childstep c-step-number-change-btn js-reduce-childstep" v-on:click="$emit('enreduce-step-form')">STEPを減らす</div>
-                <div class="c-btn c-btn--add-childstep c-step-number-change-btn js-add-childstep" v-on:click="$emit('enadd-step-form')">STEPを増やす</div>
+                <div class="c-btn c-btn--reduce-childstep c-step-number-change-btn js-reduce-childstep" v-on:click="$emit('enreduce-step-form')">子STEPを減らす</div>
+                <div class="c-btn c-btn--add-childstep c-step-number-change-btn js-add-childstep" v-on:click="$emit('enadd-step-form')">子STEPを増やす</div>
             </div>
         </div>
 `

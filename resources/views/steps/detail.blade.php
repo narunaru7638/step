@@ -59,7 +59,7 @@
 
                     @if( !empty($progress) && $progress[$key]->input_possible_flg === 1 && $challenge_exists_flg && $challenge->delete_flg === 0)
                         {{-- 進捗情報があってかつ進捗を入力可能なとき --}}
-                        <a href="{{ route('progress.edit', ['id' => $progress[$key]->getId() ] )}}"><div class="c-detail-childstep__title">STEP{{ $childstep->getNumberOfStep() }}:{{ $childstep->getTitle() }}</div></a>
+                        <a href="{{ route('progress.edit', ['id' => $progress[$key]->getId() ] )}}"><div class="c-detail-childstep__title">子STEP{{ $childstep->getNumberOfStep() }}:{{ $childstep->getTitle() }}</div></a>
                     @else
                         <div class="c-detail-childstep__title">STEP{{ $childstep->getNumberOfStep() }}:{{ $childstep->getTitle() }}</div>
                     @endif
@@ -114,8 +114,10 @@
                             <div class="c-detail-childstep__report--title">
                                 気付いたこと・学んだこと
                             </div>
-                        @foreach ($progress[$key]->reports as $key => $report)
-                            <div class="c-detail-childstep__report--content">
+{{--                        @foreach ($progress[$key]->reports as $key => $report)--}}
+                        @foreach ($progress[$key]->reports as $report)
+
+                                <div class="c-detail-childstep__report--content">
                                 {{ $report->content }}
                             </div>
 
@@ -127,7 +129,7 @@
                     @endif
 
                     @if( $progress[$key]->input_possible_flg === 1 && $challenge_exists_flg && $challenge->delete_flg === 0)
-                        <a href="{{ route('progress.edit', ['id' => $progress[$key]->getId() ] )}}"><div class="c-btn c-detail-childstep__edit-progress-btn">進捗を編集する</div></a>
+                        <a href="{{ route('progress.edit', ['id' => $progress[$key]->getId() ] )}}"><div class="c-btn c-detail-childstep__edit-progress-btn">進捗を更新する</div></a>
                     @endif
 
                 @endif

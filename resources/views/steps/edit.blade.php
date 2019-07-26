@@ -11,13 +11,13 @@
 
         <div class="l-page-title">
             <h2 class="l-page-title__title">STEP INFORMATION CHANGE</h2>
-            <h3 class="l-page-title__sub-title">ステップ情報変更</h3>
+            <h3 class="l-page-title__sub-title">ステップ内容変更</h3>
         </div>
 
         <div class="c-container">
             <div class="l-main-wrap">
                 <main class="l-main l-main--2column">
-                    <div class="l-main__text l-main__text--margin-left l-main__font-empha">STEPおよび各子STEPの内容のみ編集可能です</div>
+                    <div class="l-main__text l-main__text--margin-left l-main__font-empha">STEPおよび各子STEPの内容のみ変更可能です</div>
 
                     <div class="c-detail-step">
                         <form class="" action="{{ route('steps.edit', ['id' => $step_detail->getId()] ) }}" method="post" enctype="multipart/form-data">
@@ -56,7 +56,7 @@
 
                             @foreach ($step_detail->childsteps as $key => $childstep)
                                     <div class="c-detail-childstep">
-                                        <div class="c-detail-childstep__title">STEP{{ $childstep->getNumberOfStep() }}:{{ $childstep->getTitle() }}</div>
+                                        <div class="c-detail-childstep__title">子STEP{{ $childstep->getNumberOfStep() }}:{{ $childstep->getTitle() }}</div>
 
                                         <div class="c-detail-childstep__body">
                                             <img src="/storage/{{ $childstep->getPicImg() }}" alt="" class="c-detail-childstep__img">
@@ -73,7 +73,7 @@
 
                                         </div>
                                         <div class="c-form__input-area">
-                                            <label for="childstep{{$key+1}}_content" class="c-form__label">STEP{{$key+1}}説明</label>
+                                            <label for="childstep{{$key+1}}_content" class="c-form__label">子STEP{{$key+1}}説明</label>
                                             <textarea name="childstep{{$key+1}}_content" id="childstep{{$key+1}}_content" cols="30" rows="10"  class="c-form__input c-form__textarea c-form__textarea--childstep">{{ old('childstep'.($key+1).'_content', $childstep->getContent() )}}</textarea>
                                             @if($errors->any())
                                                 @foreach($errors->get('childstep'.($key+1).'_content') as $message)
@@ -95,7 +95,7 @@
                             @endforeach
                         @endif
 
-                            <input type="submit" class="c-btn c-form__submit c-form__submit--width c-form__submit--edit-step" value="このSTEPの内容を編集する">
+                            <input type="submit" class="c-btn c-form__submit c-form__submit--width c-form__submit--edit-step" value="このSTEPの内容を変更する">
                         </form>
 
                     </div>

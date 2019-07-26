@@ -47,16 +47,16 @@ class EditStep extends FormRequest
     {
         return [
             'step_content' => 'STEP説明',
-            'childstep1_content' => 'STEP1説明',
-            'childstep2_content' => 'STEP2説明',
-            'childstep3_content' => 'STEP3説明',
-            'childstep4_content' => 'STEP4説明',
-            'childstep5_content' => 'STEP5説明',
-            'childstep6_content' => 'STEP6説明',
-            'childstep7_content' => 'STEP7説明',
-            'childstep8_content' => 'STEP8説明',
-            'childstep9_content' => 'STEP9説明',
-            'childstep10_content' => 'STEP10説明',
+            'childstep1_content' => '子STEP1説明',
+            'childstep2_content' => '子STEP2説明',
+            'childstep3_content' => '子STEP3説明',
+            'childstep4_content' => '子STEP4説明',
+            'childstep5_content' => '子STEP5説明',
+            'childstep6_content' => '子STEP6説明',
+            'childstep7_content' => '子STEP7説明',
+            'childstep8_content' => '子STEP8説明',
+            'childstep9_content' => '子STEP9説明',
+            'childstep10_content' => '子STEP10説明',
 
             'number_of_childstep' => '子STEPの数'
 

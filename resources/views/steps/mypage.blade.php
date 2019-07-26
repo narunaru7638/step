@@ -44,7 +44,7 @@
                         @foreach( $step_my_challenge->challenges as $challenge_info)
                             @foreach ( $challenge_info->progresses as $progress)
 
-                            <a href="{{ route('steps.detail', ['id' => $step_my_challenge->getId()]) }}"><div class="c-article-list__childstep-title">STEP{{ $progress->getChildstepNumberOfStep() }}:{{ $progress->getChildstepTitle() }}</div></a>
+                            <a href="{{ route('steps.detail', ['id' => $step_my_challenge->getId()]) }}"><div class="c-article-list__childstep-title">子STEP{{ $progress->getChildstepNumberOfStep() }}:{{ $progress->getChildstepTitle() }}</div></a>
 
                             <div class="c-progress">
                                 <div class="c-progress__total-working-time">
@@ -63,7 +63,7 @@
                             </div>
 
                             @if( $progress->input_possible_flg === 1)
-                            <a href="{{ route('progress.edit', ['id' => $progress->getId() ] )}}"><div class="c-btn c-detail-childstep__edit-progress-btn u-margin-bottom__mypage-edit-progress-btn u-margin-bottom">進捗を編集する</div></a>
+                            <a href="{{ route('progress.edit', ['id' => $progress->getId() ] )}}"><div class="c-btn c-detail-childstep__edit-progress-btn u-margin-bottom__mypage-edit-progress-btn u-margin-bottom">進捗を更新する</div></a>
                             @endif
                             @endforeach
                         @endforeach

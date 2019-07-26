@@ -35,7 +35,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <input type="submit" class="c-btn c-form__submit">
+                    <input type="submit" class="c-btn c-form__submit" value="ログインする">
                     <div class="c-form__sub-msg">パスワードを忘れた方は<a href="{{ route('password.request') }}" class="c-form__link">こちら</a></div>
                 </form>
             </main>

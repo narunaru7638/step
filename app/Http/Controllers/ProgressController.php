@@ -38,7 +38,7 @@ class ProgressController extends Controller
         //選択した子STEPがまだ進捗入力可能となっていなければ、URLに不正な値を入れられたとしてリダイレクト
         //子STEPに紐づくSTEPが削除されていれば、URLに不正な値を入れられたとしてリダイレクト
         if($progress->input_possible_flg !== 1 || $progress->challenge->delete_flg === 1){
-            return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-danger', '不正な操作が行われました。');
+            return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-danger', '不正な操作が行われました');
         }
 
         //サイドバー用の情報の取得
@@ -77,12 +77,12 @@ class ProgressController extends Controller
         //選択した子STEPがまだ進捗入力可能となっていなければ、URLに不正な値を入れられたとしてリダイレクト
         //子STEPに紐づくSTEPが削除されていれば、URLに不正な値を入れられたとしてリダイレクト
         if($progress->input_possible_flg !== 1 || $progress->challenge->delete_flg === 1){
-            return back()->with('flash_message-danger', '不正な操作が行われました。');
+            return back()->with('flash_message-danger', '不正な操作が行われました');
         }
 
         //作業時間と気付いたこと・学んだことのどちらも入力されていなければ、入力画面にリダイレクトする。
         if(empty($request->working_time) && empty($request->report)){
-            return back()->with('flash_message-danger', '作業時間あるいは気付いたこと・学んだことを入力してください。');
+            return back()->with('flash_message-danger', '作業時間あるいは気付いたこと・学んだことを入力してください');
         }
 
 
@@ -143,6 +143,6 @@ class ProgressController extends Controller
             $report->save();
         }
 
-        return redirect()->route('steps.detail', ['id' => $progress->childstep->step->id ])->with('flash_message-success', '進捗の更新に成功しました');;
+        return redirect()->route('steps.detail', ['id' => $progress->childstep->step->id ])->with('flash_message-success', '進捗を更新しました');
     }
 }

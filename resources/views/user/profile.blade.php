@@ -11,7 +11,7 @@
 
     <div class="l-page-title">
         <h2 class="l-page-title__title">PROFILE EDIT</h2>
-        <h3 class="l-page-title__sub-title">プロフィール編集</h3>
+        <h3 class="l-page-title__sub-title">プロフィール変更</h3>
     </div>
 
     <div class="c-container">
@@ -63,7 +63,7 @@
                         @endif
                     </div>
 
-                    <input type="submit" class="c-btn c-form__submit">
+                    <input type="submit" class="c-btn c-form__submit" value="プロフィールを変更する">
 
                 </form>
             </main>

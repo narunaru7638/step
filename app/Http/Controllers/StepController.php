@@ -109,14 +109,6 @@ class StepController extends Controller
     public function showCreateForm()
     {
 
-
-//        $test_var = "1234asd";
-//
-//        return view('steps/create', [
-//            'test_var' => $test_var,
-//
-//        ]);
-
         return view('steps/create');
 
     }
@@ -167,8 +159,10 @@ class StepController extends Controller
             if(!empty($request)){
                 $request_title = 'childstep'.$i.'_title';
                 $request_content = 'childstep'.$i.'_content';
+                $request_required_time = 'childstep'.$i.'_required-time';
                 $childstep->title = $request->$request_title;
                 $childstep->content = $request->$request_content;
+                $childstep->time_required = $request->$request_required_time;
                 $childstep->step_id = $step->id;
                 $childstep->number_of_step = $i;
 
@@ -257,12 +251,13 @@ class StepController extends Controller
                 }
 
                 //変更成功のフラッシュメッセージつきでリダイレクト
-                return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-success', 'STEPの編集に成功しました');
+                return redirect()->route('steps.detail', ['id' => $step->id ])->with('flash_message-success', 'STEPの内容を変更しました');
 
-        //子STEP用のフォームの数と登録されている子STEPの数が一致していない場合
+
+            //子STEP用のフォームの数と登録されている子STEPの数が一致していない場合
         }else{
             //変更成功のフラッシュメッセージつきでリダイレクト
-            return redirect()->route('steps.edit', ['id' => $step->id ])->with('flash_message-danger', '不正な操作が行われました。');
+            return redirect()->route('steps.edit', ['id' => $step->id ])->with('flash_message-danger', '不正な操作が行われました');
         };
     }
 
@@ -281,11 +276,15 @@ class StepController extends Controller
             $challenge->delete_flg = 1;
             $challenge->save();
 
-        //チャレンジ情報がDBにあって、かつdelete_flg=1の場合、チャレンジするボタンが押されたとして、delete_flg=0にする
+            $flash_message = 'STEPのチャレンジをキャンセルしました';
+
+            //チャレンジ情報がDBにあって、かつdelete_flg=1の場合、チャレンジするボタンが押されたとして、delete_flg=0にする
         }elseif($challenge_check && $challenge_check->delete_flg == 1) {
             $challenge = Challenge :: where('step_id', $step->id)->first();
             $challenge->delete_flg = 0;
             $challenge->save();
+
+            $flash_message = 'STEPに再チャレンジしました';
 
         //チャレンジ情報がDBにない場合、新規にチャレンジ情報を登録
         }else{
@@ -312,9 +311,12 @@ class StepController extends Controller
             $step_challenge = Step::where('id',$step->id)->first();
             $step_challenge->number_of_challenger ++;
             $step_challenge->save();
+
+            $flash_message = 'STEPにチャレンジしました';
         }
 
-        return redirect()->route('steps.detail', ['id' => $step->id ]);
+        return redirect()->route('steps.detail', ['id' => $step->id ])->with('flash_message-success', $flash_message);
+
     }
 
 
@@ -326,7 +328,6 @@ class StepController extends Controller
         $steps_rank = Step::orderBy('number_of_challenger', 'desc')->take(5)->get();
 
         //自身がチャレンジしているSTEPの情報の取得
-//        $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->orderBy('created_at', 'desc')->get();
         $steps_my_challenge = \APP\Step::wherehas('challenges', function($q){ $q->where('user_id', Auth::user()->id); })->wherehas('challenges', function($q){ $q->where('delete_flg', 0); })->orderBy('created_at', 'desc')->get();
 
 

@@ -54,7 +54,9 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('steps.index', ['id' => 0 ])->with('flash_message-success', 'プロフィールを変更しました');
+        return redirect()->route('profile.edit')->with('flash_message-success', 'プロフィールを変更しました');
+
+
     }
 
 

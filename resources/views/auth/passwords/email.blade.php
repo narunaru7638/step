@@ -15,7 +15,7 @@
         <div class="c-container">
             <div class="l-main-wrap">
                 <main class="l-main l-main--1column">
-                    <p class="l-main__text">ご指定のメールアドレス宛にパスワード再発行用のURLをお送り致します。メールアドレスを入力して下さい。</p>
+                    <p class="l-main__text">登録されているメールアドレス宛にパスワード再発行用のURLが記載されたメールをお送り致します。ユーザ登録した際のメールアドレスを入力して下さい。</p>
                     @if (session('status'))
                     <div class="c-alert" role="alert">
                         {{ session('status') }}
@@ -33,7 +33,7 @@
                                 @endforeach
                             @endif
                         </div>
-                        <input type="submit" class="c-btn c-form__submit">
+                        <input type="submit" class="c-btn c-form__submit" value="再発行用メールを送信する">
                         <div class="c-form__sub-msg c-form__sub-msg--position-left"><a href="{{ route('login') }}" class="c-form__link">&#171;ログイン画面に戻る</a></div>
                     </form>
                 </main>
